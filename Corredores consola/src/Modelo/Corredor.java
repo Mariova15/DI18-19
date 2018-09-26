@@ -85,7 +85,8 @@ public class Corredor implements Comparable<Corredor> {
 
     @Override
     public String toString() {
-        return "Corredor{" + "nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", fecha=" + fechaNacimiento.getDate() + "/" + fechaNacimiento.getMonth() + "/" + fechaNacimiento.getYear() + fechaNacimiento + ", telf=" + telf + '}';
+        int mes = fechaNacimiento.getMonth() + 1;
+        return "Corredor{" + "nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", fecha=" + fechaNacimiento.getDate() + "/" + mes + "/" + fechaNacimiento.getYear() + fechaNacimiento + ", telf=" + telf + '}';
     }
 
     @Override
