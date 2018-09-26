@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -87,6 +88,7 @@ public class GestionDeCorredores {
 
     public String cadenaCsv() {
         String cadenaCsv = "";
+        this.ordenarLista();
         for (int i = 0; i < corredores.size(); i++) {
             cadenaCsv = cadenaCsv + corredores.get(i).getNombre() + ",";
             cadenaCsv = cadenaCsv + corredores.get(i).getDni() + ",";
@@ -98,6 +100,15 @@ public class GestionDeCorredores {
             cadenaCsv = cadenaCsv + corredores.get(i).getFechaNacimiento().getYear() + "\n";
         }
         return cadenaCsv;
+    }
+    
+    public void ordenarLista() {
+        Collections.sort(corredores, new Comparator<Corredor>() {
+            @Override
+            public int compare(Corredor c1, Corredor c2) {
+                return c1.getFechaNacimiento().compareTo(c2.getFechaNacimiento());
+            }
+        });
     }
 
 }

@@ -15,8 +15,8 @@ import java.util.Date;
 public class Corredor implements Comparable<Corredor> {
 
     private String nombre, dni, direccion;
-    private Date fechaNacimiento;
-    private int telf;
+    private Date fechaNacimiento, actual;
+    private int telf, edad;
     private boolean estado;
 
     public Corredor() {
@@ -29,6 +29,8 @@ public class Corredor implements Comparable<Corredor> {
         this.fechaNacimiento = fechaNacimiento;
         this.telf = telf;
         estado = true;
+        actual = new Date();
+        edad = actual.getYear() - fechaNacimiento.getYear();
     }
 
     public Corredor(String dni) {
@@ -59,6 +61,10 @@ public class Corredor implements Comparable<Corredor> {
         return telf;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -86,7 +92,7 @@ public class Corredor implements Comparable<Corredor> {
     @Override
     public String toString() {
         int mes = fechaNacimiento.getMonth() + 1;
-        return "Corredor{" + "nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", fecha=" + fechaNacimiento.getDate() + "/" + mes + "/" + fechaNacimiento.getYear() + fechaNacimiento + ", telf=" + telf + '}';
+        return "Corredor{" + "nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", fecha=" + fechaNacimiento.getDate() + "/" + mes + "/" + fechaNacimiento.getYear() + ", telf=" + telf + '}';
     }
 
     @Override
@@ -94,4 +100,15 @@ public class Corredor implements Comparable<Corredor> {
         return this.dni.compareTo(o.dni);
     }
 
+    /*public int compareToEdad(Corredor o) {
+        int resultado;
+        if (this.edad < o.edad) {
+            resultado = -1;
+        } else if (this.edad > o.edad) {
+            resultado = 1;
+        } else {
+            resultado = 0;
+        }
+        return resultado;
+    }*/
 }
