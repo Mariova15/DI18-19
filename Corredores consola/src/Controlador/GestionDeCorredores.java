@@ -26,7 +26,7 @@ public class GestionDeCorredores {
     private Corredor c1;
 
     public GestionDeCorredores() {
-        sdf = new SimpleDateFormat("dd/mm/yy");
+        sdf = new SimpleDateFormat("dd/MM/yy");
         corredores = new ArrayList<Corredor>();
         //corredores.addAll(corredores); Añadir ista        
     }

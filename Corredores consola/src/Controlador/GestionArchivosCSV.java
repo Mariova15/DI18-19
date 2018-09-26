@@ -36,7 +36,7 @@ public class GestionArchivosCSV {
     }
 
     public static Object tokenizar(String linea) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         /*String[] lineas = linea.split(",");
         Corredor c = new Corredor(lineas[0], lineas[1], lineas[2], Integer.parseInt(lineas[3]), sdf.parse(lineas[4]));*/
         StringTokenizer tokens = new StringTokenizer(linea, ",");
