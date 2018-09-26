@@ -6,7 +6,6 @@
 package Controlador;
 
 import Modelo.Corredor;
-import Modelo.Fecha;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -29,24 +28,27 @@ public class GestionArchivosCSV {
 
     private FileWriter fw = null;
     private FileReader fr = null;
-    private SimpleDateFormat sdf;
     private List<Corredor> corredores;
-    private Date fechaNacimiento;
-    private Fecha f;
-    private Corredor c;
 
     //private Registro registro;
     public GestionArchivosCSV() {
-        sdf = new SimpleDateFormat("dd/mm/yy");
         corredores = new ArrayList<Corredor>();
-        f = new Fecha();
-        c = new Corredor();
     }
 
     public static Object tokenizar(String linea) throws ParseException {
-        Fecha f = new Fecha();
-        String[] lineas = linea.split(",");
-        Corredor c = new Corredor(lineas[0], lineas[1], lineas[2], Integer.parseInt(lineas[3]), f.dateParse(lineas[4]));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
+        /*String[] lineas = linea.split(",");
+        Corredor c = new Corredor(lineas[0], lineas[1], lineas[2], Integer.parseInt(lineas[3]), sdf.parse(lineas[4]));*/
+        StringTokenizer tokens = new StringTokenizer(linea, ",");
+        Corredor c =null;
+        while (tokens.hasMoreTokens()) {
+            String nombre = tokens.nextToken();
+            String dni = tokens.nextToken();
+            String dir = tokens.nextToken();
+            int telf = Integer.parseInt(tokens.nextToken());
+            String fecha = tokens.nextToken();
+            c = new Corredor(nombre, dni, dir, telf, sdf.parse(fecha));
+        }        
         return c;
     }
 
@@ -82,7 +84,7 @@ public class GestionArchivosCSV {
         }
 
         return corredores;
-        
+
     }
 
     public void cerrarFicheroEscritura() {
