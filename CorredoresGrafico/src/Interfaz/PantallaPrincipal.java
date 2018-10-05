@@ -8,6 +8,7 @@ package Interfaz;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,13 +17,14 @@ import javax.swing.DefaultListModel;
 public class PantallaPrincipal extends javax.swing.JFrame {
 
     private GestionDeCorredores gdc;
-    
+
     /**
      * Creates new form PantallaPrincipal
      */
     public PantallaPrincipal() {
-        initComponents();
+        initComponents();        
         gdc = new GestionDeCorredores();
+        rellenarTablaAlumnos();
     }
 
     /**
@@ -34,10 +36,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
         jButtonAlta = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListcorredores = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCorredores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +55,45 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jListcorredores);
+        jTableCorredores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "No", "Title 2", "Title 3", "Title 4", "Title 5"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableCorredores);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabelTitle)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jButtonAlta)
+                .addGap(50, 50, 50))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,22 +101,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
-                    .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabelTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jButtonAlta)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -85,12 +118,31 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         AltaCorredor ps = new AltaCorredor(this, true, gdc);
         ps.setVisible(true);
         gdc.registroCorredores();
-        DefaultListModel dfm = new DefaultListModel();
+        rellenarTablaAlumnos();
+        //JLIST
+        /*DefaultListModel dfm = new DefaultListModel();
         for (Corredor corredor : gdc.getCorredores()) {
             dfm.addElement(corredor);
         }
-        jListcorredores.setModel(dfm);
+        jListcorredores.setModel(dfm);*/
+
+
     }//GEN-LAST:event_jButtonAltaActionPerformed
+
+    private void rellenarTablaAlumnos() {
+        String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
+        DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
+        for (Corredor corredor : gdc.getCorredores()) {
+            String[] corredorTabla = new String[5];
+            corredorTabla[0] = corredor.getNombre();
+            corredorTabla[1] = corredor.getDni();
+            corredorTabla[2] = corredor.getDireccion();
+            corredorTabla[3] = "" + corredor.getTelf();
+            corredorTabla[4] = corredor.FechaString();
+            dtm.addRow(corredorTabla);
+        }
+        jTableCorredores.setModel(dtm);
+    }
 
     /**
      * @param args the command line arguments
@@ -130,7 +182,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlta;
     private javax.swing.JLabel jLabelTitle;
-    private javax.swing.JList<String> jListcorredores;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableCorredores;
     // End of variables declaration//GEN-END:variables
 }

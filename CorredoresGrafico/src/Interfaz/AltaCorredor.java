@@ -7,6 +7,7 @@ package Interfaz;
 
 import Logica.GestionDeCorredores;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -141,7 +142,7 @@ public class AltaCorredor extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFecha)
                     .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonlimpiar)
@@ -187,12 +188,13 @@ public class AltaCorredor extends javax.swing.JDialog {
 
         Integer.parseInt(telf);
         gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
+        JOptionPane.showMessageDialog(this, "Corredor añadido");
         this.dispose();
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlta;
     private javax.swing.JButton jButtonlimpiar;
