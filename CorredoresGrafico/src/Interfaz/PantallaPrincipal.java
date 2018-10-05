@@ -22,9 +22,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      * Creates new form PantallaPrincipal
      */
     public PantallaPrincipal() {
-        initComponents();        
+        initComponents();
         gdc = new GestionDeCorredores();
-        rellenarTablaAlumnos();
+        //rellenarTablaAlumnos();
     }
 
     /**
@@ -39,6 +39,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
         jButtonAlta = new javax.swing.JButton();
+        jButtonListadoCoredores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonListadoCoredores.setText("Listado corredores");
+        jButtonListadoCoredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListadoCoredoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -61,11 +69,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonListadoCoredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +84,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabelTitle)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAlta)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonListadoCoredores)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,10 +110,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        AltaCorredor ps = new AltaCorredor(this, true, gdc);
-        ps.setVisible(true);
-        gdc.registroCorredores();
-        rellenarTablaAlumnos();
+        AltaCorredor altacorredor = new AltaCorredor(this, true, gdc);
+        altacorredor.setVisible(true);
+        //gdc.registroCorredores();
+        //rellenarTablaAlumnos();
         //JLIST
         /*DefaultListModel dfm = new DefaultListModel();
         for (Corredor corredor : gdc.getCorredores()) {
@@ -109,24 +121,27 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         }
         jListcorredores.setModel(dfm);*/
 
-
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
-    private void rellenarTablaAlumnos() {
-        String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
-        DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
-        for (Corredor corredor : gdc.getCorredores()) {
-            String[] corredorTabla = new String[5];
-            corredorTabla[0] = corredor.getNombre();
-            corredorTabla[1] = corredor.getDni();
-            corredorTabla[2] = corredor.getDireccion();
-            corredorTabla[3] = "" + corredor.getTelf();
-            corredorTabla[4] = corredor.FechaString();
-            dtm.addRow(corredorTabla);
-        }
-        jTableCorredores.setModel(dtm);
-    }
+    private void jButtonListadoCoredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCoredoresActionPerformed
+        ListadoCorredor listadoCorredor = new ListadoCorredor(this, true, gdc);
+        listadoCorredor.setVisible(true);
+    }//GEN-LAST:event_jButtonListadoCoredoresActionPerformed
 
+    /*    private void rellenarTablaAlumnos() {
+    String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
+    DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
+    for (Corredor corredor : gdc.getCorredores()) {
+    String[] corredorTabla = new String[5];
+    corredorTabla[0] = corredor.getNombre();
+    corredorTabla[1] = corredor.getDni();
+    corredorTabla[2] = corredor.getDireccion();
+    corredorTabla[3] = "" + corredor.getTelf();
+    corredorTabla[4] = corredor.FechaString();
+    dtm.addRow(corredorTabla);
+    }
+    //jTableCorredores.setModel(dtm);
+    }*/
     /**
      * @param args the command line arguments
      */
@@ -164,6 +179,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlta;
+    private javax.swing.JButton jButtonListadoCoredores;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
