@@ -93,9 +93,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabelCarreras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCarreras.setText("Carreras");
 
-        jButtonAltaCarrera.setText("Alta de carrera");
+        jButtonAltaCarrera.setText("Alta de carreras");
+        jButtonAltaCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAltaCarreraActionPerformed(evt);
+            }
+        });
 
         jButtonListadoCarrera.setText("Listado de carreras");
+        jButtonListadoCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListadoCarreraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCarrerasLayout = new javax.swing.GroupLayout(jPanelCarreras);
         jPanelCarreras.setLayout(jPanelCarrerasLayout);
@@ -163,6 +173,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         ListadoCorredor listadoCorredor = new ListadoCorredor(this, true, gdc);
         listadoCorredor.setVisible(true);
     }//GEN-LAST:event_jButtonListadoCoredoresActionPerformed
+
+    private void jButtonAltaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaCarreraActionPerformed
+        AltaCarrera altaCarrera = new AltaCarrera(this, true);
+        altaCarrera.setVisible(true);
+    }//GEN-LAST:event_jButtonAltaCarreraActionPerformed
+
+    private void jButtonListadoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCarreraActionPerformed
+        ListadoCarrera listadoCarrera = new ListadoCarrera(this, true);
+        listadoCarrera.setVisible(true);
+    }//GEN-LAST:event_jButtonListadoCarreraActionPerformed
 
     /*    private void rellenarTablaAlumnos() {
     String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};

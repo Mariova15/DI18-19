@@ -146,13 +146,19 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAltaCarrera">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Alta de carrera"/>
+            <Property name="text" type="java.lang.String" value="Alta de carreras"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAltaCarreraActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonListadoCarrera">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listado de carreras"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonListadoCarreraActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

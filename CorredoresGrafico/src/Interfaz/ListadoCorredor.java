@@ -53,6 +53,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
+        jLabelTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,19 +70,28 @@ public class ListadoCorredor extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(jTableCorredores);
 
+        jLabelTitle.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabelTitle.setText("Listado de corredores");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelTitle)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addComponent(jLabelTitle)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
         );
@@ -94,6 +104,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableCorredores;
     // End of variables declaration//GEN-END:variables
