@@ -92,16 +92,13 @@ public class GestionDeCorredores {
 
     public String cadenaCsv() {
         String cadenaCsv = "";
-        this.ordenarLista();
+        //this.ordenarLista();
         for (int i = 0; i < corredores.size(); i++) {
             cadenaCsv = cadenaCsv + corredores.get(i).getNombre() + ",";
             cadenaCsv = cadenaCsv + corredores.get(i).getDni() + ",";
             cadenaCsv = cadenaCsv + corredores.get(i).getDireccion() + ",";
             cadenaCsv = cadenaCsv + corredores.get(i).getTelf() + ",";
-            //cadenaCsv = cadenaCsv + corredores.get(i).getFechaNacimiento()+"\n";
-            cadenaCsv = cadenaCsv + corredores.get(i).getFechaNacimiento().getDate() + "/";
-            cadenaCsv = cadenaCsv + corredores.get(i).getFechaNacimiento().getMonth() + "/";
-            cadenaCsv = cadenaCsv + corredores.get(i).getFechaNacimiento().getYear() + "\n";
+            cadenaCsv = cadenaCsv +  sdf.format(corredores.get(i).getFechaNacimiento()) + "\n";
         }
         return cadenaCsv;
     }
