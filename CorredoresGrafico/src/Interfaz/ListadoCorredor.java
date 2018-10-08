@@ -5,8 +5,10 @@
  */
 package Interfaz;
 
+import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
+import java.text.ParseException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,14 +18,16 @@ import javax.swing.table.DefaultTableModel;
 public class ListadoCorredor extends javax.swing.JDialog {
 
     private GestionDeCorredores gdc;
+    private GestionArchivosCSV gacsv;
 
     /**
      * Creates new form ListadoCorredor
      */
-    public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdc) {
+    public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdc, GestionArchivosCSV gacsv) throws ParseException {
         super(parent, modal);
         initComponents();
         this.gdc = gdc;
+        this.gacsv = gacsv;        
         rellenarTablaAlumnos();
     }
 

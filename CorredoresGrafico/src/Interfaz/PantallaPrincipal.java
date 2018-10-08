@@ -5,8 +5,12 @@
  */
 package Interfaz;
 
+import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class PantallaPrincipal extends javax.swing.JFrame {
 
     private GestionDeCorredores gdc;
+    private GestionArchivosCSV gacsv;
 
     /**
      * Creates new form PantallaPrincipal
@@ -24,7 +29,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     public PantallaPrincipal() {
         initComponents();
         gdc = new GestionDeCorredores();
-        //rellenarTablaAlumnos();
+        gacsv = new GestionArchivosCSV();
+        gacsv.abrirFichero("corredores.txt");
+        try {
+            gdc.importarCorredores(gacsv.leerFichero("corredores.txt"));
+        } catch (ParseException ex) {
+            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -156,21 +167,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        AltaCorredor altacorredor = new AltaCorredor(this, true, gdc);
+        AltaCorredor altacorredor = new AltaCorredor(this, true, gdc, gacsv);
         altacorredor.setVisible(true);
-        //gdc.registroCorredores();
-        //rellenarTablaAlumnos();
-        //JLIST
-        /*DefaultListModel dfm = new DefaultListModel();
-        for (Corredor corredor : gdc.getCorredores()) {
-            dfm.addElement(corredor);
-        }
-        jListcorredores.setModel(dfm);*/
-
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     private void jButtonListadoCoredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCoredoresActionPerformed
-        ListadoCorredor listadoCorredor = new ListadoCorredor(this, true, gdc);
+        ListadoCorredor listadoCorredor = null;
+        try {
+            listadoCorredor = new ListadoCorredor(this, true, gdc, gacsv);
+        } catch (ParseException ex) {
+            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         listadoCorredor.setVisible(true);
     }//GEN-LAST:event_jButtonListadoCoredoresActionPerformed
 

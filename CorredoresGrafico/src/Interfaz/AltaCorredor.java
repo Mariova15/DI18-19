@@ -5,8 +5,13 @@
  */
 package Interfaz;
 
+import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,14 +21,17 @@ import javax.swing.JOptionPane;
 public class AltaCorredor extends javax.swing.JDialog {
 
     private GestionDeCorredores gdc;
+    private GestionArchivosCSV gacsv;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
     /**
      * Creates new form AltaCorredor
      */
-    public AltaCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdc) {
+    public AltaCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdc, GestionArchivosCSV gacsv) {
         super(parent, modal);
         initComponents();
         this.gdc = gdc;
+        this.gacsv = gacsv;        
     }
 
     /**
@@ -192,6 +200,13 @@ public class AltaCorredor extends javax.swing.JDialog {
         Integer.parseInt(telf);
         gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
         JOptionPane.showMessageDialog(this, "Corredor añadido");
+        String corredor = nombre+","+dni+","+dir+","+telf+","+sdf.format(fecha)+"\n";
+        try {
+            gacsv.escribirCadena(corredor);
+        } catch (IOException ex) {
+            Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        gacsv.cerrarFicheroEscritura();
         this.dispose();
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
