@@ -30,6 +30,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
     public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdc, GestionArchivosCSV gacsv) throws ParseException {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         this.gdc = gdc;
         this.gacsv = gacsv;
         rellenarTablaAlumnos();
@@ -63,6 +64,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
         jTableCorredores = new javax.swing.JTable();
         jLabelTitle = new javax.swing.JLabel();
         jButtonExportar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,6 +91,14 @@ public class ListadoCorredor extends javax.swing.JDialog {
             }
         });
 
+        jButtonModificar.setText("Modificar");
+        jButtonModificar.setActionCommand("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,10 +107,11 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
+                    .addComponent(jButtonExportar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelTitle)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButtonExportar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,7 +121,9 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 .addComponent(jLabelTitle)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(14, 14, 14)
+                .addComponent(jButtonModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonExportar)
                 .addContainerGap())
         );
@@ -131,12 +144,21 @@ public class ListadoCorredor extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        int seleccionado = jTableCorredores.getSelectedRow();
+        Corredor corredorSeleccionado = gdc.getCorredores().get(seleccionado);
+        AltaCorredor altaCorredorModificar = new AltaCorredor(this,true, corredorSeleccionado);
+        altaCorredorModificar.setVisible(true);
+        rellenarTablaAlumnos();
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExportar;
+    private javax.swing.JButton jButtonModificar;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableCorredores;

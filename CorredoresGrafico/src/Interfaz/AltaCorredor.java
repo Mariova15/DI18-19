@@ -7,6 +7,7 @@ package Interfaz;
 
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
+import Modelo.Corredor;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +23,7 @@ public class AltaCorredor extends javax.swing.JDialog {
 
     private GestionDeCorredores gdc;
     private GestionArchivosCSV gacsv;
+    private Corredor corredorModificar = null;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
     /**
@@ -30,8 +32,23 @@ public class AltaCorredor extends javax.swing.JDialog {
     public AltaCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdc, GestionArchivosCSV gacsv) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         this.gdc = gdc;
-        this.gacsv = gacsv;        
+        this.gacsv = gacsv;
+    }
+
+    public AltaCorredor(java.awt.Dialog parent, boolean modal, Corredor corredorModificar) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.gdc = gdc;
+        this.gacsv = gacsv;
+        this.corredorModificar = corredorModificar;
+        jTextFieldNom.setText(corredorModificar.getNombre());
+        jTextFieldDNI.setText(corredorModificar.getDni());
+        jTextFieldDir.setText(corredorModificar.getDireccion());
+        jTextFieldTelf.setText("" + corredorModificar.getTelf());
+        jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
     }
 
     /**
@@ -195,18 +212,36 @@ public class AltaCorredor extends javax.swing.JDialog {
         String dni = jTextFieldDNI.getText();
         String dir = jTextFieldDir.getText();
         String telf = jTextFieldTelf.getText();
-        Date fecha = (Date) jSpinnerFecha.getValue();
+        Date fecha = (Date) jSpinnerFecha.getValue();        
 
-        Integer.parseInt(telf);
+        if (corredorModificar == null) {
+            //Integer.parseInt(telf);
+            gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
+            JOptionPane.showMessageDialog(this, "Corredor añadido");
+            String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
+            try {
+                gacsv.escribirCadena(corredor);
+            } catch (IOException ex) {
+                Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            gacsv.cerrarFicheroEscritura();
+        } else {
+            corredorModificar.setNombre(nombre);
+            corredorModificar.setDni(dni);
+            corredorModificar.setDireccion(dir);
+            corredorModificar.setTelf(Integer.parseInt(telf));
+        }
+
+        /*Integer.parseInt(telf);
         gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
         JOptionPane.showMessageDialog(this, "Corredor añadido");
-        String corredor = nombre+","+dni+","+dir+","+telf+","+sdf.format(fecha)+"\n";
+        String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
         try {
-            gacsv.escribirCadena(corredor);
+        gacsv.escribirCadena(corredor);
         } catch (IOException ex) {
-            Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        gacsv.cerrarFicheroEscritura();
+        gacsv.cerrarFicheroEscritura();*/
         this.dispose();
     }//GEN-LAST:event_jButtonAltaActionPerformed
 

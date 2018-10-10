@@ -28,6 +28,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     public PantallaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
         gdc = new GestionDeCorredores();
         gacsv = new GestionArchivosCSV();
         gacsv.abrirFichero("corredores.txt");
@@ -36,6 +37,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     /**

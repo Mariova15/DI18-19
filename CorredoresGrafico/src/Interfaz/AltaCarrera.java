@@ -5,11 +5,15 @@
  */
 package Interfaz;
 
+import Logica.GestionArchivosCSV;
+
 /**
  *
  * @author Mario
  */
 public class AltaCarrera extends javax.swing.JDialog {
+    
+    private GestionArchivosCSV gacsv;
 
     /**
      * Creates new form AltaCarrera
@@ -17,6 +21,8 @@ public class AltaCarrera extends javax.swing.JDialog {
     public AltaCarrera(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        gacsv = new GestionArchivosCSV();
     }
 
     /**
@@ -62,6 +68,11 @@ public class AltaCarrera extends javax.swing.JDialog {
         jSpinner1.setModel(new javax.swing.SpinnerDateModel());
 
         jButtonAlta.setText("Dar de alta");
+        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAltaActionPerformed(evt);
+            }
+        });
 
         jButtonLimpiar.setText("Limpiar");
 
@@ -128,7 +139,7 @@ public class AltaCarrera extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
+                    .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 359, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelPrincipalLayout.setVerticalGroup(
@@ -160,6 +171,10 @@ public class AltaCarrera extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAltaActionPerformed
 
     /**
      * @param args the command line arguments
