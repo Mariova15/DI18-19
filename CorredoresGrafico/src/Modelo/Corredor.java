@@ -87,7 +87,7 @@ public class Corredor implements Comparable<Corredor> {
     public void baja() {
         estado = false;
     }
-    
+
     public String FechaString(){    
     return sdf.format(fechaNacimiento);
     }

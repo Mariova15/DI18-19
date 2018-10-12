@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
@@ -37,18 +38,19 @@ public class ListadoCorredor extends javax.swing.JDialog {
     }
 
     private void rellenarTablaAlumnos() {
-        String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
+        /*String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
         DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
         for (Corredor corredor : gdc.getCorredores()) {
-            String[] corredorTabla = new String[5];
-            corredorTabla[0] = corredor.getNombre();
-            corredorTabla[1] = corredor.getDni();
-            corredorTabla[2] = corredor.getDireccion();
-            corredorTabla[3] = "" + corredor.getTelf();
-            corredorTabla[4] = corredor.FechaString();
-            dtm.addRow(corredorTabla);
+        String[] corredorTabla = new String[5];
+        corredorTabla[0] = corredor.getNombre();
+        corredorTabla[1] = corredor.getDni();
+        corredorTabla[2] = corredor.getDireccion();
+        corredorTabla[3] = "" + corredor.getTelf();
+        corredorTabla[4] = corredor.FechaString();
+        dtm.addRow(corredorTabla);
         }
-        jTableCorredores.setModel(dtm);
+        jTableCorredores.setModel(dtm);*/
+        jTableCorredores.setModel(new TableModelCorredores(gdc.getCorredores()));
     }
 
     /**
