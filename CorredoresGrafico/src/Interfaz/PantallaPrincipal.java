@@ -7,6 +7,7 @@ package Interfaz;
 
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
+import Logica.Singleton;
 import Modelo.Corredor;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -29,7 +30,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     public PantallaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        gdc = new GestionDeCorredores();
+        //gdc = new GestionDeCorredores();
+        gdc = Singleton.getInstance();
         gacsv = new GestionArchivosCSV();
         gacsv.abrirFichero("corredores.txt");
         try {
