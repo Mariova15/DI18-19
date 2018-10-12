@@ -84,6 +84,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTableCorredores);
 
         jLabelTitle.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Listado de corredores");
 
         jButtonExportar.setText("Exportar CSV");
@@ -94,7 +95,6 @@ public class ListadoCorredor extends javax.swing.JDialog {
         });
 
         jButtonModificar.setText("Modificar");
-        jButtonModificar.setActionCommand("Modificar");
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarActionPerformed(evt);
@@ -108,13 +108,11 @@ public class ListadoCorredor extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                     .addComponent(jButtonExportar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTitle)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,8 +133,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
 
     private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
         String fichero = JOptionPane.showInputDialog("Introduce nombre del fichero");        
-        //System.out.println(gdc.cadenaCsv());
-        gacsv.abrirFichero(fichero + ".txt");
+        gacsv.abrirFicheroEscritura(fichero + ".txt");
         try {
             gacsv.escribirCadena(gdc.cadenaCsv());
         } catch (IOException ex) {
@@ -152,6 +149,13 @@ public class ListadoCorredor extends javax.swing.JDialog {
         AltaCorredor altaCorredorModificar = new AltaCorredor(this,true, corredorSeleccionado);
         altaCorredorModificar.setVisible(true);
         rellenarTablaAlumnos();
+        gacsv.abrirFicheroEscritura("corredores.txt");
+        try {
+            gacsv.escribirCadena(gdc.cadenaCsv());
+        } catch (IOException ex) {
+            Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        gacsv.cerrarFicheroEscritura();
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     /**

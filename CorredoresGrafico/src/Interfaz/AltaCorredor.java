@@ -8,6 +8,7 @@ package Interfaz;
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,7 +23,7 @@ import javax.swing.JOptionPane;
 public class AltaCorredor extends javax.swing.JDialog {
 
     private GestionDeCorredores gdc;
-    private GestionArchivosCSV gacsv;
+    private GestionArchivosCSV gacsv = new GestionArchivosCSV();
     private Corredor corredorModificar = null;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
@@ -49,6 +50,8 @@ public class AltaCorredor extends javax.swing.JDialog {
         jTextFieldDir.setText(corredorModificar.getDireccion());
         jTextFieldTelf.setText("" + corredorModificar.getTelf());
         jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
+        jButtonAlta.setText("Modificar corredor");
+        jButtonLimpiar.setText("Cancelar");
     }
 
     /**
@@ -73,7 +76,7 @@ public class AltaCorredor extends javax.swing.JDialog {
         jLabelFecha = new javax.swing.JLabel();
         jSpinnerFecha = new javax.swing.JSpinner();
         jButtonAlta = new javax.swing.JButton();
-        jButtonlimpiar = new javax.swing.JButton();
+        jButtonLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -106,10 +109,10 @@ public class AltaCorredor extends javax.swing.JDialog {
             }
         });
 
-        jButtonlimpiar.setText("Limpiar");
-        jButtonlimpiar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpiar.setText("Limpiar");
+        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonlimpiarActionPerformed(evt);
+                jButtonLimpiarActionPerformed(evt);
             }
         });
 
@@ -142,7 +145,7 @@ public class AltaCorredor extends javax.swing.JDialog {
                                 .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonlimpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonLimpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -173,7 +176,7 @@ public class AltaCorredor extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonlimpiar)
+                .addComponent(jButtonLimpiar)
                 .addContainerGap())
         );
 
@@ -197,13 +200,18 @@ public class AltaCorredor extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonlimpiarActionPerformed
+    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
         // TODO add your handling code here:
-        jTextFieldNom.setText("");
-        jTextFieldDNI.setText("");
-        jTextFieldDir.setText("");
-        jTextFieldTelf.setText("");
-    }//GEN-LAST:event_jButtonlimpiarActionPerformed
+        if (corredorModificar == null) {
+            jTextFieldNom.setText("");
+            jTextFieldDNI.setText("");
+            jTextFieldDir.setText("");
+            jTextFieldTelf.setText("");
+        } else {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         // TODO add your handling code here:
@@ -212,37 +220,30 @@ public class AltaCorredor extends javax.swing.JDialog {
         String dni = jTextFieldDNI.getText();
         String dir = jTextFieldDir.getText();
         String telf = jTextFieldTelf.getText();
-        Date fecha = (Date) jSpinnerFecha.getValue();        
+        Date fecha = (Date) jSpinnerFecha.getValue();
 
         if (corredorModificar == null) {
-            //Integer.parseInt(telf);
-            gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
-            JOptionPane.showMessageDialog(this, "Corredor añadido");
+            gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);            
             String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
+            gacsv.abrirFicheroEscritura("corredores.txt");
             try {
                 gacsv.escribirCadena(corredor);
             } catch (IOException ex) {
                 Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
             }
             gacsv.cerrarFicheroEscritura();
+            JOptionPane.showMessageDialog(this, "Corredor añadido");
+            this.dispose();
         } else {
             corredorModificar.setNombre(nombre);
             corredorModificar.setDni(dni);
             corredorModificar.setDireccion(dir);
             corredorModificar.setTelf(Integer.parseInt(telf));
+            //String corredorMod = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";            
+            JOptionPane.showMessageDialog(this, "Corredor modificado");
+            this.dispose();
         }
-
-        /*Integer.parseInt(telf);
-        gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
-        JOptionPane.showMessageDialog(this, "Corredor añadido");
-        String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
-        try {
-        gacsv.escribirCadena(corredor);
-        } catch (IOException ex) {
-        Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        gacsv.cerrarFicheroEscritura();*/
-        this.dispose();
+        
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     /**
@@ -250,7 +251,7 @@ public class AltaCorredor extends javax.swing.JDialog {
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlta;
-    private javax.swing.JButton jButtonlimpiar;
+    private javax.swing.JButton jButtonLimpiar;
     private javax.swing.JLabel jLabelDir;
     private javax.swing.JLabel jLabelDni;
     private javax.swing.JLabel jLabelFecha;

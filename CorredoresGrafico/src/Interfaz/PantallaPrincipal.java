@@ -33,7 +33,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         //gdc = new GestionDeCorredores();
         gdc = Singleton.getInstance();
         gacsv = new GestionArchivosCSV();
-        gacsv.abrirFichero("corredores.txt");
         try {
             gdc.importarCorredores(gacsv.leerFichero("corredores.txt"));
         } catch (ParseException ex) {

@@ -52,7 +52,7 @@ public class GestionArchivosCSV {
         return c;
     }
 
-    public void abrirFichero(String archivo) {
+    public void abrirFicheroEscritura(String archivo) {
 
         try {
             fw = new FileWriter(archivo, true);
