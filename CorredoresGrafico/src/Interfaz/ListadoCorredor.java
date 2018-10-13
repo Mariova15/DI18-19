@@ -149,7 +149,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
         AltaCorredor altaCorredorModificar = new AltaCorredor(this,true, corredorSeleccionado);
         altaCorredorModificar.setVisible(true);
         rellenarTablaAlumnos();
-        gacsv.abrirFicheroEscritura("corredores.txt");
+        gacsv.abrirFicheroEscritura("corredores.txt",false);
         try {
             gacsv.escribirCadena(gdc.cadenaCsv());
         } catch (IOException ex) {

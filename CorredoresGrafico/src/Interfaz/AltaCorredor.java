@@ -224,14 +224,14 @@ public class AltaCorredor extends javax.swing.JDialog {
 
         if (corredorModificar == null) {
             gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);            
-            String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
+            /*String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
             gacsv.abrirFicheroEscritura("corredores.txt");
             try {
-                gacsv.escribirCadena(corredor);
+            gacsv.escribirCadena(corredor);
             } catch (IOException ex) {
-                Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
             }
-            gacsv.cerrarFicheroEscritura();
+            gacsv.cerrarFicheroEscritura();*/
             JOptionPane.showMessageDialog(this, "Corredor añadido");
             this.dispose();
         } else {

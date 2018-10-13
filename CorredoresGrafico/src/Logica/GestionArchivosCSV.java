@@ -60,6 +60,15 @@ public class GestionArchivosCSV {
             Logger.getLogger(GestionArchivosCSV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+        public void abrirFicheroEscritura(String archivo,Boolean nuevo) {
+
+        try {
+            fw = new FileWriter(archivo, nuevo);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionArchivosCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void escribirCadena(String cadena) throws IOException {
         fw.write(cadena);

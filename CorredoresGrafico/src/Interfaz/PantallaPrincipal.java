@@ -9,6 +9,7 @@ import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
 import Logica.Singleton;
 import Modelo.Corredor;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -172,6 +173,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         AltaCorredor altacorredor = new AltaCorredor(this, true, gdc, gacsv);
         altacorredor.setVisible(true);
+        gacsv.abrirFicheroEscritura("corredores.txt",false);
+        try {
+            gacsv.escribirCadena(gdc.cadenaCsv());
+        } catch (IOException ex) {
+            Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        gacsv.cerrarFicheroEscritura();
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     private void jButtonListadoCoredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCoredoresActionPerformed
