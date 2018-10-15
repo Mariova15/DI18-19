@@ -8,6 +8,7 @@ package Modelo;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -101,7 +102,7 @@ public class Corredor implements Comparable<Corredor> {
     public int compareTo(Corredor o) {
         return this.dni.compareTo(o.dni);
     }
-
+       
     /*public int compareToEdad(Corredor o) {
         int resultado;
         if (this.edad < o.edad) {
@@ -113,4 +114,22 @@ public class Corredor implements Comparable<Corredor> {
         }
         return resultado;
     }*/
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Corredor other = (Corredor) obj;
+        if (!Objects.equals(this.dni, other.dni)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -202,20 +202,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         listadoCarrera.setVisible(true);
     }//GEN-LAST:event_jButtonListadoCarreraActionPerformed
 
-    /*    private void rellenarTablaAlumnos() {
-    String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
-    DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
-    for (Corredor corredor : gdc.getCorredores()) {
-    String[] corredorTabla = new String[5];
-    corredorTabla[0] = corredor.getNombre();
-    corredorTabla[1] = corredor.getDni();
-    corredorTabla[2] = corredor.getDireccion();
-    corredorTabla[3] = "" + corredor.getTelf();
-    corredorTabla[4] = corredor.FechaString();
-    dtm.addRow(corredorTabla);
-    }
-    //jTableCorredores.setModel(dtm);
-    }*/
     /**
      * @param args the command line arguments
      */

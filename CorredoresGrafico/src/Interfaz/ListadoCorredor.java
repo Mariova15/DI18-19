@@ -65,7 +65,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
         jLabelTitle = new javax.swing.JLabel();
-        jButtonExportar = new javax.swing.JButton();
+        jButtonBorrar = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -87,10 +87,10 @@ public class ListadoCorredor extends javax.swing.JDialog {
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Listado de corredores");
 
-        jButtonExportar.setText("Exportar CSV");
-        jButtonExportar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBorrar.setText("Borrar");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExportarActionPerformed(evt);
+                jButtonBorrarActionPerformed(evt);
             }
         });
 
@@ -108,8 +108,8 @@ public class ListadoCorredor extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
-                    .addComponent(jButtonExportar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -124,24 +124,26 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addComponent(jButtonModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonExportar)
+                .addComponent(jButtonBorrar)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
-        String fichero = JOptionPane.showInputDialog("Introduce nombre del fichero");        
-        gacsv.abrirFicheroEscritura(fichero + ".txt");
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        int seleccionado = jTableCorredores.getSelectedRow();
+        Corredor corredorSeleccionado = gdc.getCorredores().get(seleccionado);
+        gdc.borrarCorredor(corredorSeleccionado.getDni());
+        rellenarTablaAlumnos();
+        gacsv.abrirFicheroEscritura("corredores.txt",false);
         try {
             gacsv.escribirCadena(gdc.cadenaCsv());
         } catch (IOException ex) {
             Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
         }
         gacsv.cerrarFicheroEscritura();
-        
-    }//GEN-LAST:event_jButtonExportarActionPerformed
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         int seleccionado = jTableCorredores.getSelectedRow();
@@ -163,7 +165,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonExportar;
+    private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JScrollPane jScrollPane2;

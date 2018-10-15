@@ -26,8 +26,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane2" pref="504" max="32767" attributes="0"/>
-                  <Component id="jButtonExportar" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+                  <Component id="jButtonBorrar" max="32767" attributes="0"/>
                   <Component id="jButtonModificar" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -45,7 +45,7 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="jButtonModificar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButtonExportar" min="-2" max="-2" attributes="0"/>
+              <Component id="jButtonBorrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -86,12 +86,12 @@
         <Property name="text" type="java.lang.String" value="Listado de corredores"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonExportar">
+    <Component class="javax.swing.JButton" name="jButtonBorrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Exportar CSV"/>
+        <Property name="text" type="java.lang.String" value="Borrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExportarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBorrarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonModificar">

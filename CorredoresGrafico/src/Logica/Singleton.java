@@ -12,8 +12,7 @@ package Logica;
 public class Singleton {
     private static final GestionDeCorredores INSTANCE = new GestionDeCorredores();
 
-    // El constructor privado no permite que se genere un constructor por defecto.
-    // (con mismo modificador de acceso que la definición de la clase) 
+    
     private Singleton() {}
 
     public static GestionDeCorredores getInstance() {
