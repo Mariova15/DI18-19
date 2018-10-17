@@ -63,7 +63,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jSpinnerFecha" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="validationPanel1" max="32767" attributes="0"/>
+                                  <Component id="validationPanelAlta" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jTextFieldNom" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextFieldDNI" alignment="0" max="32767" attributes="0"/>
@@ -82,7 +82,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldNom" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -103,14 +103,14 @@
                       <Component id="jTextFieldTelf" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jSpinnerFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="validationPanel1" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="validationPanelAlta" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButtonAlta" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonLimpiar" min="-2" max="-2" attributes="0"/>
@@ -201,7 +201,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimpiarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="org.netbeans.validation.api.ui.swing.ValidationPanel" name="validationPanel1">
+        <Component class="org.netbeans.validation.api.ui.swing.ValidationPanel" name="validationPanelAlta">
         </Component>
       </SubComponents>
     </Container>

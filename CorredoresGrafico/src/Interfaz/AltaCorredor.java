@@ -41,23 +41,25 @@ public class AltaCorredor extends javax.swing.JDialog {
         this.gdc = gdc;
         this.gacsv = gacsv;
         
-        /*jButtonAceptar.setEnabled(false);
-        ValidationGroup group = validationPanelMensaje.getValidationGroup();
+        jButtonAlta.setEnabled(false);
+        ValidationGroup group = validationPanelAlta.getValidationGroup();
         
-        group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        group.add(jTextFieldEdad, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
+        group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDir, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
         
-        validationPanelMensaje.addChangeListener(new ChangeListener() {
+        validationPanelAlta.addChangeListener(new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
         
-        if (validationPanelMensaje.getProblem() == null)
-        jButtonAceptar.setEnabled(true);
+        if (validationPanelAlta.getProblem() == null)
+        jButtonAlta.setEnabled(true);
         else
-        jButtonAceptar.setEnabled(false);
+        jButtonAlta.setEnabled(false);
         
         }
-        });*/
+        });
         
     }
 
@@ -75,6 +77,25 @@ public class AltaCorredor extends javax.swing.JDialog {
         jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
         jButtonAlta.setText("Modificar corredor");
         jButtonLimpiar.setText("Cancelar");
+        jButtonAlta.setEnabled(false);
+        ValidationGroup group = validationPanelAlta.getValidationGroup();
+        
+        group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDir, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
+        
+        validationPanelAlta.addChangeListener(new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+        
+        if (validationPanelAlta.getProblem() == null)
+        jButtonAlta.setEnabled(true);
+        else
+        jButtonAlta.setEnabled(false);
+        
+        }
+        });
     }
 
     /**
@@ -100,7 +121,7 @@ public class AltaCorredor extends javax.swing.JDialog {
         jSpinnerFecha = new javax.swing.JSpinner();
         jButtonAlta = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
-        validationPanel1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        validationPanelAlta = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -160,7 +181,7 @@ public class AltaCorredor extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(validationPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(validationPanelAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jTextFieldNom)
                             .addComponent(jTextFieldDNI)
                             .addComponent(jTextFieldDir)
@@ -173,7 +194,7 @@ public class AltaCorredor extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabelTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(jTextFieldNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,12 +211,12 @@ public class AltaCorredor extends javax.swing.JDialog {
                     .addComponent(jLabeltelf)
                     .addComponent(jTextFieldTelf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelFecha)
                         .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(validationPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(validationPanelAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLimpiar)
@@ -246,28 +267,21 @@ public class AltaCorredor extends javax.swing.JDialog {
 
         if (corredorModificar == null) {
             gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);            
-            /*String corredor = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";
-            gacsv.abrirFicheroEscritura("corredores.txt");
-            try {
-            gacsv.escribirCadena(corredor);
-            } catch (IOException ex) {
-            Logger.getLogger(AltaCorredor.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            gacsv.cerrarFicheroEscritura();*/
             JOptionPane.showMessageDialog(this, "Corredor añadido");
             this.dispose();
         } else {
             corredorModificar.setNombre(nombre);
             corredorModificar.setDni(dni);
             corredorModificar.setDireccion(dir);
-            corredorModificar.setTelf(Integer.parseInt(telf));
-            //String corredorMod = nombre + "," + dni + "," + dir + "," + telf + "," + sdf.format(fecha) + "\n";            
+            corredorModificar.setTelf(Integer.parseInt(telf));            
             JOptionPane.showMessageDialog(this, "Corredor modificado");
             this.dispose();
         }
         
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -286,6 +300,6 @@ public class AltaCorredor extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDir;
     private javax.swing.JTextField jTextFieldNom;
     private javax.swing.JTextField jTextFieldTelf;
-    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanel1;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanelAlta;
     // End of variables declaration//GEN-END:variables
 }
