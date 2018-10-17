@@ -11,6 +11,7 @@ import Logica.Singleton;
 import Modelo.Corredor;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -232,6 +233,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale("es", "ES"));
                 new PantallaPrincipal().setVisible(true);
             }
         });
