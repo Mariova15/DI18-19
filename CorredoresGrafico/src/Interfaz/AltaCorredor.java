@@ -70,14 +70,7 @@ public class AltaCorredor extends javax.swing.JDialog {
         this.gdc = gdc;
         this.gacsv = gacsv;
         this.corredorModificar = corredorModificar;
-        jTextFieldNom.setText(corredorModificar.getNombre());
-        jTextFieldDNI.setText(corredorModificar.getDni());
-        jTextFieldDir.setText(corredorModificar.getDireccion());
-        jTextFieldTelf.setText("" + corredorModificar.getTelf());
-        jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
-        jButtonAlta.setText("Modificar corredor");
-        jButtonLimpiar.setText("Cancelar");
-        jButtonAlta.setEnabled(false);
+        
         ValidationGroup group = validationPanelAlta.getValidationGroup();
         
         group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
@@ -96,6 +89,15 @@ public class AltaCorredor extends javax.swing.JDialog {
         
         }
         });
+        
+        jTextFieldNom.setText(corredorModificar.getNombre());
+        jTextFieldDNI.setText(corredorModificar.getDni());
+        jTextFieldDir.setText(corredorModificar.getDireccion());
+        jTextFieldTelf.setText("" + corredorModificar.getTelf());
+        jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
+        jButtonAlta.setText("Modificar corredor");
+        jButtonLimpiar.setText("Cancelar");       
+        
     }
 
     /**
