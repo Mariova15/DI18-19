@@ -7,7 +7,7 @@ package Interfaz;
 
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
-import Logica.Singleton;
+import Logica.SingletonGestionCorredores;
 import Modelo.Corredor;
 import java.io.IOException;
 import java.text.ParseException;
@@ -33,7 +33,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         //gdc = new GestionDeCorredores();
-        gdc = Singleton.getInstance();
+        gdc = SingletonGestionCorredores.getInstance();
         gacsv = new GestionArchivosCSV();
         try {
             gdc.importarCorredores(gacsv.leerFichero("corredores.txt"));

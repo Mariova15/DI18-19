@@ -9,13 +9,14 @@ package Logica;
  *
  * @author Mario
  */
-public class Singleton {
-    private static final GestionDeCorredores INSTANCE = new GestionDeCorredores();
+public class SingletonGestionCarreras {
 
-    
-    private Singleton() {}
+    private static final GestionDeCarreras INSTANCE = new GestionDeCarreras();
 
-    public static GestionDeCorredores getInstance() {
+    private SingletonGestionCarreras() {
+    }
+
+    public static GestionDeCarreras getInstance() {
         return INSTANCE;
     }
 }
