@@ -5,19 +5,30 @@
  */
 package Interfaz;
 
+import Interfaz.Tablemodels.TableModelCarreras;
+import Interfaz.Tablemodels.TableModelCorredores;
+import Logica.GestionArchivosCSV;
+import Logica.GestionDeCarreras;
+import Logica.GestionDeCorredores;
+
 /**
  *
  * @author Mario
  */
 public class ListadoCarrera extends javax.swing.JDialog {
 
+    private GestionDeCarreras gdCarreras;
+    private GestionArchivosCSV gacsv;
+    
     /**
      * Creates new form ListadoCarrera
      */
-    public ListadoCarrera(java.awt.Frame parent, boolean modal) {
+    public ListadoCarrera(java.awt.Frame parent, boolean modal, GestionDeCarreras gdCarreras) {
         super(parent, modal);
         initComponents();
+        this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
+        rellenarTablaCarreras();
     }
 
     /**
@@ -75,7 +86,9 @@ public class ListadoCarrera extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+private void rellenarTablaCarreras() {        
+        jTableCarrera.setModel(new TableModelCarreras(gdCarreras.getListaCarreras()));
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
