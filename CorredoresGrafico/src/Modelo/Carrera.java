@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,13 +20,29 @@ public class Carrera {
     private Date fecha;
     private int numMaxParticipantes;
     private Map<Integer, Corredor> listaCorredores = new HashMap<Integer, Corredor>();
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
     public Carrera(String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
         this.nombre = nombre;
         this.lugarCarrera = lugarCarrera;
         this.fecha = fecha;
         this.numMaxParticipantes = numMaxParticipantes;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getLugarCarrera() {
+        return lugarCarrera;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public String fechaString() {
+        return sdf.format(fecha);
     }
 
     public int getNumMaxParticipantes() {
@@ -34,6 +51,11 @@ public class Carrera {
 
     public void agregarCorredores(int dorsal, Corredor corredor) {
         listaCorredores.put(dorsal, corredor);
+    }
+
+    @Override
+    public String toString() {
+        return "Carrera{" + "nombre=" + nombre + ", lugarCarrera=" + lugarCarrera + ", fecha=" + fecha + ", numMaxParticipantes=" + numMaxParticipantes + '}';
     }
 
 }

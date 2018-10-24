@@ -6,21 +6,27 @@
 package Interfaz;
 
 import Logica.GestionArchivosCSV;
+import Logica.GestionDeCarreras;
+import Modelo.Carrera;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Mario
  */
 public class AltaCarrera extends javax.swing.JDialog {
-    
+
     private GestionArchivosCSV gacsv;
+    private GestionDeCarreras gdCarreras;
 
     /**
      * Creates new form AltaCarrera
      */
-    public AltaCarrera(java.awt.Frame parent, boolean modal) {
+    public AltaCarrera(java.awt.Frame parent, boolean modal, GestionDeCarreras gdCarreras) {
         super(parent, modal);
         initComponents();
+        this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
         gacsv = new GestionArchivosCSV();
     }
@@ -42,16 +48,17 @@ public class AltaCarrera extends javax.swing.JDialog {
         jLabelLugar = new javax.swing.JLabel();
         jTextFieldLugar = new javax.swing.JTextField();
         jLabelNumMax = new javax.swing.JLabel();
-        jTextFieldNumMax = new javax.swing.JTextField();
         jLabelFecha = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinnerFecha = new javax.swing.JSpinner();
         jButtonAlta = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
+        jSpinnerNumMax = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelTitle.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        jLabelTitle.setText("Alta de carrera");
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitle.setText("Alta carrera");
 
         jLabelNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelNombre.setText("Nombre");
@@ -65,7 +72,7 @@ public class AltaCarrera extends javax.swing.JDialog {
         jLabelFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelFecha.setText("Fecha");
 
-        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
+        jSpinnerFecha.setModel(new javax.swing.SpinnerDateModel());
 
         jButtonAlta.setText("Dar de alta");
         jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -98,10 +105,9 @@ public class AltaCarrera extends javax.swing.JDialog {
                             .addComponent(jLabelFecha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextFieldNumMax)))
+                            .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -117,13 +123,13 @@ public class AltaCarrera extends javax.swing.JDialog {
                     .addComponent(jLabelLugar)
                     .addComponent(jTextFieldLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNumMax)
-                    .addComponent(jTextFieldNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jSpinnerNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelFecha)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -139,7 +145,7 @@ public class AltaCarrera extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 359, Short.MAX_VALUE))
+                    .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelPrincipalLayout.setVerticalGroup(
@@ -173,10 +179,14 @@ public class AltaCarrera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        // TODO add your handling code here:
+        gdCarreras.altaCarrera(
+                jTextFieldNom.getText(), jTextFieldLugar.getText(), 
+                (Date) jSpinnerFecha.getValue(),(Integer) jSpinnerNumMax.getValue());
+        List<Carrera> listaCarreras = gdCarreras.getListaCarreras();
+        for (Carrera listaCarrera : listaCarreras) {
+            System.out.println(listaCarrera.toString());
+        }
     }//GEN-LAST:event_jButtonAltaActionPerformed
-
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -189,9 +199,9 @@ public class AltaCarrera extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelPrincipal;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinnerFecha;
+    private javax.swing.JSpinner jSpinnerNumMax;
     private javax.swing.JTextField jTextFieldLugar;
     private javax.swing.JTextField jTextFieldNom;
-    private javax.swing.JTextField jTextFieldNumMax;
     // End of variables declaration//GEN-END:variables
 }

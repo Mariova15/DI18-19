@@ -22,6 +22,7 @@ public class GestionDeCarreras {
 
     public GestionDeCarreras() {
         listaCarreras = new ArrayList<Carrera>();
+        listaCorredores = new ArrayList<Corredor>();
     }
 
     public void altaCarrera(String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
@@ -29,8 +30,8 @@ public class GestionDeCarreras {
         listaCarreras.add(carrera);
     }
 
-    public void agregarCorredores(List<Corredor> listaCorredores) {
-        this.listaCorredores = listaCorredores;
+    public void agregarCorredores(Corredor corredor) {
+        listaCorredores.add(corredor);
     }
 
     /**
@@ -38,7 +39,7 @@ public class GestionDeCarreras {
      * @param carrera
      * @param listaCorredores
      */
-    public void agregarCorredoresCarrera(Carrera carrera, List<Corredor> listaCorredores) {
+    public void agregarDorsalesCorredoresCarrera(Carrera carrera) {
         int[] dorsales = new int[carrera.getNumMaxParticipantes()];
         for (int i = 0; i < carrera.getNumMaxParticipantes(); i++) {
             dorsales[i] = i + 1;
@@ -50,5 +51,11 @@ public class GestionDeCarreras {
         }
 
     }
+
+    public List<Carrera> getListaCarreras() {
+        return listaCarreras;
+    }
+    
+    
 
 }

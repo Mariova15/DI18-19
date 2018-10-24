@@ -6,7 +6,9 @@
 package Interfaz;
 
 import Logica.GestionArchivosCSV;
+import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
+import Logica.SingletonGestionCarreras;
 import Logica.SingletonGestionCorredores;
 import Modelo.Corredor;
 import java.io.IOException;
@@ -23,7 +25,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    private GestionDeCorredores gdc;
+    private GestionDeCorredores gdCorredores;
+    private GestionDeCarreras gdCarreras;
     private GestionArchivosCSV gacsv;
 
     /**
@@ -33,14 +36,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         //gdc = new GestionDeCorredores();
-        gdc = SingletonGestionCorredores.getInstance();
+        gdCorredores = SingletonGestionCorredores.getInstance();
+        gdCarreras = SingletonGestionCarreras.getInstance();
         gacsv = new GestionArchivosCSV();
         try {
-            gdc.importarCorredores(gacsv.leerFichero("corredores.txt"));
+            gdCorredores.importarCorredores(gacsv.leerFichero("corredores.txt"));
         } catch (ParseException ex) {
             Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -172,11 +176,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        AltaCorredor altacorredor = new AltaCorredor(this, true, gdc, gacsv);
+        AltaCorredor altacorredor = new AltaCorredor(this, true, gdCorredores, gacsv);
         altacorredor.setVisible(true);
-        gacsv.abrirFicheroEscritura("corredores.txt",false);
+        gacsv.abrirFicheroEscritura("corredores.txt", false);
         try {
-            gacsv.escribirCadena(gdc.cadenaCsv());
+            gacsv.escribirCadena(gdCorredores.cadenaCsv());
         } catch (IOException ex) {
             Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -186,7 +190,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonListadoCoredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCoredoresActionPerformed
         ListadoCorredor listadoCorredor = null;
         try {
-            listadoCorredor = new ListadoCorredor(this, true, gdc, gacsv);
+            listadoCorredor = new ListadoCorredor(this, true, gdCorredores, gacsv);
         } catch (ParseException ex) {
             Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -194,7 +198,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListadoCoredoresActionPerformed
 
     private void jButtonAltaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaCarreraActionPerformed
-        AltaCarrera altaCarrera = new AltaCarrera(this, true);
+        AltaCarrera altaCarrera = new AltaCarrera(this, true, gdCarreras);
         altaCarrera.setVisible(true);
     }//GEN-LAST:event_jButtonAltaCarreraActionPerformed
 
