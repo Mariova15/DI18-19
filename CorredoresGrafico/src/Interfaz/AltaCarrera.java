@@ -180,8 +180,8 @@ public class AltaCarrera extends javax.swing.JDialog {
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         gdCarreras.altaCarrera(
-                jTextFieldNom.getText(), jTextFieldLugar.getText(), 
-                (Date) jSpinnerFecha.getValue(),(Integer) jSpinnerNumMax.getValue());
+                jTextFieldNom.getText(), jTextFieldLugar.getText(),
+                (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
         List<Carrera> listaCarreras = gdCarreras.getListaCarreras();
         for (Carrera listaCarrera : listaCarreras) {
             System.out.println(listaCarrera.toString());

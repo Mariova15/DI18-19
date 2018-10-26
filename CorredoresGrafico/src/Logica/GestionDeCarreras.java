@@ -57,6 +57,10 @@ public class GestionDeCarreras {
     public List<Carrera> getListaCarreras() {
         return listaCarreras;
     }
+
+    public List<Corredor> getListaCorredores() {
+        return listaCorredores;
+    }
     
     
 

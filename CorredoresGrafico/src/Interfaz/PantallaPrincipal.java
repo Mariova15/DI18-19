@@ -35,7 +35,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     public PantallaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        //gdc = new GestionDeCorredores();
         gdCorredores = SingletonGestionCorredores.getInstance();
         gdCarreras = SingletonGestionCarreras.getInstance();
         gacsv = new GestionArchivosCSV();

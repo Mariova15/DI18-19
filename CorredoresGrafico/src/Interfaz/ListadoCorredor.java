@@ -7,6 +7,7 @@ package Interfaz;
 
 import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionArchivosCSV;
+import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
 import java.io.IOException;
@@ -21,8 +22,9 @@ import javax.swing.table.DefaultTableModel;
  * @author alumnop
  */
 public class ListadoCorredor extends javax.swing.JDialog {
-
+    
     private GestionDeCorredores gdCorredores;
+    private GestionDeCarreras gdCarreras;
     private GestionArchivosCSV gacsv;
 
     /**
@@ -36,20 +38,18 @@ public class ListadoCorredor extends javax.swing.JDialog {
         this.gacsv = gacsv;
         rellenarTablaCorredores();
     }
-
+    
+    public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCarreras gdCarreras) throws ParseException {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.gdCarreras = gdCarreras;
+        jButtonModificar.setText("Agregar corredores");
+        jButtonBorrar.setVisible(false);
+        rellenarTablaCorredores();
+    }
+    
     private void rellenarTablaCorredores() {
-        /*String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
-        DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
-        for (Corredor corredor : gdc.getCorredores()) {
-        String[] corredorTabla = new String[5];
-        corredorTabla[0] = corredor.getNombre();
-        corredorTabla[1] = corredor.getDni();
-        corredorTabla[2] = corredor.getDireccion();
-        corredorTabla[3] = "" + corredor.getTelf();
-        corredorTabla[4] = corredor.FechaString();
-        dtm.addRow(corredorTabla);
-        }
-        jTableCorredores.setModel(dtm);*/
         jTableCorredores.setModel(new TableModelCorredores(gdCorredores.getCorredores()));
     }
 
@@ -136,7 +136,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
         Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
         gdCorredores.borrarCorredor(corredorSeleccionado.getDni());
         rellenarTablaCorredores();
-        gacsv.abrirFicheroEscritura("corredores.txt",false);
+        gacsv.abrirFicheroEscritura("corredores.txt", false);
         try {
             gacsv.escribirCadena(gdCorredores.cadenaCsv());
         } catch (IOException ex) {
@@ -146,12 +146,17 @@ public class ListadoCorredor extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        if (gdCarreras != null) {
+            int seleccionado = jTableCorredores.getSelectedRow();
+            Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
+            gdCarreras.agregarCorredores(corredorSeleccionado);
+        }
         int seleccionado = jTableCorredores.getSelectedRow();
         Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-        AltaCorredor altaCorredorModificar = new AltaCorredor(this,true, corredorSeleccionado);
+        AltaCorredor altaCorredorModificar = new AltaCorredor(this, true, corredorSeleccionado);
         altaCorredorModificar.setVisible(true);
         rellenarTablaCorredores();
-        gacsv.abrirFicheroEscritura("corredores.txt",false);
+        gacsv.abrirFicheroEscritura("corredores.txt", false);
         try {
             gacsv.escribirCadena(gdCorredores.cadenaCsv());
         } catch (IOException ex) {
