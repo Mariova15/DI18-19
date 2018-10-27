@@ -10,6 +10,8 @@ import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
+import java.text.ParseException;
+import org.openide.util.Exceptions;
 
 /**
  *
@@ -18,16 +20,17 @@ import Logica.GestionDeCorredores;
 public class ListadoCarrera extends javax.swing.JDialog {
 
     private GestionDeCarreras gdCarreras;
-    private GestionArchivosCSV gacsv;
+    private GestionDeCorredores gdCorredores;
 
     /**
      * Creates new form ListadoCarrera
      */
-    public ListadoCarrera(java.awt.Frame parent, boolean modal, GestionDeCarreras gdCarreras) {
+    public ListadoCarrera(java.awt.Frame parent, boolean modal, GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
+        this.gdCorredores = gdCorredores;
         this.setLocationRelativeTo(null);
         rellenarTablaCarreras();
     }
@@ -106,8 +109,17 @@ public class ListadoCarrera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        ListadoCorredoresCarrera ListadoCorredoresCarrera = new ListadoCorredoresCarrera(this, true, jTableCarrera.getSelectedRow(), gdCarreras);
-        ListadoCorredoresCarrera.setVisible(true);
+        ListadoCorredor listadoCorredor = null;
+        int selectedRow = jTableCarrera.getSelectedRow();
+        try {
+            listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores);
+        } catch (ParseException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+        listadoCorredor.setVisible(true);
+        gdCarreras.agregarDorsalesCorredoresCarrera(gdCarreras.getListaCarreras().get(selectedRow));
+        gdCarreras.borrarCorredores();
+        System.out.println(gdCarreras.getListaCarreras().get(selectedRow).getListaCorredores().toString());
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void rellenarTablaCarreras() {

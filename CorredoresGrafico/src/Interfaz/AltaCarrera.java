@@ -83,6 +83,8 @@ public class AltaCarrera extends javax.swing.JDialog {
 
         jButtonLimpiar.setText("Limpiar");
 
+        jSpinnerNumMax.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,6 +188,7 @@ public class AltaCarrera extends javax.swing.JDialog {
         for (Carrera listaCarrera : listaCarreras) {
             System.out.println(listaCarrera.toString());
         }
+        this.dispose();
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
 

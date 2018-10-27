@@ -32,15 +32,12 @@ public class GestionDeCarreras {
 
     public void agregarCorredores(Corredor corredor) {
         listaCorredores.add(corredor);
+    }  
+    
+    public void borrarCorredores(){
+    listaCorredores.removeAll(this.getListaCorredores());
     }
-
     
-    
-    /**
-     *
-     * @param carrera
-     * @param listaCorredores
-     */
     public void agregarDorsalesCorredoresCarrera(Carrera carrera) {
         int[] dorsales = new int[carrera.getNumMaxParticipantes()];
         for (int i = 0; i < carrera.getNumMaxParticipantes(); i++) {
@@ -51,7 +48,6 @@ public class GestionDeCarreras {
             carrera.agregarCorredores(dorsales[dorsal], corredor);
             dorsal++;
         }
-
     }
 
     public List<Carrera> getListaCarreras() {

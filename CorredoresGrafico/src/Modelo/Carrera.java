@@ -49,6 +49,12 @@ public class Carrera {
         return numMaxParticipantes;
     }
 
+    public Map<Integer, Corredor> getListaCorredores() {
+        return listaCorredores;
+    }
+
+    
+    
     public void agregarCorredores(int dorsal, Corredor corredor) {
         listaCorredores.put(dorsal, corredor);
     }

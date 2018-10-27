@@ -202,7 +202,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAltaCarreraActionPerformed
 
     private void jButtonListadoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCarreraActionPerformed
-        ListadoCarrera listadoCarrera = new ListadoCarrera(this, true, gdCarreras);
+        ListadoCarrera listadoCarrera = new ListadoCarrera(this, true, gdCarreras, gdCorredores);
         listadoCarrera.setVisible(true);
     }//GEN-LAST:event_jButtonListadoCarreraActionPerformed
 
