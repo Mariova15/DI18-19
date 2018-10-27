@@ -28,7 +28,7 @@ public class Corredor implements Comparable<Corredor> {
         this.direccion = direccion;
         this.fechaNacimiento = fechaNacimiento;
         this.telf = telf;
-        estado = true;
+        estado = false;
         actual = new Date();
         edad = actual.getYear() - fechaNacimiento.getYear();
     }
@@ -85,8 +85,8 @@ public class Corredor implements Comparable<Corredor> {
         this.telf = telf;
     }
 
-    public void baja() {
-        estado = false;
+    public void Corriendo() {
+        estado = true;
     }
 
     public String FechaString(){    

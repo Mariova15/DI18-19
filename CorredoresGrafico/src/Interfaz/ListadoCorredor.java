@@ -153,18 +153,21 @@ public class ListadoCorredor extends javax.swing.JDialog {
         if (gdCarreras != null) {
             int seleccionado = jTableCorredores.getSelectedRow();
             Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-            System.out.println(numMax);
-            if (numMax >= 1) {
-                if (Collections.binarySearch(gdCarreras.getListaCorredores(), corredorSeleccionado) == -1) {
-                    gdCarreras.agregarCorredores(corredorSeleccionado);
-                    numMax--;
-                    System.out.println(numMax);
+            if (corredorSeleccionado.isEstado() == false) {
+                if (numMax >= 1) {
+                    if (Collections.binarySearch(gdCarreras.getListaCorredores(), corredorSeleccionado) == -1) {
+                        gdCarreras.agregarCorredores(corredorSeleccionado);
+                        gdCorredores.getCorredores().get(seleccionado).Corriendo();
+                        numMax--;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "El corredor ya ha sido inscrito en la carrera");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "El corredor ya ha sido inscrito en la carrera");
+                    JOptionPane.showMessageDialog(this, "No quedan plazas en la carrera");
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "No quedan plazas en la carrera");
-            }
+            }else{
+                        JOptionPane.showMessageDialog(this, "El corredor ya esta corriendo");
+                        }
 
         } else {
             int seleccionado = jTableCorredores.getSelectedRow();

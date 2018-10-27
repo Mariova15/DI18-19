@@ -119,7 +119,6 @@ public class ListadoCarrera extends javax.swing.JDialog {
         listadoCorredor.setVisible(true);
         gdCarreras.agregarDorsalesCorredoresCarrera(gdCarreras.getListaCarreras().get(selectedRow));
         gdCarreras.borrarCorredores();
-        System.out.println(gdCarreras.getListaCarreras().get(selectedRow).getListaCorredores().toString());
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void rellenarTablaCarreras() {
