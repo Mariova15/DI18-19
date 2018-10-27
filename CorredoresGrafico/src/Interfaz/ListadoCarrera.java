@@ -112,7 +112,7 @@ public class ListadoCarrera extends javax.swing.JDialog {
         ListadoCorredor listadoCorredor = null;
         int selectedRow = jTableCarrera.getSelectedRow();
         try {
-            listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores);
+            listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores,gdCarreras.getListaCarreras().get(selectedRow).getNumMaxParticipantes());
         } catch (ParseException ex) {
             Exceptions.printStackTrace(ex);
         }

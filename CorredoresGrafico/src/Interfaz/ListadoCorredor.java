@@ -23,10 +23,11 @@ import javax.swing.table.DefaultTableModel;
  * @author alumnop
  */
 public class ListadoCorredor extends javax.swing.JDialog {
-    
+
     private GestionDeCorredores gdCorredores;
     private GestionDeCarreras gdCarreras;
     private GestionArchivosCSV gacsv;
+    private int numMax;
 
     /**
      * Creates new form ListadoCorredor
@@ -39,18 +40,19 @@ public class ListadoCorredor extends javax.swing.JDialog {
         this.gacsv = gacsv;
         rellenarTablaCorredores();
     }
-    
-    public ListadoCorredor(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores) throws ParseException {
+
+    public ListadoCorredor(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int numMax) throws ParseException {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
         this.gdCorredores = gdCorredores;
+        this.numMax = numMax;
         jButtonModificar.setText("Agregar corredores");
         jButtonBorrar.setVisible(false);
         rellenarTablaCorredores();
     }
-    
+
     private void rellenarTablaCorredores() {
         jTableCorredores.setModel(new TableModelCorredores(gdCorredores.getCorredores()));
     }
@@ -151,11 +153,19 @@ public class ListadoCorredor extends javax.swing.JDialog {
         if (gdCarreras != null) {
             int seleccionado = jTableCorredores.getSelectedRow();
             Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-            if (Collections.binarySearch(gdCarreras.getListaCorredores(), corredorSeleccionado) == -1) {
-                gdCarreras.agregarCorredores(corredorSeleccionado);
-            }else
-            JOptionPane.showMessageDialog(this, "El corredor ya ha sido inscrito en la carrera");
-            
+            System.out.println(numMax);
+            if (numMax >= 1) {
+                if (Collections.binarySearch(gdCarreras.getListaCorredores(), corredorSeleccionado) == -1) {
+                    gdCarreras.agregarCorredores(corredorSeleccionado);
+                    numMax--;
+                    System.out.println(numMax);
+                } else {
+                    JOptionPane.showMessageDialog(this, "El corredor ya ha sido inscrito en la carrera");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No quedan plazas en la carrera");
+            }
+
         } else {
             int seleccionado = jTableCorredores.getSelectedRow();
             Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
