@@ -18,17 +18,22 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelCorredoreCarrera extends AbstractTableModel {
 
     private final Map<Integer, Corredor> listaCorredores;
-    private final String[] columnas = {"Nombre", "DNI", "Dirección", "Telf", "Fecha"};
+    private final List<Corredor> corredores;
+    private final String[] columnas = {"Dorsal", "Nombre", "DNI", "Dirección", "Telf", "Fecha"};
 
     public TableModelCorredoreCarrera(Map<Integer, Corredor> listaCorredores) {
         this.listaCorredores = listaCorredores;
-        System.out.println(listaCorredores);
+        corredores = new ArrayList<>(listaCorredores.values());
+
+        for (Corredor corredore : corredores) {
+            System.out.println(corredore.toString());
+        }
 
     }
 
     @Override
     public int getRowCount() {
-        return listaCorredores.size();
+        return corredores.size();
     }
 
     @Override
@@ -45,15 +50,17 @@ public class TableModelCorredoreCarrera extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return listaCorredores.get(rowIndex).getNombre();
+                return rowIndex + 1;
             case 1:
-                return listaCorredores.get(rowIndex).getDni();
+                return corredores.get(rowIndex).getNombre();
             case 2:
-                return listaCorredores.get(rowIndex).getDireccion();
+                return corredores.get(rowIndex).getDni();
             case 3:
-                return listaCorredores.get(rowIndex).getTelf();
+                return corredores.get(rowIndex).getDireccion();
             case 4:
-                return listaCorredores.get(rowIndex).FechaString();
+                return corredores.get(rowIndex).getTelf();
+            case 5:
+                return corredores.get(rowIndex).FechaString();
         }
         return null;
     }
