@@ -77,6 +77,11 @@ public class ListadoCarrera extends javax.swing.JDialog {
         });
 
         jButtonVerCorredores.setText("Ver corredores inscritos en carrera");
+        jButtonVerCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerCorredoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +117,7 @@ public class ListadoCarrera extends javax.swing.JDialog {
         ListadoCorredor listadoCorredor = null;
         int selectedRow = jTableCarrera.getSelectedRow();
         try {
-            listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores,gdCarreras.getListaCarreras().get(selectedRow).getNumMaxParticipantes());
+            listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores, gdCarreras.getListaCarreras().get(selectedRow).getNumMaxParticipantes());
         } catch (ParseException ex) {
             Exceptions.printStackTrace(ex);
         }
@@ -120,6 +125,12 @@ public class ListadoCarrera extends javax.swing.JDialog {
         gdCarreras.agregarDorsalesCorredoresCarrera(gdCarreras.getListaCarreras().get(selectedRow));
         gdCarreras.borrarCorredores();
     }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonVerCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerCorredoresActionPerformed
+        int selectedRow = jTableCarrera.getSelectedRow();
+        ListadoCorredorCarrera istadoCorredorCarrera = new ListadoCorredorCarrera(this, true, gdCarreras, selectedRow);
+        istadoCorredorCarrera.setVisible(true);
+    }//GEN-LAST:event_jButtonVerCorredoresActionPerformed
 
     private void rellenarTablaCarreras() {
         jTableCarrera.setModel(new TableModelCarreras(gdCarreras.getListaCarreras()));

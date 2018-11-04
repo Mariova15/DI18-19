@@ -42,10 +42,10 @@ public class GestionDeCorredores {
         corredores.add(corredor);
     }
 
-    public void baja(String dni) {
-        Corredor c1 = new Corredor(dni);
-        corredores.get(Collections.binarySearch(corredores, c1)).baja();
-    }
+    /*    public void baja(String dni) {
+    Corredor c1 = new Corredor(dni);
+    corredores.get(Collections.binarySearch(corredores, c1)).baja();
+    }*/
 
     public void borrarCorredor(String dni) {
         Corredor c1 = new Corredor(dni);
