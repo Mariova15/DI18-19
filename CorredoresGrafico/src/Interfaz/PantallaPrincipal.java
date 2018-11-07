@@ -10,7 +10,6 @@ import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
 import Logica.SingletonGestionCarreras;
 import Logica.SingletonGestionCorredores;
-import Modelo.Corredor;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Locale;
@@ -39,6 +38,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     public PantallaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            UIManager.setLookAndFeel(com.jtattoo.plaf.smart.SmartLookAndFeel.class.getCanonicalName());
+            //SwingUtilities.updateComponentTreeUI(this.getParent());
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
         gdCorredores = SingletonGestionCorredores.getInstance();
         gdCarreras = SingletonGestionCarreras.getInstance();
         gacsv = new GestionArchivosCSV();
