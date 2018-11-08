@@ -53,36 +53,39 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
 
         jTableCorredores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Dorsal", "Nombre", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane2.setViewportView(jTableCorredores);
+        if (jTableCorredores.getColumnModel().getColumnCount() > 0) {
+            jTableCorredores.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title0")); // NOI18N
+            jTableCorredores.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title1")); // NOI18N
+            jTableCorredores.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title2")); // NOI18N
+            jTableCorredores.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title3")); // NOI18N
+            jTableCorredores.getColumnModel().getColumn(4).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title4")); // NOI18N
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane2)
-                    .addContainerGap()))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(99, 99, 99)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(100, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
