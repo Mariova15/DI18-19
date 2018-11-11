@@ -6,8 +6,7 @@
 package Logica;
 
 import Modelo.Corredor;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import Utils.Fecha;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,16 +19,10 @@ import java.util.List;
  */
 public class GestionDeCorredores {
 
-    private Date fechaNacimiento;
-    private SimpleDateFormat sdf;
-    private Corredor corredor;
     private List<Corredor> corredores;
-    private Corredor c1;
 
-    
     public GestionDeCorredores() {
-        sdf = new SimpleDateFormat("dd/MM/yy");
-        corredores = new ArrayList<Corredor>();    
+        corredores = new ArrayList<Corredor>();
     }
 
     public List<Corredor> getCorredores() {
@@ -46,8 +39,7 @@ public class GestionDeCorredores {
      * @param fecha Date con la fecha de nacimiento del corredor.
      */
     public void alta(String nombre, String dni, String direccion, int telf, Date fecha) {
-        //fechaNacimiento = sdf.parse(fecha);
-        corredor = new Corredor(nombre, dni, direccion, telf, fecha);
+        Corredor corredor = new Corredor(nombre, dni, direccion, telf, fecha);
         corredores.add(corredor);
     }
 
@@ -68,7 +60,7 @@ public class GestionDeCorredores {
      * @return Corredor de la lista que coincide con el DNI.
      */
     public int buscarcorredor(String dni) {
-        c1 = new Corredor(dni);
+        Corredor c1 = new Corredor(dni);
         return Collections.binarySearch(corredores, c1);
     }
 
@@ -127,9 +119,8 @@ public class GestionDeCorredores {
      * @param pos int con la posición en la lista del corredor.
      * @param fecha String con la nueva fecha de nacimiento del corredor.
      */
-    public void modificarFecha(int pos, String fecha) throws ParseException {
-        fechaNacimiento = sdf.parse(fecha);
-        corredores.get(pos).setFechaNacimiento(fechaNacimiento);
+    public void modificarFecha(int pos, String fecha) {
+        corredores.get(pos).setFechaNacimiento(Fecha.fechaParse(fecha));
     }
 
     /**
@@ -140,11 +131,11 @@ public class GestionDeCorredores {
     public String cadenaCsv() {
         String cadenaCsv = "";
         for (int i = 0; i < corredores.size(); i++) {
-            cadenaCsv = cadenaCsv + corredores.get(i).getNombre() + ",";
-            cadenaCsv = cadenaCsv + corredores.get(i).getDni() + ",";
-            cadenaCsv = cadenaCsv + corredores.get(i).getDireccion() + ",";
-            cadenaCsv = cadenaCsv + corredores.get(i).getTelf() + ",";
-            cadenaCsv = cadenaCsv + sdf.format(corredores.get(i).getFechaNacimiento()) + "\n";
+            cadenaCsv += corredores.get(i).getNombre() + ",";
+            cadenaCsv += corredores.get(i).getDni() + ",";
+            cadenaCsv += corredores.get(i).getDireccion() + ",";
+            cadenaCsv += corredores.get(i).getTelf() + ",";
+            cadenaCsv += Fecha.fechaFormat(corredores.get(i).getFechaNacimiento()) + "\n";
         }
         return cadenaCsv;
     }

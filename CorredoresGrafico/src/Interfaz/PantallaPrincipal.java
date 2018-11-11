@@ -205,11 +205,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonListadoCoredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCoredoresActionPerformed
         ListadoCorredor listadoCorredor = null;
-        try {
-            listadoCorredor = new ListadoCorredor(this, true, gdCorredores, gacsv);
-        } catch (ParseException ex) {
-            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        listadoCorredor = new ListadoCorredor(this, true, gdCorredores, gacsv);
         listadoCorredor.setVisible(true);
     }//GEN-LAST:event_jButtonListadoCoredoresActionPerformed
 

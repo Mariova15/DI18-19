@@ -5,8 +5,7 @@
  */
 package Modelo;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
+import Utils.Fecha;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,7 +19,6 @@ public class Corredor implements Comparable<Corredor> {
     private Date fechaNacimiento, actual;
     private int telf, edad;
     private boolean estado;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
     public Corredor(String nombre, String dni, String direccion, int telf, Date fechaNacimiento) {
         this.nombre = nombre;
@@ -90,12 +88,12 @@ public class Corredor implements Comparable<Corredor> {
     }
 
     public String FechaString(){    
-    return sdf.format(fechaNacimiento);
+    return Fecha.fechaFormat(fechaNacimiento);
     }
 
     @Override
     public String toString() {
-        return "Corredor{" + "nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", fecha=" + sdf.format(fechaNacimiento) + ", telf=" + telf + '}';
+        return "Corredor{" + "nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", fecha=" + Fecha.fechaFormat(fechaNacimiento) + ", telf=" + telf + '}';
     }
 
     @Override

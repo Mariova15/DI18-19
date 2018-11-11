@@ -6,12 +6,8 @@
 package Interfaz;
 
 import Interfaz.Tablemodels.TableModelCarreras;
-import Interfaz.Tablemodels.TableModelCorredores;
-import Logica.GestionArchivosCSV;
 import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
-import java.text.ParseException;
-import org.openide.util.Exceptions;
 
 /**
  *
@@ -116,11 +112,8 @@ public class ListadoCarrera extends javax.swing.JDialog {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         ListadoCorredor listadoCorredor = null;
         int selectedRow = jTableCarrera.getSelectedRow();
-        try {
-            listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores, gdCarreras.getListaCarreras().get(selectedRow).getNumMaxParticipantes());
-        } catch (ParseException ex) {
-            Exceptions.printStackTrace(ex);
-        }
+        listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores,
+                gdCarreras.getListaCarreras().get(selectedRow).getNumMaxParticipantes());
         listadoCorredor.setVisible(true);
         gdCarreras.agregarDorsalesCorredoresCarrera(gdCarreras.getListaCarreras().get(selectedRow));
         gdCarreras.borrarCorredores();

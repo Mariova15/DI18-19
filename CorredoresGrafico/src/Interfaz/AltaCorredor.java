@@ -8,12 +8,8 @@ package Interfaz;
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -25,7 +21,7 @@ import org.netbeans.validation.api.ui.ValidationGroup;
  * @author alumnop
  */
 public class AltaCorredor extends javax.swing.JDialog {
-
+    
     private GestionDeCorredores gdc;
     private GestionArchivosCSV gacsv = new GestionArchivosCSV();
     private Corredor corredorModificar = null;
@@ -50,19 +46,20 @@ public class AltaCorredor extends javax.swing.JDialog {
         group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
         
         validationPanelAlta.addChangeListener(new ChangeListener() {
-        @Override
-        public void stateChanged(ChangeEvent e) {
-        
-        if (validationPanelAlta.getProblem() == null)
-        jButtonAlta.setEnabled(true);
-        else
-        jButtonAlta.setEnabled(false);
-        
-        }
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                
+                if (validationPanelAlta.getProblem() == null) {
+                    jButtonAlta.setEnabled(true);
+                } else {
+                    jButtonAlta.setEnabled(false);
+                }
+                
+            }
         });
         
     }
-
+    
     public AltaCorredor(java.awt.Dialog parent, boolean modal, Corredor corredorModificar) {
         super(parent, modal);
         initComponents();
@@ -79,15 +76,16 @@ public class AltaCorredor extends javax.swing.JDialog {
         group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
         
         validationPanelAlta.addChangeListener(new ChangeListener() {
-        @Override
-        public void stateChanged(ChangeEvent e) {
-        
-        if (validationPanelAlta.getProblem() == null)
-        jButtonAlta.setEnabled(true);
-        else
-        jButtonAlta.setEnabled(false);
-        
-        }
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                
+                if (validationPanelAlta.getProblem() == null) {
+                    jButtonAlta.setEnabled(true);
+                } else {
+                    jButtonAlta.setEnabled(false);
+                }
+                
+            }
         });
         
         jTextFieldNom.setText(corredorModificar.getNombre());
@@ -96,7 +94,7 @@ public class AltaCorredor extends javax.swing.JDialog {
         jTextFieldTelf.setText("" + corredorModificar.getTelf());
         jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
         jButtonAlta.setText("Modificar corredor");
-        jButtonLimpiar.setText("Cancelar");       
+        jButtonLimpiar.setText("Cancelar");        
         
     }
 
@@ -266,7 +264,7 @@ public class AltaCorredor extends javax.swing.JDialog {
         String dir = jTextFieldDir.getText();
         String telf = jTextFieldTelf.getText();
         Date fecha = (Date) jSpinnerFecha.getValue();
-
+        
         if (corredorModificar == null) {
             gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);            
             JOptionPane.showMessageDialog(this, "Corredor añadido");
@@ -275,15 +273,14 @@ public class AltaCorredor extends javax.swing.JDialog {
             corredorModificar.setNombre(nombre);
             corredorModificar.setDni(dni);
             corredorModificar.setDireccion(dir);
-            corredorModificar.setTelf(Integer.parseInt(telf));            
+            corredorModificar.setTelf(Integer.parseInt(telf));
+            corredorModificar.setFechaNacimiento(fecha);
             JOptionPane.showMessageDialog(this, "Corredor modificado");
             this.dispose();
         }
         
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
-    
-    
     /**
      * @param args the command line arguments
      */

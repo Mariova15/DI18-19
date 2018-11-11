@@ -11,12 +11,10 @@ import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
 import Modelo.Corredor;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,7 +30,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
     /**
      * Creates new form ListadoCorredor
      */
-    public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdCorredores, GestionArchivosCSV gacsv) throws ParseException {
+    public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdCorredores, GestionArchivosCSV gacsv){
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -41,7 +39,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
         rellenarTablaCorredores();
     }
 
-    public ListadoCorredor(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int numMax) throws ParseException {
+    public ListadoCorredor(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int numMax){
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
