@@ -30,7 +30,8 @@ public class ListadoCorredor extends javax.swing.JDialog {
     /**
      * Creates new form ListadoCorredor
      */
-    public ListadoCorredor(java.awt.Frame parent, boolean modal, GestionDeCorredores gdCorredores, GestionArchivosCSV gacsv){
+    public ListadoCorredor(java.awt.Frame parent, boolean modal, 
+            GestionDeCorredores gdCorredores, GestionArchivosCSV gacsv){
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -39,7 +40,8 @@ public class ListadoCorredor extends javax.swing.JDialog {
         rellenarTablaCorredores();
     }
 
-    public ListadoCorredor(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int numMax){
+    public ListadoCorredor(java.awt.Dialog parent, boolean modal, 
+            GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int numMax){
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -157,6 +159,7 @@ public class ListadoCorredor extends javax.swing.JDialog {
                         gdCarreras.agregarCorredores(corredorSeleccionado);
                         gdCorredores.getCorredores().get(seleccionado).Corriendo();
                         numMax--;
+                        JOptionPane.showMessageDialog(this, "El corredor añadido a la carrera");
                     } else {
                         JOptionPane.showMessageDialog(this, "El corredor ya ha sido inscrito en la carrera");
                     }

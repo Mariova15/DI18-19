@@ -10,15 +10,17 @@ import Logica.GestionDeCarreras;
 import Modelo.Carrera;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Mario
  */
 public class AltaCarrera extends javax.swing.JDialog {
-
-    private GestionArchivosCSV gacsv;
+    
     private GestionDeCarreras gdCarreras;
+    private int carreraModificar;
+    private boolean modificar = false;
 
     /**
      * Creates new form AltaCarrera
@@ -28,7 +30,20 @@ public class AltaCarrera extends javax.swing.JDialog {
         initComponents();
         this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
-        gacsv = new GestionArchivosCSV();
+    }
+    
+    public AltaCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carreraModificar) {
+        super(parent, modal);
+        initComponents();
+        this.gdCarreras = gdCarreras;
+        this.setLocationRelativeTo(null);
+        modificar = true;
+        this.carreraModificar = carreraModificar;
+        jButtonAlta.setText("Modificar carrera");
+        jTextFieldNom.setText(gdCarreras.getListaCarreras().get(carreraModificar).getNombre());
+        jTextFieldLugar.setText(gdCarreras.getListaCarreras().get(carreraModificar).getLugarCarrera());
+        jSpinnerFecha.setValue(gdCarreras.getListaCarreras().get(carreraModificar).getFecha());
+        jSpinnerNumMax.setValue(gdCarreras.getListaCarreras().get(carreraModificar).getNumMaxParticipantes());
     }
 
     /**
@@ -181,12 +196,16 @@ public class AltaCarrera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        gdCarreras.altaCarrera(
-                jTextFieldNom.getText(), jTextFieldLugar.getText(),
-                (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
-        List<Carrera> listaCarreras = gdCarreras.getListaCarreras();
-        for (Carrera listaCarrera : listaCarreras) {
-            System.out.println(listaCarrera.toString());
+        if (modificar != false) {
+            Carrera carreraModificada = new Carrera(jTextFieldNom.getText(), jTextFieldLugar.getText(),
+                    (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
+            gdCarreras.modificarCarrera(carreraModificar, carreraModificada);
+            JOptionPane.showMessageDialog(this, "Carrera modificada");
+        } else {
+            gdCarreras.altaCarrera(
+                    jTextFieldNom.getText(), jTextFieldLugar.getText(),
+                    (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
+            JOptionPane.showMessageDialog(this, "Carrera añadida");
         }
         this.dispose();
     }//GEN-LAST:event_jButtonAltaActionPerformed

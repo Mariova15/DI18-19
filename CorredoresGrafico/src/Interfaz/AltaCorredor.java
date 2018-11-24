@@ -25,7 +25,6 @@ public class AltaCorredor extends javax.swing.JDialog {
     private GestionDeCorredores gdc;
     private GestionArchivosCSV gacsv = new GestionArchivosCSV();
     private Corredor corredorModificar = null;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
     /**
      * Creates new form AltaCorredor

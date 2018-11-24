@@ -29,6 +29,7 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
         idCarrera = carrera;
+        jLabelNomCarrera.setText(gdCarreras.getListaCarreras().get(carrera).getNombre());
         rellenarTablaCorredores();
     }
 
@@ -48,6 +49,8 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
+        jLabelNomCarrera = new javax.swing.JLabel();
+        jButtonBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,13 +66,12 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             }
         ));
         jScrollPane2.setViewportView(jTableCorredores);
-        if (jTableCorredores.getColumnModel().getColumnCount() > 0) {
-            jTableCorredores.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title0")); // NOI18N
-            jTableCorredores.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title1")); // NOI18N
-            jTableCorredores.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title2")); // NOI18N
-            jTableCorredores.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title3")); // NOI18N
-            jTableCorredores.getColumnModel().getColumn(4).setHeaderValue(org.openide.util.NbBundle.getMessage(ListadoCorredorCarrera.class, "ListadoCorredorCarrera.jTableCorredores.columnModel.title4")); // NOI18N
-        }
+
+        jLabelNomCarrera.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabelNomCarrera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNomCarrera.setText("jLabel1");
+
+        jButtonBorrar.setText("Borrar corredor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,15 +79,22 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNomCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addContainerGap()
+                .addComponent(jLabelNomCarrera)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonBorrar)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,6 +120,8 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JLabel jLabelNomCarrera;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableCorredores;

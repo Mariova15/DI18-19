@@ -35,9 +35,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            UIManager.setLookAndFeel(com.jtattoo.plaf.smart.SmartLookAndFeel.class.getCanonicalName());
+            //UIManager.setLookAndFeel(com.jtattoo.plaf.smart.SmartLookAndFeel.class.getCanonicalName());
             //SwingUtilities.updateComponentTreeUI(this.getParent());
-            SwingUtilities.updateComponentTreeUI(this);
+            //SwingUtilities.updateComponentTreeUI(this);
         } catch (Throwable e) {
             e.printStackTrace();
         }

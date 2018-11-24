@@ -8,6 +8,7 @@ package Interfaz;
 import Interfaz.Tablemodels.TableModelCarreras;
 import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,6 +46,8 @@ public class ListadoCarrera extends javax.swing.JDialog {
         jLabelTitle = new javax.swing.JLabel();
         jButtonAgregar = new javax.swing.JButton();
         jButtonVerCorredores = new javax.swing.JButton();
+        jButtonBorrar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,6 +82,20 @@ public class ListadoCarrera extends javax.swing.JDialog {
             }
         });
 
+        jButtonBorrar.setText("Borrar carrera");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
+
+        jButtonModificar.setText("Modificar carrera");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,7 +106,9 @@ public class ListadoCarrera extends javax.swing.JDialog {
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonVerCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonVerCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,11 +118,15 @@ public class ListadoCarrera extends javax.swing.JDialog {
                 .addComponent(jLabelTitle)
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonBorrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonVerCorredores)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,6 +148,24 @@ public class ListadoCarrera extends javax.swing.JDialog {
         istadoCorredorCarrera.setVisible(true);
     }//GEN-LAST:event_jButtonVerCorredoresActionPerformed
 
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        int selectedRow = jTableCarrera.getSelectedRow();
+        gdCarreras.borrarCarrera(selectedRow);
+        rellenarTablaCarreras();
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        int selectedRow = jTableCarrera.getSelectedRow();
+        if (selectedRow != -1) {
+            AltaCarrera modificarCarrera = new AltaCarrera(this, true, gdCarreras, selectedRow);
+            modificarCarrera.setVisible(true);
+            rellenarTablaCarreras();
+        }else{
+        JOptionPane.showMessageDialog(this, "Seleccione una carrera");
+        }
+
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
     private void rellenarTablaCarreras() {
         jTableCarrera.setModel(new TableModelCarreras(gdCarreras.getListaCarreras()));
     }
@@ -132,6 +173,8 @@ public class ListadoCarrera extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregar;
+    private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonVerCorredores;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JScrollPane jScrollPane1;

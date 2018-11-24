@@ -39,6 +39,14 @@ public class GestionDeCarreras {
         listaCarreras.add(carrera);
     }
 
+    public void borrarCarrera(int carrera) {
+        listaCarreras.remove(carrera);
+    }
+
+    public void modificarCarrera(int carrera, Carrera carreraModificada) {
+        listaCarreras.set(carrera, carreraModificada);
+    }
+
     /**
      * Método que agrega un corredor a la lista de corredores.
      *
@@ -59,7 +67,8 @@ public class GestionDeCarreras {
      * Método que genera los dorsales y agregar coreddores a la carrera con el
      * dorsal como valor.
      *
-     * @param carrera Carrera a la que agregar los corredores con el dorsal como valor.
+     * @param carrera Carrera a la que agregar los corredores con el dorsal como
+     * valor.
      */
     public void agregarDorsalesCorredoresCarrera(Carrera carrera) {
         int[] dorsales = new int[carrera.getNumMaxParticipantes()];
