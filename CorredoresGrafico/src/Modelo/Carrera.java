@@ -6,6 +6,7 @@
 package Modelo;
 
 import Utils.Fecha;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
  *
  * @author Mario
  */
-public class Carrera {
+public class Carrera implements Serializable {
 
     private String nombre, lugarCarrera;
     private Date fecha;
@@ -52,8 +53,6 @@ public class Carrera {
         return listaCorredores;
     }
 
-    
-    
     public void agregarCorredores(int dorsal, Corredor corredor) {
         listaCorredores.put(dorsal, corredor);
     }

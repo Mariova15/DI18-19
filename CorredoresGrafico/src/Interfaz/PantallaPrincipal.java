@@ -8,6 +8,7 @@ package Interfaz;
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
+import Logica.GestionFicherosObjetos;
 import Logica.SingletonGestionCarreras;
 import Logica.SingletonGestionCorredores;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import org.openide.util.Exceptions;
 
 /**
  *
@@ -27,6 +29,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private GestionDeCorredores gdCorredores;
     private GestionDeCarreras gdCarreras;
     private GestionArchivosCSV gacsv;
+    private GestionFicherosObjetos gfO;
 
     /**
      * Creates new form PantallaPrincipal
@@ -49,6 +52,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        gfO = new GestionFicherosObjetos();
+        gfO.abrirFicheroLecturaObjetos("correras.dat");
+        try {
+        GestionDeCarreras carrerasImportadas = gfO.leerUnRegistroFicheroObjetos();
+        gdCarreras.importarCarreras(carrerasImportadas.getListaCarreras());
+        gfO.cerrarFicherosLecturaObjetos();
+        } catch (IOException ex) {
+        Exceptions.printStackTrace(ex);
+        } catch (ClassNotFoundException ex) {
+        Exceptions.printStackTrace(ex);
+        }
+        
 
     }
 
@@ -212,6 +227,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonAltaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaCarreraActionPerformed
         AltaCarrera altaCarrera = new AltaCarrera(this, true, gdCarreras);
         altaCarrera.setVisible(true);
+        gfO.abrirFicheroEscrituraObjetos("correras.dat");
+        gfO.grabarObjetoFicheroObjetos(gdCarreras);
+        gfO.cerrarFicherosEscrituraObjetos();
     }//GEN-LAST:event_jButtonAltaCarreraActionPerformed
 
     private void jButtonListadoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCarreraActionPerformed

@@ -7,6 +7,7 @@ package Logica;
 
 import Modelo.Carrera;
 import Modelo.Corredor;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Mario
  */
-public class GestionDeCarreras {
+public class GestionDeCarreras implements Serializable {
 
     private List<Corredor> listaCorredores;
     private List<Carrera> listaCarreras;
@@ -80,6 +81,10 @@ public class GestionDeCarreras {
             carrera.agregarCorredores(dorsales[dorsal], corredor);
             dorsal++;
         }
+    }
+
+    public void importarCarreras(List lista) {
+        listaCarreras.addAll(lista);
     }
 
     public List<Carrera> getListaCarreras() {

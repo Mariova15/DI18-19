@@ -6,6 +6,7 @@
 package Modelo;
 
 import Utils.Fecha;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
  *
  * @author alumnop
  */
-public class Corredor implements Comparable<Corredor> {
+public class Corredor implements Comparable<Corredor>, Serializable {
 
     private String nombre, dni, direccion;
     private Date fechaNacimiento, actual;
@@ -87,8 +88,8 @@ public class Corredor implements Comparable<Corredor> {
         estado = true;
     }
 
-    public String FechaString(){    
-    return Fecha.fechaFormat(fechaNacimiento);
+    public String FechaString() {
+        return Fecha.fechaFormat(fechaNacimiento);
     }
 
     @Override
@@ -100,7 +101,7 @@ public class Corredor implements Comparable<Corredor> {
     public int compareTo(Corredor o) {
         return this.dni.compareTo(o.dni);
     }
-       
+
     /*public int compareToEdad(Corredor o) {
         int resultado;
         if (this.edad < o.edad) {
@@ -112,7 +113,6 @@ public class Corredor implements Comparable<Corredor> {
         }
         return resultado;
     }*/
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
