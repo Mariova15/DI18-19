@@ -22,6 +22,7 @@ public class Configuracion extends javax.swing.JDialog {
     public Configuracion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         DefaultComboBoxModel dcm = new DefaultComboBoxModel();
         
         for (LookAndFeelInfo lfi : UIManager.getInstalledLookAndFeels())
@@ -40,7 +41,8 @@ public class Configuracion extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jComboBoxLF = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelConf = new javax.swing.JLabel();
+        jLabelLook = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,7 +53,12 @@ public class Configuracion extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Prueba");
+        jLabelConf.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabelConf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelConf.setText("Configuración");
+
+        jLabelLook.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabelLook.setText("Escoge un tema");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,20 +67,23 @@ public class Configuracion extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxLF, 0, 352, Short.MAX_VALUE)
+                    .addComponent(jLabelConf, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabelLook, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxLF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel2)
+                .addComponent(jLabelConf)
                 .addGap(68, 68, 68)
-                .addComponent(jComboBoxLF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxLF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelLook))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,7 +120,8 @@ public class Configuracion extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBoxLF;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelConf;
+    private javax.swing.JLabel jLabelLook;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
