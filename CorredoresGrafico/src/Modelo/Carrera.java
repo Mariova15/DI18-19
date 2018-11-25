@@ -7,8 +7,10 @@ package Modelo;
 
 import Utils.Fecha;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,7 +22,7 @@ public class Carrera implements Serializable {
     private String nombre, lugarCarrera;
     private Date fecha;
     private int numMaxParticipantes;
-    private Map<Integer, Corredor> listaCorredores = new HashMap<Integer, Corredor>();
+    private List<Corredor> listaCorredores = new ArrayList<Corredor>();
 
     public Carrera(String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
         this.nombre = nombre;
@@ -49,12 +51,17 @@ public class Carrera implements Serializable {
         return numMaxParticipantes;
     }
 
-    public Map<Integer, Corredor> getListaCorredores() {
+    public List<Corredor> getListaCorredores() {
         return listaCorredores;
     }
 
-    public void agregarCorredores(int dorsal, Corredor corredor) {
-        listaCorredores.put(dorsal, corredor);
+    public boolean buscarDuplicados(Corredor corredor) {
+        for (Corredor listaCorredore : listaCorredores) {
+            if (listaCorredore.getDni().equals(corredor.getDni())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

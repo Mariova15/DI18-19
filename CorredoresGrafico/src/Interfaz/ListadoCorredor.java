@@ -25,13 +25,13 @@ public class ListadoCorredor extends javax.swing.JDialog {
     private GestionDeCorredores gdCorredores;
     private GestionDeCarreras gdCarreras;
     private GestionArchivosCSV gacsv;
-    private int numMax;
+    private int numMax, idCarrera;
 
     /**
      * Creates new form ListadoCorredor
      */
-    public ListadoCorredor(java.awt.Frame parent, boolean modal, 
-            GestionDeCorredores gdCorredores, GestionArchivosCSV gacsv){
+    public ListadoCorredor(java.awt.Frame parent, boolean modal,
+            GestionDeCorredores gdCorredores, GestionArchivosCSV gacsv) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -40,14 +40,15 @@ public class ListadoCorredor extends javax.swing.JDialog {
         rellenarTablaCorredores();
     }
 
-    public ListadoCorredor(java.awt.Dialog parent, boolean modal, 
-            GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int numMax){
+    public ListadoCorredor(java.awt.Dialog parent, boolean modal,
+            GestionDeCarreras gdCarreras, GestionDeCorredores gdCorredores, int idCarrera) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
         this.gdCorredores = gdCorredores;
-        this.numMax = numMax;
+        this.idCarrera = idCarrera;
+        this.numMax = gdCarreras.getListaCarreras().get(idCarrera).getNumMaxParticipantes();
         jButtonModificar.setText("Agregar corredores");
         jButtonBorrar.setVisible(false);
         rellenarTablaCorredores();
@@ -137,44 +138,11 @@ public class ListadoCorredor extends javax.swing.JDialog {
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         int seleccionado = jTableCorredores.getSelectedRow();
-        Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-        gdCorredores.borrarCorredor(corredorSeleccionado.getDni());
-        rellenarTablaCorredores();
-        gacsv.abrirFicheroEscritura("corredores.txt", false);
-        try {
-            gacsv.escribirCadena(gdCorredores.cadenaCsv());
-        } catch (IOException ex) {
-            Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        gacsv.cerrarFicheroEscritura();
-    }//GEN-LAST:event_jButtonBorrarActionPerformed
-
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        if (gdCarreras != null) {
-            int seleccionado = jTableCorredores.getSelectedRow();
-            Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-            if (corredorSeleccionado.isEstado() == false) {
-                if (numMax >= 1) {
-                    if (Collections.binarySearch(gdCarreras.getListaCorredores(), corredorSeleccionado) == -1) {
-                        gdCarreras.agregarCorredores(corredorSeleccionado);
-                        gdCorredores.getCorredores().get(seleccionado).Corriendo();
-                        numMax--;
-                        JOptionPane.showMessageDialog(this, "El corredor añadido a la carrera");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "El corredor ya ha sido inscrito en la carrera");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "No quedan plazas en la carrera");
-                }
-            }else{
-                        JOptionPane.showMessageDialog(this, "El corredor ya esta corriendo");
-                        }
-
+        if (seleccionado == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona un corredor");
         } else {
-            int seleccionado = jTableCorredores.getSelectedRow();
             Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-            AltaCorredor altaCorredorModificar = new AltaCorredor(this, true, corredorSeleccionado);
-            altaCorredorModificar.setVisible(true);
+            gdCorredores.borrarCorredor(corredorSeleccionado.getDni());
             rellenarTablaCorredores();
             gacsv.abrirFicheroEscritura("corredores.txt", false);
             try {
@@ -183,6 +151,45 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
             }
             gacsv.cerrarFicheroEscritura();
+        }
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        if (gdCarreras != null) {
+            if (numMax > gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().size()) {
+                int seleccionado = jTableCorredores.getSelectedRow();
+                if (seleccionado == -1) {
+                    JOptionPane.showMessageDialog(this, "Selecciona un corredor");
+                } else {
+                    Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
+                    boolean agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                    if (agregarCorredor) {
+                        JOptionPane.showMessageDialog(this, "Corredor agregado");
+                    } else {
+                        JOptionPane.showMessageDialog(this, " El corredor ya paraticipa en la carrera");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No quedan plazas");
+            }
+
+        } else {
+            int seleccionado = jTableCorredores.getSelectedRow();
+            if (seleccionado == -1) {
+                JOptionPane.showMessageDialog(this, "Selecciona un corredor");
+            } else {
+                Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
+                AltaCorredor altaCorredorModificar = new AltaCorredor(this, true, corredorSeleccionado);
+                altaCorredorModificar.setVisible(true);
+                rellenarTablaCorredores();
+                gacsv.abrirFicheroEscritura("corredores.txt", false);
+                try {
+                    gacsv.escribirCadena(gdCorredores.cadenaCsv());
+                } catch (IOException ex) {
+                    Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                gacsv.cerrarFicheroEscritura();
+            }
         }
 
     }//GEN-LAST:event_jButtonModificarActionPerformed

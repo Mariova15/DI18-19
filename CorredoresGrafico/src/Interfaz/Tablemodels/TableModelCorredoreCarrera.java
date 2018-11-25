@@ -16,53 +16,49 @@ import javax.swing.table.AbstractTableModel;
  * @author Mario
  */
 public class TableModelCorredoreCarrera extends AbstractTableModel {
-
-    private final Map<Integer, Corredor> listaCorredores;
-    private final List<Corredor> corredores;
+    
+    private final List<Corredor> listaCorredores;
     private final String[] columnas = {"Dorsal", "Nombre", "DNI", "Dirección", "Telf", "Fecha"};
-
-    public TableModelCorredoreCarrera(Map<Integer, Corredor> listaCorredores) {
+    
+    public TableModelCorredoreCarrera(List<Corredor> listaCorredores) {
         this.listaCorredores = listaCorredores;
-        corredores = new ArrayList<>(listaCorredores.values());
-
-        for (Corredor corredore : corredores) {
-            System.out.println(corredore.toString());
-        }
-
+        for (int i = 0; i < listaCorredores.size(); i++) {
+            listaCorredores.get(i).setDorsal(i + 1);
+        }        
     }
-
+    
     @Override
     public int getRowCount() {
-        return corredores.size();
+        return listaCorredores.size();
     }
-
+    
     @Override
     public int getColumnCount() {
         return columnas.length;
     }
-
+    
     @Override
     public String getColumnName(int column) {
         return columnas[column];
     }
-
+    
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return rowIndex + 1;
+                return listaCorredores.get(rowIndex).getDorsal();
             case 1:
-                return corredores.get(rowIndex).getNombre();
+                return listaCorredores.get(rowIndex).getNombre();
             case 2:
-                return corredores.get(rowIndex).getDni();
+                return listaCorredores.get(rowIndex).getDni();
             case 3:
-                return corredores.get(rowIndex).getDireccion();
+                return listaCorredores.get(rowIndex).getDireccion();
             case 4:
-                return corredores.get(rowIndex).getTelf();
+                return listaCorredores.get(rowIndex).getTelf();
             case 5:
-                return corredores.get(rowIndex).FechaString();
+                return listaCorredores.get(rowIndex).FechaString();
         }
         return null;
     }
-
+    
 }

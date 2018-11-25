@@ -253,6 +253,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonListadoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCarreraActionPerformed
         ListadoCarrera listadoCarrera = new ListadoCarrera(this, true, gdCarreras, gdCorredores);
         listadoCarrera.setVisible(true);
+        gfO.abrirFicheroEscrituraObjetos("carreras.dat");
+        gfO.grabarObjetoFicheroObjetos(gdCarreras);
+        gfO.cerrarFicherosEscrituraObjetos();
     }//GEN-LAST:event_jButtonListadoCarreraActionPerformed
 
     private void jButtonConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfActionPerformed

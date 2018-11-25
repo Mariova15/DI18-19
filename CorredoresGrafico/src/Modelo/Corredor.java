@@ -18,7 +18,7 @@ public class Corredor implements Comparable<Corredor>, Serializable {
 
     private String nombre, dni, direccion;
     private Date fechaNacimiento, actual;
-    private int telf, edad;
+    private int telf, edad, dorsal;
     private boolean estado;
 
     public Corredor(String nombre, String dni, String direccion, int telf, Date fechaNacimiento) {
@@ -84,8 +84,12 @@ public class Corredor implements Comparable<Corredor>, Serializable {
         this.telf = telf;
     }
 
-    public void Corriendo() {
-        estado = true;
+    public int getDorsal() {
+        return dorsal;
+    }
+
+    public void setDorsal(int dorsal) {
+        this.dorsal = dorsal;
     }
 
     public String FechaString() {

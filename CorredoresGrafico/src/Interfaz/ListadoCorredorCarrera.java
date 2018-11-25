@@ -10,6 +10,7 @@ import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionDeCarreras;
 import Modelo.Corredor;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,17 +20,17 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
 
     private GestionDeCarreras gdCarreras;
     private int idCarrera;
-    
+
     /**
      * Creates new form ListadoCorredorCarrera
      */
-    public ListadoCorredorCarrera(java.awt.Dialog parent, boolean modal , GestionDeCarreras gdCarreras,int carrera) {
+    public ListadoCorredorCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carrera) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
         idCarrera = carrera;
-        jLabelNomCarrera.setText(gdCarreras.getListaCarreras().get(carrera).getNombre());
+        jLabelNomCarrera.setText(gdCarreras.getListaCarreras().get(idCarrera).getNombre());
         rellenarTablaCorredores();
     }
 
@@ -72,6 +73,11 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         jLabelNomCarrera.setText("jLabel1");
 
         jButtonBorrar.setText("Borrar corredor");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,7 +123,18 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        int selectedRow = jTableCorredores.getSelectedRow();
+        if (selectedRow != -1) {
+            gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
+            JOptionPane.showMessageDialog(this, "Corredor borrado");
+            rellenarTablaCorredores();
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecciona un corredor");
+        }
+
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBorrar;

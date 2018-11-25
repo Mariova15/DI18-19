@@ -135,23 +135,32 @@ public class ListadoCarrera extends javax.swing.JDialog {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         ListadoCorredor listadoCorredor = null;
         int selectedRow = jTableCarrera.getSelectedRow();
-        listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores,
-                gdCarreras.getListaCarreras().get(selectedRow).getNumMaxParticipantes());
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una carrera");
+        }else{
+        listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores, selectedRow);
         listadoCorredor.setVisible(true);
-        gdCarreras.agregarDorsalesCorredoresCarrera(gdCarreras.getListaCarreras().get(selectedRow));
-        gdCarreras.borrarCorredores();
+        }        
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jButtonVerCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerCorredoresActionPerformed
         int selectedRow = jTableCarrera.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una carrera");
+        }else{
         ListadoCorredorCarrera istadoCorredorCarrera = new ListadoCorredorCarrera(this, true, gdCarreras, selectedRow);
         istadoCorredorCarrera.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonVerCorredoresActionPerformed
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         int selectedRow = jTableCarrera.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona una carrera");
+        }else{
         gdCarreras.borrarCarrera(selectedRow);
         rellenarTablaCarreras();
+        }
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
@@ -160,8 +169,8 @@ public class ListadoCarrera extends javax.swing.JDialog {
             AltaCarrera modificarCarrera = new AltaCarrera(this, true, gdCarreras, selectedRow);
             modificarCarrera.setVisible(true);
             rellenarTablaCarreras();
-        }else{
-        JOptionPane.showMessageDialog(this, "Seleccione una carrera");
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una carrera");
         }
 
     }//GEN-LAST:event_jButtonModificarActionPerformed
