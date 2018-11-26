@@ -49,8 +49,8 @@ public class ListadoCorredor extends javax.swing.JDialog {
         this.gdCorredores = gdCorredores;
         this.idCarrera = idCarrera;
         this.numMax = gdCarreras.getListaCarreras().get(idCarrera).getNumMaxParticipantes();
-        jButtonModificar.setText("Agregar corredores");
-        jButtonBorrar.setVisible(false);
+        jButtonModificar.setText("Agregar corredorer");
+        jButtonBorrar.setText("Agregar corredores seleccionados");
         rellenarTablaCorredores();
     }
 
@@ -137,20 +137,47 @@ public class ListadoCorredor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
-        int seleccionado = jTableCorredores.getSelectedRow();
-        if (seleccionado == -1) {
-            JOptionPane.showMessageDialog(this, "Selecciona un corredor");
-        } else {
-            Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
-            gdCorredores.borrarCorredor(corredorSeleccionado.getDni());
-            rellenarTablaCorredores();
-            gacsv.abrirFicheroEscritura("corredores.txt", false);
-            try {
-                gacsv.escribirCadena(gdCorredores.cadenaCsv());
-            } catch (IOException ex) {
-                Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
+        if (gdCarreras != null) {
+            if (numMax > gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().size()) {
+                int seleccionado = jTableCorredores.getSelectedRow();
+                int[] selectedRows = jTableCorredores.getSelectedRows();
+                if (seleccionado == -1) {
+                    JOptionPane.showMessageDialog(this, "Selecciona un corredor");
+                } else {
+                    for (int i = 0; i < selectedRows.length / 2; i++) {
+                        int temp = selectedRows[i];
+                        selectedRows[i] = selectedRows[selectedRows.length - 1 - i];
+                        selectedRows[selectedRows.length - 1 - i] = temp;
+                    }
+                    for (int selectedRow : selectedRows) {
+                        Corredor corredorSeleccionado = gdCorredores.getCorredores().get(selectedRow);
+                        boolean agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                        if (agregarCorredor) {
+                            JOptionPane.showMessageDialog(this, "Corredor agregado");
+                        } else {
+                            JOptionPane.showMessageDialog(this, " El corredor ya paraticipa en la carrera");
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No quedan plazas");
             }
-            gacsv.cerrarFicheroEscritura();
+        } else {
+            int seleccionado = jTableCorredores.getSelectedRow();
+            if (seleccionado == -1) {
+                JOptionPane.showMessageDialog(this, "Selecciona un corredor");
+            } else {
+                Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
+                gdCorredores.borrarCorredor(corredorSeleccionado.getDni());
+                rellenarTablaCorredores();
+                gacsv.abrirFicheroEscritura("corredores.txt", false);
+                try {
+                    gacsv.escribirCadena(gdCorredores.cadenaCsv());
+                } catch (IOException ex) {
+                    Logger.getLogger(ListadoCorredor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                gacsv.cerrarFicheroEscritura();
+            }
         }
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
