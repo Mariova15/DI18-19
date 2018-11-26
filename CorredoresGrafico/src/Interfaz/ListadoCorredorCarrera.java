@@ -9,6 +9,7 @@ import Interfaz.Tablemodels.TableModelCorredoreCarrera;
 import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionDeCarreras;
 import Modelo.Corredor;
+import java.io.File;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -52,6 +53,8 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         jTableCorredores = new javax.swing.JTable();
         jLabelNomCarrera = new javax.swing.JLabel();
         jButtonBorrar = new javax.swing.JButton();
+        jButtonBorrarSelec = new javax.swing.JButton();
+        jButtonBorrarTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,6 +82,20 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             }
         });
 
+        jButtonBorrarSelec.setText("Borrar corredores seleccionados");
+        jButtonBorrarSelec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarSelecActionPerformed(evt);
+            }
+        });
+
+        jButtonBorrarTodos.setText("Borrar todos los corredores");
+        jButtonBorrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarTodosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,7 +105,9 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNomCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
-                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonBorrarSelec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonBorrarTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -100,7 +119,11 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonBorrar)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonBorrarSelec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonBorrarTodos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,8 +139,7 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,9 +157,27 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
+    private void jButtonBorrarSelecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarSelecActionPerformed
+        int[] selectedRows = jTableCorredores.getSelectedRows();
+        for (int selectedRow : selectedRows) {
+            System.out.println(selectedRow);
+            gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
+        }
+        rellenarTablaCorredores();
+    }//GEN-LAST:event_jButtonBorrarSelecActionPerformed
+
+    private void jButtonBorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTodosActionPerformed
+            gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().removeAll(
+                    gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores());
+ 
+        rellenarTablaCorredores();
+    }//GEN-LAST:event_jButtonBorrarTodosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JButton jButtonBorrarSelec;
+    private javax.swing.JButton jButtonBorrarTodos;
     private javax.swing.JLabel jLabelNomCarrera;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

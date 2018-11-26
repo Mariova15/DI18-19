@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Mario
  */
 public class AltaCarrera extends javax.swing.JDialog {
-    
+
     private GestionDeCarreras gdCarreras;
     private int carreraModificar;
     private boolean modificar = false;
@@ -31,7 +31,7 @@ public class AltaCarrera extends javax.swing.JDialog {
         this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
     }
-    
+
     public AltaCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carreraModificar) {
         super(parent, modal);
         initComponents();
@@ -197,9 +197,8 @@ public class AltaCarrera extends javax.swing.JDialog {
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         if (modificar != false) {
-            Carrera carreraModificada = new Carrera(jTextFieldNom.getText(), jTextFieldLugar.getText(),
+            gdCarreras.modificarCarrera(carreraModificar, jTextFieldNom.getText(), jTextFieldLugar.getText(),
                     (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
-            gdCarreras.modificarCarrera(carreraModificar, carreraModificada);
             JOptionPane.showMessageDialog(this, "Carrera modificada");
         } else {
             gdCarreras.altaCarrera(

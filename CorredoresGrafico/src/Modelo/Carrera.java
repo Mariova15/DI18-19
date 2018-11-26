@@ -55,6 +55,10 @@ public class Carrera implements Serializable {
         return listaCorredores;
     }
 
+    public void setDorsal(int dorsal) {
+        this.dorsal = dorsal;
+    }
+        
     public int getDorsal() {
         return dorsal;
     }
