@@ -7,6 +7,7 @@ package Logica;
 
 import Modelo.Carrera;
 import Modelo.Corredor;
+import Modelo.CorredorCarrera;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,12 +59,13 @@ public class GestionDeCarreras implements Serializable {
     }
 
     public boolean agregarCorredor(int idCarrera, Corredor corredor) {
-        System.out.println(listaCarreras.get(idCarrera).getDorsal());
-        corredor.setDorsal(listaCarreras.get(idCarrera).getDorsal());
+        CorredorCarrera corredorCarrera = new CorredorCarrera(corredor.getNombre(), corredor.getDni(),
+                corredor.getDireccion(), corredor.getTelf(), corredor.getFechaNacimiento());
+        corredorCarrera.setDorsal(listaCarreras.get(idCarrera).getDorsal());
         if (listaCarreras.get(idCarrera).buscarDuplicados(corredor)) {
             return false;
         } else {
-            listaCarreras.get(idCarrera).getListaCorredores().add(corredor);
+            listaCarreras.get(idCarrera).getListaCorredores().add(corredorCarrera);
             listaCarreras.get(idCarrera).nuevoDorsal();
             return true;
         }

@@ -6,6 +6,7 @@
 package Interfaz.Tablemodels;
 
 import Modelo.Corredor;
+import Modelo.CorredorCarrera;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,10 +18,10 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableModelCorredoreCarrera extends AbstractTableModel {
 
-    private final List<Corredor> listaCorredores;
+    private final List<CorredorCarrera> listaCorredores;
     private final String[] columnas = {"Dorsal", "Nombre", "DNI", "Dirección", "Telf", "Fecha"};
 
-    public TableModelCorredoreCarrera(List<Corredor> listaCorredores) {
+    public TableModelCorredoreCarrera(List<CorredorCarrera> listaCorredores) {
         this.listaCorredores = listaCorredores;
         /*for (int i = 0; i < listaCorredores.size(); i++) {
         listaCorredores.get(i).setDorsal(i + 1);

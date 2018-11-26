@@ -22,7 +22,7 @@ public class Carrera implements Serializable {
     private String nombre, lugarCarrera;
     private Date fecha;
     private int numMaxParticipantes, dorsal = 1;
-    private List<Corredor> listaCorredores = new ArrayList<Corredor>();
+    private List<CorredorCarrera> listaCorredores = new ArrayList<>();
 
     public Carrera(String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
         this.nombre = nombre;
@@ -51,7 +51,7 @@ public class Carrera implements Serializable {
         return numMaxParticipantes;
     }
 
-    public List<Corredor> getListaCorredores() {
+    public List<CorredorCarrera> getListaCorredores() {
         return listaCorredores;
     }
 
