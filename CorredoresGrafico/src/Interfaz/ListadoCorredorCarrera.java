@@ -10,6 +10,8 @@ import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionDeCarreras;
 import Modelo.Corredor;
 import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -159,17 +161,22 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
 
     private void jButtonBorrarSelecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarSelecActionPerformed
         int[] selectedRows = jTableCorredores.getSelectedRows();
+
+        for (int i = 0; i < selectedRows.length / 2; i++) {
+            int temp = selectedRows[i];
+            selectedRows[i] = selectedRows[selectedRows.length - 1 - i];
+            selectedRows[selectedRows.length - 1 - i] = temp;
+        }
+
         for (int selectedRow : selectedRows) {
-            System.out.println(selectedRow);
-            gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
+        gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
         }
         rellenarTablaCorredores();
     }//GEN-LAST:event_jButtonBorrarSelecActionPerformed
 
     private void jButtonBorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTodosActionPerformed
-            gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().removeAll(
-                    gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores());
- 
+        gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().removeAll(
+                gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores());
         rellenarTablaCorredores();
     }//GEN-LAST:event_jButtonBorrarTodosActionPerformed
 
