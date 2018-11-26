@@ -58,10 +58,13 @@ public class GestionDeCarreras implements Serializable {
     }
 
     public boolean agregarCorredor(int idCarrera, Corredor corredor) {
+        System.out.println(listaCarreras.get(idCarrera).getDorsal());
+        corredor.setDorsal(listaCarreras.get(idCarrera).getDorsal());
         if (listaCarreras.get(idCarrera).buscarDuplicados(corredor)) {
             return false;
         } else {
             listaCarreras.get(idCarrera).getListaCorredores().add(corredor);
+            listaCarreras.get(idCarrera).nuevoDorsal();
             return true;
         }
     }

@@ -11,6 +11,7 @@ import Logica.GestionDeCorredores;
 import Logica.GestionFicherosObjetos;
 import Logica.SingletonGestionCarreras;
 import Logica.SingletonGestionCorredores;
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Locale;
@@ -47,23 +48,37 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         gdCorredores = SingletonGestionCorredores.getInstance();
         gdCarreras = SingletonGestionCarreras.getInstance();
         gacsv = new GestionArchivosCSV();
-        try {
-            gdCorredores.importarCorredores(gacsv.leerFichero("corredores.txt"));
-        } catch (ParseException ex) {
-            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        File tempCsv = new File("corredores.txt");
+        if (tempCsv.exists()) {
+            try {
+                gdCorredores.importarCorredores(gacsv.leerFichero("corredores.txt"));
+            } catch (ParseException ex) {
+                Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            gacsv.abrirFicheroEscritura("corredores.txt", false);
+            gacsv.cerrarFicheroEscritura();
         }
+
+        File tempFichero = new File("carreras.dat");
         gfO = new GestionFicherosObjetos();
-        gfO.abrirFicheroLecturaObjetos("carreras.dat");
-        try {
-        GestionDeCarreras carrerasImportadas = gfO.leerUnRegistroFicheroObjetos();
-        gdCarreras.importarCarreras(carrerasImportadas.getListaCarreras());
-        gfO.cerrarFicherosLecturaObjetos();
-        } catch (IOException ex) {
-        Exceptions.printStackTrace(ex);
-        } catch (ClassNotFoundException ex) {
-        Exceptions.printStackTrace(ex);
-        }
         
+        if (tempFichero.exists()) {            
+            gfO.abrirFicheroLecturaObjetos("carreras.dat");
+            try {
+                GestionDeCarreras carrerasImportadas = gfO.leerUnRegistroFicheroObjetos();
+                gdCarreras.importarCarreras(carrerasImportadas.getListaCarreras());
+                gfO.cerrarFicherosLecturaObjetos();
+            } catch (IOException ex) {
+                Exceptions.printStackTrace(ex);
+            } catch (ClassNotFoundException ex) {
+                Exceptions.printStackTrace(ex);
+            }
+        } else {
+            gfO.abrirFicheroEscrituraObjetos("carreras.dat");
+            gfO.grabarObjetoFicheroObjetos(gdCarreras);
+            gfO.cerrarFicherosEscrituraObjetos();
+        }
 
     }
 

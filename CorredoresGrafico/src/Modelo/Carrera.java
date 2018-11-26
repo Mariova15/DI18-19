@@ -21,7 +21,7 @@ public class Carrera implements Serializable {
 
     private String nombre, lugarCarrera;
     private Date fecha;
-    private int numMaxParticipantes;
+    private int numMaxParticipantes, dorsal = 1;
     private List<Corredor> listaCorredores = new ArrayList<Corredor>();
 
     public Carrera(String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
@@ -53,6 +53,14 @@ public class Carrera implements Serializable {
 
     public List<Corredor> getListaCorredores() {
         return listaCorredores;
+    }
+
+    public int getDorsal() {
+        return dorsal;
+    }
+
+    public void nuevoDorsal() {
+        dorsal++;
     }
 
     public boolean buscarDuplicados(Corredor corredor) {

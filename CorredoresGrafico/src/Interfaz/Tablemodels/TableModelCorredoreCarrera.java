@@ -16,32 +16,32 @@ import javax.swing.table.AbstractTableModel;
  * @author Mario
  */
 public class TableModelCorredoreCarrera extends AbstractTableModel {
-    
+
     private final List<Corredor> listaCorredores;
     private final String[] columnas = {"Dorsal", "Nombre", "DNI", "Dirección", "Telf", "Fecha"};
-    
+
     public TableModelCorredoreCarrera(List<Corredor> listaCorredores) {
         this.listaCorredores = listaCorredores;
-        for (int i = 0; i < listaCorredores.size(); i++) {
-            listaCorredores.get(i).setDorsal(i + 1);
-        }        
+        /*for (int i = 0; i < listaCorredores.size(); i++) {
+        listaCorredores.get(i).setDorsal(i + 1);
+        }*/
     }
-    
+
     @Override
     public int getRowCount() {
         return listaCorredores.size();
     }
-    
+
     @Override
     public int getColumnCount() {
         return columnas.length;
     }
-    
+
     @Override
     public String getColumnName(int column) {
         return columnas[column];
     }
-    
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
@@ -60,5 +60,5 @@ public class TableModelCorredoreCarrera extends AbstractTableModel {
         }
         return null;
     }
-    
+
 }
