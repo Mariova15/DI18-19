@@ -144,14 +144,14 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 if (seleccionado == -1) {
                     JOptionPane.showMessageDialog(this, "Selecciona un corredor");
                 } else {
-                    for (int i = 0; i < selectedRows.length / 2; i++) {
-                        int temp = selectedRows[i];
-                        selectedRows[i] = selectedRows[selectedRows.length - 1 - i];
-                        selectedRows[selectedRows.length - 1 - i] = temp;
-                    }
                     for (int selectedRow : selectedRows) {
                         Corredor corredorSeleccionado = gdCorredores.getCorredores().get(selectedRow);
-                        boolean agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                        boolean agregarCorredor = false;
+                        if (numMax > gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().size()) {
+                            agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "No quedan plazas");
+                        }
                         if (agregarCorredor) {
                             JOptionPane.showMessageDialog(this, "Corredor agregado");
                         } else {

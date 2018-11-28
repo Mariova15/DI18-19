@@ -9,9 +9,11 @@ import Interfaz.Tablemodels.TableModelCorredoreCarrera;
 import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionDeCarreras;
 import Modelo.Corredor;
+import Modelo.CorredorCarrera;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -167,9 +169,9 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             selectedRows[i] = selectedRows[selectedRows.length - 1 - i];
             selectedRows[selectedRows.length - 1 - i] = temp;
         }
-
+        
         for (int selectedRow : selectedRows) {
-        gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
+            gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
         }
         rellenarTablaCorredores();
     }//GEN-LAST:event_jButtonBorrarSelecActionPerformed
