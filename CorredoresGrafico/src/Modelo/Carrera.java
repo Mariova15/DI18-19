@@ -22,6 +22,7 @@ public class Carrera implements Serializable {
     private String nombre, lugarCarrera;
     private Date fecha;
     private int numMaxParticipantes, dorsal = 1;
+    private boolean finalizada;
     private List<CorredorCarrera> listaCorredores = new ArrayList<>();
 
     public Carrera(String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
@@ -58,9 +59,17 @@ public class Carrera implements Serializable {
     public void setDorsal(int dorsal) {
         this.dorsal = dorsal;
     }
-        
+
     public int getDorsal() {
         return dorsal;
+    }
+
+    public boolean isFinalizada() {
+        return finalizada;
+    }
+
+    public void finCarrera() {
+        finalizada = true;
     }
 
     public void nuevoDorsal() {
