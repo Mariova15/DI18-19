@@ -146,16 +146,15 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 } else {
                     for (int selectedRow : selectedRows) {
                         Corredor corredorSeleccionado = gdCorredores.getCorredores().get(selectedRow);
-                        boolean agregarCorredor = false;
                         if (numMax > gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().size()) {
-                            agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                            boolean agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                            if (agregarCorredor) {
+                                JOptionPane.showMessageDialog(this, "Corredor agregado");
+                            } else {
+                                JOptionPane.showMessageDialog(this, " El corredor ya paraticipa en la carrera");
+                            }
                         } else {
                             JOptionPane.showMessageDialog(this, "No quedan plazas");
-                        }
-                        if (agregarCorredor) {
-                            JOptionPane.showMessageDialog(this, "Corredor agregado");
-                        } else {
-                            JOptionPane.showMessageDialog(this, " El corredor ya paraticipa en la carrera");
                         }
                     }
                 }
