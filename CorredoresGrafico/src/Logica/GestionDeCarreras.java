@@ -40,7 +40,8 @@ public class GestionDeCarreras implements Serializable {
         Carrera carrera = new Carrera(nombre, lugarCarrera, fecha, numMaxParticipantes);
         listaCarreras.add(carrera);
     }
-    public void modificarCarrera(int idCarrera, String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes){
+
+    public void modificarCarrera(int idCarrera, String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
         Carrera carreraAntigua = listaCarreras.get(idCarrera);
         Carrera carreraModificada = new Carrera(nombre, lugarCarrera, fecha, numMaxParticipantes);
         carreraModificada.setDorsal(carreraAntigua.getDorsal());
@@ -70,6 +71,22 @@ public class GestionDeCarreras implements Serializable {
             listaCarreras.get(idCarrera).nuevoDorsal();
             return true;
         }
+    }
+
+    private void correrCarrera(int idCarrera, Date tiempo, int correrdor) {
+        listaCarreras.get(idCarrera).getListaCorredores().get(correrdor).setTiempoCarrera(tiempo);
+
+        List<CorredorCarrera> listaCorredores = listaCarreras.get(idCarrera).getListaCorredores();
+        int finalizar = 0;
+        for (CorredorCarrera listaCorredore : listaCorredores) {
+            if (listaCorredore.getTiempoCarrera() != null) {
+                finalizar++;
+            }
+        }
+        if (finalizar == listaCorredores.size()) {
+            listaCarreras.get(idCarrera).finCarrera();
+        }
+
     }
 
 }

@@ -43,6 +43,9 @@ public class Configuracion extends javax.swing.JDialog {
         jComboBoxLF = new javax.swing.JComboBox<>();
         jLabelConf = new javax.swing.JLabel();
         jLabelLook = new javax.swing.JLabel();
+        jLabelTiempo = new javax.swing.JLabel();
+        jCheckBoxAutoSave = new javax.swing.JCheckBox();
+        jSpinnerTiempo = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,6 +63,12 @@ public class Configuracion extends javax.swing.JDialog {
         jLabelLook.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabelLook.setText("Escoge un tema");
 
+        jLabelTiempo.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabelTiempo.setText("Minutos");
+
+        jCheckBoxAutoSave.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jCheckBoxAutoSave.setText("Activar guardado automatico");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,11 +76,20 @@ public class Configuracion extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelConf, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                    .addComponent(jLabelConf, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelLook, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxLF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jSpinnerTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelTiempo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCheckBoxAutoSave)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jComboBoxLF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,7 +101,13 @@ public class Configuracion extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxLF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelLook))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxAutoSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTiempo)
+                    .addComponent(jSpinnerTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,9 +143,12 @@ public class Configuracion extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox jCheckBoxAutoSave;
     private javax.swing.JComboBox<String> jComboBoxLF;
     private javax.swing.JLabel jLabelConf;
     private javax.swing.JLabel jLabelLook;
+    private javax.swing.JLabel jLabelTiempo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinnerTiempo;
     // End of variables declaration//GEN-END:variables
 }
