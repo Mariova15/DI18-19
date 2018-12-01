@@ -62,8 +62,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         File tempFichero = new File("carreras.dat");
         gfO = new GestionFicherosObjetos();
-        
-        if (tempFichero.exists()) {            
+
+        if (tempFichero.exists()) {
             gfO.abrirFicheroLecturaObjetos("carreras.dat");
             try {
                 GestionDeCarreras carrerasImportadas = gfO.leerUnRegistroFicheroObjetos();
@@ -268,13 +268,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonListadoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoCarreraActionPerformed
         ListadoCarrera listadoCarrera = new ListadoCarrera(this, true, gdCarreras, gdCorredores);
         listadoCarrera.setVisible(true);
-        gfO.abrirFicheroEscrituraObjetos("carreras.dat");
+        /*gfO.abrirFicheroEscrituraObjetos("carreras.dat");
         gfO.grabarObjetoFicheroObjetos(gdCarreras);
-        gfO.cerrarFicherosEscrituraObjetos();
+        gfO.cerrarFicherosEscrituraObjetos();*/
     }//GEN-LAST:event_jButtonListadoCarreraActionPerformed
 
     private void jButtonConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfActionPerformed
-        Configuracion conf = new Configuracion(this, true);
+        Configuracion conf = new Configuracion(this, true, gdCarreras);
         conf.setVisible(true);
     }//GEN-LAST:event_jButtonConfActionPerformed
 

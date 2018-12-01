@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -23,6 +25,7 @@ public class GestionFicherosObjetos {
     private FileInputStream fis = null;
     private ObjectInputStream ois = null;
     private ObjectOutputStream oos = null;
+    private Timer timer;
 
     //apertura de fichero de objetos para grabar
     public void abrirFicheroEscrituraObjetos(String f) {
@@ -118,6 +121,21 @@ public class GestionFicherosObjetos {
         } catch (IOException ex) {
             System.out.println("Error en el cierre");
         }
+    }
+
+    public void autoGuardado(boolean estado, int tiempo, GestionDeCarreras gdc) {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (estado) {
+                    abrirFicheroEscrituraObjetos("carreras.dat");
+                    grabarObjetoFicheroObjetos(gdc);
+                    cerrarFicherosEscrituraObjetos();                   
+                }
+            }
+        }, 0, tiempo * 60 * 1000);
+
     }
 
 }

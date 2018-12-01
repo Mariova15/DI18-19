@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Logica.GestionDeCarreras;
+import Logica.GestionFicherosObjetos;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -16,17 +18,21 @@ import javax.swing.UIManager.LookAndFeelInfo;
  */
 public class Configuracion extends javax.swing.JDialog {
 
+    private GestionDeCarreras gdCarreras;
+
     /**
      * Creates new form Configuracion
      */
-    public Configuracion(java.awt.Frame parent, boolean modal) {
+    public Configuracion(java.awt.Frame parent, boolean modal, GestionDeCarreras gdCarreras) {
         super(parent, modal);
         initComponents();
+        this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
         DefaultComboBoxModel dcm = new DefaultComboBoxModel();
-        
-        for (LookAndFeelInfo lfi : UIManager.getInstalledLookAndFeels())
+
+        for (LookAndFeelInfo lfi : UIManager.getInstalledLookAndFeels()) {
             dcm.addElement(lfi.getName());
+        }
         jComboBoxLF.setModel(dcm);
     }
 
@@ -44,8 +50,9 @@ public class Configuracion extends javax.swing.JDialog {
         jLabelConf = new javax.swing.JLabel();
         jLabelLook = new javax.swing.JLabel();
         jLabelTiempo = new javax.swing.JLabel();
-        jCheckBoxAutoSave = new javax.swing.JCheckBox();
         jSpinnerTiempo = new javax.swing.JSpinner();
+        jLabelSave = new javax.swing.JLabel();
+        jButtonSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,8 +73,17 @@ public class Configuracion extends javax.swing.JDialog {
         jLabelTiempo.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabelTiempo.setText("Minutos");
 
-        jCheckBoxAutoSave.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jCheckBoxAutoSave.setText("Activar guardado automatico");
+        jSpinnerTiempo.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabelSave.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabelSave.setText("Guardado automático");
+
+        jButtonSave.setText("Activar");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,20 +92,19 @@ public class Configuracion extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelConf, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                    .addComponent(jLabelConf, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelLook, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jSpinnerTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelTiempo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCheckBoxAutoSave)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBoxLF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxLF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelSave)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jSpinnerTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabelTiempo))
+                                .addComponent(jButtonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -101,13 +116,14 @@ public class Configuracion extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxLF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelLook))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBoxAutoSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jLabelSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTiempo)
                     .addComponent(jSpinnerTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonSave))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,13 +156,18 @@ public class Configuracion extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jComboBoxLFActionPerformed
 
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        GestionFicherosObjetos gfO = new GestionFicherosObjetos();
+        gfO.autoGuardado(true, 1, gdCarreras);
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBoxAutoSave;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JComboBox<String> jComboBoxLF;
     private javax.swing.JLabel jLabelConf;
     private javax.swing.JLabel jLabelLook;
+    private javax.swing.JLabel jLabelSave;
     private javax.swing.JLabel jLabelTiempo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner jSpinnerTiempo;
