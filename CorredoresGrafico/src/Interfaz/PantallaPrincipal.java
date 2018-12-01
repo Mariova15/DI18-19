@@ -11,6 +11,8 @@ import Logica.GestionDeCorredores;
 import Logica.GestionFicherosObjetos;
 import Logica.SingletonGestionCarreras;
 import Logica.SingletonGestionCorredores;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -79,6 +81,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             gfO.grabarObjetoFicheroObjetos(gdCarreras);
             gfO.cerrarFicherosEscrituraObjetos();
         }
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                super.windowClosing(we);
+                gfO.abrirFicheroEscrituraObjetos("carreras.dat");
+                gfO.grabarObjetoFicheroObjetos(gdCarreras);
+                gfO.cerrarFicherosEscrituraObjetos();
+            }
+        });
 
     }
 

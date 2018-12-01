@@ -158,7 +158,7 @@ public class Configuracion extends javax.swing.JDialog {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         GestionFicherosObjetos gfO = new GestionFicherosObjetos();
-        gfO.autoGuardado(true, 1, gdCarreras);
+        gfO.autoGuardado(true, (int) jSpinnerTiempo.getValue(), gdCarreras);
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
 
