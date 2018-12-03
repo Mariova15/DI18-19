@@ -170,7 +170,15 @@ public class ListadoCarrera extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        // TODO add your handling code here:
+        
+        int selectedRow = jTableCarrera.getSelectedRow();
+        if (selectedRow != -1) {
+            CorrerCarrera correrCarrera = new CorrerCarrera(this, true, gdCarreras, selectedRow);
+            correrCarrera.setVisible(true);
+            rellenarTablaCarreras();
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una carrera");
+        }
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     private void rellenarTablaCarreras() {

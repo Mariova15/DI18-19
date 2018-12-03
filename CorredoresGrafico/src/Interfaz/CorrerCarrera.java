@@ -8,6 +8,7 @@ package Interfaz;
 import Logica.GestionDeCarreras;
 import Modelo.CorredorCarrera;
 import cronometro.CronometroListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,13 +36,20 @@ public class CorrerCarrera extends javax.swing.JDialog {
             public void resgistrarTiempo(int dorsal, String tiempo) {
 
                 System.out.println("hola " + dorsal + " " + tiempo);
+                gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().get(dorsal - 1).setTiempoCarrera(tiempo);
                 cargarDorsales();
             }
         });
+        cronometro.start();
 
     }
 
     public void cargarDorsales() {
+        /*List<CorredorCarrera> listaCorredores = gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores();
+        List<Integer> dorsales = new ArrayList<>();
+        for (CorredorCarrera corredordorsal : listaCorredores) {
+        dorsales.add(corredordorsal.getDorsal());
+        }*/
         cronometro.setListadorsales(gdCarreras.listaDorsales(idCarrera));
     }
 
@@ -56,11 +64,19 @@ public class CorrerCarrera extends javax.swing.JDialog {
 
         jPanelCorrer = new javax.swing.JPanel();
         cronometro = new cronometro.Cronometro();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         cronometro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cronometro.setText("cronometro1");
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCorrerLayout = new javax.swing.GroupLayout(jPanelCorrer);
         jPanelCorrer.setLayout(jPanelCorrerLayout);
@@ -70,13 +86,19 @@ public class CorrerCarrera extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(cronometro, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanelCorrerLayout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelCorrerLayout.setVerticalGroup(
             jPanelCorrerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorrerLayout.createSequentialGroup()
                 .addContainerGap(130, Short.MAX_VALUE)
                 .addComponent(cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
+                .addGap(48, 48, 48)
+                .addComponent(jButton1)
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,9 +121,22 @@ public class CorrerCarrera extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        List<CorredorCarrera> listaCorredores = gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores();
+        List<Integer> dorsales = new ArrayList<>();
+        for (CorredorCarrera corredordorsal : listaCorredores) {
+            dorsales.add(corredordorsal.getDorsal());
+        }
+
+        for (Integer dorsale : dorsales) {
+            System.out.println(dorsale);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private cronometro.Cronometro cronometro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanelCorrer;
     // End of variables declaration//GEN-END:variables
 }

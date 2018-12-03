@@ -77,14 +77,14 @@ public class GestionDeCarreras implements Serializable {
         List<Integer> dorsales = new ArrayList();
         List<CorredorCarrera> listaCorredores = listaCarreras.get(idCarrera).getListaCorredores();
         for (CorredorCarrera corredorDorsal : listaCorredores) {
-            if (corredorDorsal.getTiempoCarrera() != null) {
+            if (corredorDorsal.getTiempoCarrera() == null) {
                 dorsales.add(corredorDorsal.getDorsal());
             }
 
         }
         return dorsales;
     }
-
+        
     private void correrCarrera() {
 
     }
