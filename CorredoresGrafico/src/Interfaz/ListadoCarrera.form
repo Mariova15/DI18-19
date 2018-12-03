@@ -28,11 +28,11 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabelTitle" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Component id="jButtonAgregar" max="32767" attributes="0"/>
                   <Component id="jButtonVerCorredores" max="32767" attributes="0"/>
                   <Component id="jButtonBorrar" max="32767" attributes="0"/>
                   <Component id="jButtonModificar" max="32767" attributes="0"/>
                   <Component id="jButtonIniciar" max="32767" attributes="0"/>
+                  <Component id="jButtonResultado" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -50,11 +50,11 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jButtonBorrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButtonAgregar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jButtonVerCorredores" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jButtonIniciar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButtonResultado" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -90,18 +90,9 @@
         <Property name="text" type="java.lang.String" value="Listado de carreras"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonAgregar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Inscribir corredores"/>
-        <Property name="actionCommand" type="java.lang.String" value="Inscribir corredores en carrare"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAgregarActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonVerCorredores">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ver corredores inscritos en carrera"/>
+        <Property name="text" type="java.lang.String" value="Gestionar carrera"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVerCorredoresActionPerformed"/>
@@ -126,6 +117,14 @@
     <Component class="javax.swing.JButton" name="jButtonIniciar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Iniciar carrera"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonIniciarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonResultado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ver resultado carrera"/>
       </Properties>
     </Component>
   </SubComponents>

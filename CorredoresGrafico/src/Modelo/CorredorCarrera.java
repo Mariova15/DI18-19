@@ -14,7 +14,7 @@ import java.util.Date;
 public class CorredorCarrera extends Corredor {
 
     private int dorsal;
-    private Date tiempoCarrera;
+    private String tiempo;
 
     public CorredorCarrera(String nombre, String dni, String direccion, int telf, Date fechaNacimiento) {
         super(nombre, dni, direccion, telf, fechaNacimiento);
@@ -28,12 +28,12 @@ public class CorredorCarrera extends Corredor {
         this.dorsal = dorsal;
     }
 
-    public Date getTiempoCarrera() {
-        return tiempoCarrera;
+    public String getTiempoCarrera() {
+        return tiempo;
     }
 
-    public void setTiempoCarrera(Date tiempoCarrera) {
-        this.tiempoCarrera = tiempoCarrera;
+    public void setTiempoCarrera(String tiempo) {
+        this.tiempo = tiempo;
     }
         
 }

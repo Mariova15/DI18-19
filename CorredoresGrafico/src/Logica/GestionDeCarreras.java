@@ -73,19 +73,19 @@ public class GestionDeCarreras implements Serializable {
         }
     }
 
-    private void correrCarrera(int idCarrera, Date tiempo, int correrdor) {
-        listaCarreras.get(idCarrera).getListaCorredores().get(correrdor).setTiempoCarrera(tiempo);
-
+    public List<Integer> listaDorsales(int idCarrera) {
+        List<Integer> dorsales = new ArrayList();
         List<CorredorCarrera> listaCorredores = listaCarreras.get(idCarrera).getListaCorredores();
-        int finalizar = 0;
-        for (CorredorCarrera listaCorredore : listaCorredores) {
-            if (listaCorredore.getTiempoCarrera() != null) {
-                finalizar++;
+        for (CorredorCarrera corredorDorsal : listaCorredores) {
+            if (corredorDorsal.getTiempoCarrera() != null) {
+                dorsales.add(corredorDorsal.getDorsal());
             }
+
         }
-        if (finalizar == listaCorredores.size()) {
-            listaCarreras.get(idCarrera).finCarrera();
-        }
+        return dorsales;
+    }
+
+    private void correrCarrera() {
 
     }
 

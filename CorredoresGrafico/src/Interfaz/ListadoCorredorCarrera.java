@@ -8,6 +8,7 @@ package Interfaz;
 import Interfaz.Tablemodels.TableModelCorredoreCarrera;
 import Interfaz.Tablemodels.TableModelCorredores;
 import Logica.GestionDeCarreras;
+import Logica.GestionDeCorredores;
 import Modelo.Corredor;
 import Modelo.CorredorCarrera;
 import java.io.File;
@@ -24,16 +25,18 @@ import javax.swing.JOptionPane;
 public class ListadoCorredorCarrera extends javax.swing.JDialog {
 
     private GestionDeCarreras gdCarreras;
+    private GestionDeCorredores gdCorredores;
     private int idCarrera;
 
     /**
      * Creates new form ListadoCorredorCarrera
      */
-    public ListadoCorredorCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carrera) {
+    public ListadoCorredorCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carrera, GestionDeCorredores gdCorredores) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
+        this.gdCorredores = gdCorredores;
         idCarrera = carrera;
         jLabelNomCarrera.setText(gdCarreras.getListaCarreras().get(idCarrera).getNombre());
         rellenarTablaCorredores();
@@ -59,6 +62,7 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         jButtonBorrar = new javax.swing.JButton();
         jButtonBorrarSelec = new javax.swing.JButton();
         jButtonBorrarTodos = new javax.swing.JButton();
+        jButtonAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -100,6 +104,14 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             }
         });
 
+        jButtonAgregar.setText("Añadir corredores");
+        jButtonAgregar.setActionCommand("Inscribir corredores en carrare");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,7 +123,8 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
                     .addComponent(jScrollPane2)
                     .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonBorrarSelec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonBorrarTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonBorrarTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -122,6 +135,8 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAgregar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBorrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBorrarSelec)
@@ -169,7 +184,7 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
             selectedRows[i] = selectedRows[selectedRows.length - 1 - i];
             selectedRows[selectedRows.length - 1 - i] = temp;
         }
-        
+
         for (int selectedRow : selectedRows) {
             gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().remove(selectedRow);
         }
@@ -182,8 +197,16 @@ public class ListadoCorredorCarrera extends javax.swing.JDialog {
         rellenarTablaCorredores();
     }//GEN-LAST:event_jButtonBorrarTodosActionPerformed
 
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        ListadoCorredor listadoCorredor = null;
+        listadoCorredor = new ListadoCorredor(this, true, gdCarreras, gdCorredores, idCarrera);
+        listadoCorredor.setVisible(true);
+        rellenarTablaCorredores();
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonBorrarSelec;
     private javax.swing.JButton jButtonBorrarTodos;
