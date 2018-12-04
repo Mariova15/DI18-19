@@ -1,0 +1,9 @@
+Nombre de la carrera	Hola
+Lugar de la carrera	asdasd
+Fecha de la carrera	04/12/18
+Corredores
+Dorsal	Tiempo		Nombre	DNI
+1	00:00:01	Adan	1234w
+2	00:00:03	Sevin	54654654w
+3	00:00:04	Roberto	47836786Q
+4	00:00:05	Ed	546548Y

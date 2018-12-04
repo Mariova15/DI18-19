@@ -37,7 +37,6 @@ public class CorrerCarrera extends javax.swing.JDialog {
                 if (finalizar) {
                     acabarCarrera();
                 } else {
-                    System.out.println("hola " + dorsal + " " + tiempo);
                     gdCarreras.getListaCarreras().get(idCarrera)
                             .getListaCorredores().get(dorsal - 1).setTiempoCarrera(tiempo);
                     cargarDorsales();
@@ -67,18 +66,11 @@ public class CorrerCarrera extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelCorrer = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         cronometro = new cronometro.Cronometro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
+        cronometro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cronometro.setText("cronometro1");
 
         javax.swing.GroupLayout jPanelCorrerLayout = new javax.swing.GroupLayout(jPanelCorrer);
@@ -86,22 +78,16 @@ public class CorrerCarrera extends javax.swing.JDialog {
         jPanelCorrerLayout.setHorizontalGroup(
             jPanelCorrerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCorrerLayout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorrerLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
-                .addComponent(cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addContainerGap()
+                .addComponent(cronometro, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanelCorrerLayout.setVerticalGroup(
             jPanelCorrerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorrerLayout.createSequentialGroup()
                 .addContainerGap(119, Short.MAX_VALUE)
                 .addComponent(cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jButton1)
-                .addGap(35, 35, 35))
+                .addGap(117, 117, 117))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,18 +110,9 @@ public class CorrerCarrera extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        List<Integer> listaDorsales = gdCarreras.listaDorsales(idCarrera);
-        System.out.println("SIZE " + listaDorsales.size());
-        for (Integer dorsale : listaDorsales) {
-            System.out.println(dorsale);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private cronometro.Cronometro cronometro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanelCorrer;
     // End of variables declaration//GEN-END:variables
 }

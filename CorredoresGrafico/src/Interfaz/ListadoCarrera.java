@@ -28,7 +28,6 @@ public class ListadoCarrera extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
         this.gdCorredores = gdCorredores;
-        this.setLocationRelativeTo(null);
         rellenarTablaCarreras();
     }
 

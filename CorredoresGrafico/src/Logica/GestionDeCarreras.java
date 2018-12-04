@@ -14,17 +14,19 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import Utils.Fecha;
 
 /**
  *
  * @author Mario
  */
 public class GestionDeCarreras implements Serializable {
-
+    
     private List<Carrera> listaCarreras;
-
+    
     public GestionDeCarreras() {
         listaCarreras = new ArrayList<Carrera>();
+        
     }
 
     /**
@@ -40,26 +42,26 @@ public class GestionDeCarreras implements Serializable {
         Carrera carrera = new Carrera(nombre, lugarCarrera, fecha, numMaxParticipantes);
         listaCarreras.add(carrera);
     }
-
+    
     public void modificarCarrera(int idCarrera, String nombre, String lugarCarrera, Date fecha, int numMaxParticipantes) {
         Carrera carreraAntigua = listaCarreras.get(idCarrera);
         Carrera carreraModificada = new Carrera(nombre, lugarCarrera, fecha, numMaxParticipantes);
         carreraModificada.setDorsal(carreraAntigua.getDorsal());
         listaCarreras.set(idCarrera, carreraModificada);
     }
-
+    
     public void borrarCarrera(int carrera) {
         listaCarreras.remove(carrera);
     }
-
+    
     public void importarCarreras(List lista) {
         listaCarreras.addAll(lista);
     }
-
+    
     public List<Carrera> getListaCarreras() {
         return listaCarreras;
     }
-
+    
     public boolean agregarCorredor(int idCarrera, Corredor corredor) {
         CorredorCarrera corredorCarrera = new CorredorCarrera(corredor.getNombre(), corredor.getDni(),
                 corredor.getDireccion(), corredor.getTelf(), corredor.getFechaNacimiento());
@@ -72,7 +74,7 @@ public class GestionDeCarreras implements Serializable {
             return true;
         }
     }
-
+    
     public List<Integer> listaDorsales(int idCarrera) {
         List<Integer> dorsales = new ArrayList();
         List<CorredorCarrera> listaCorredores = listaCarreras.get(idCarrera).getListaCorredores();
@@ -80,13 +82,24 @@ public class GestionDeCarreras implements Serializable {
             if (corredorDorsal.getTiempoCarrera() == null) {
                 dorsales.add(corredorDorsal.getDorsal());
             }
-
+            
         }
         return dorsales;
     }
-        
-    private void correrCarrera() {
-
+    
+    public String resultadoCarrera(int idCarrera) {
+        String resultadoCarrera = null;
+        resultadoCarrera = "Nombre de la carrera" + "\t" + listaCarreras.get(idCarrera).getNombre() + "\n"
+                + "Lugar de la carrera" + "\t" + listaCarreras.get(idCarrera).getLugarCarrera() + "\n"
+                + "Fecha de la carrera" + "\t" + Fecha.fechaFormat(listaCarreras.get(idCarrera).getFecha()) + "\n"
+                + "Corredores" + "\n" + "Dorsal" + "\t" + "Tiempo" + "\t" + "\t" + "Nombre" + "\t" + "DNI" + "\n";
+        for (int i = 0; i < listaCarreras.get(idCarrera).getListaCorredores().size(); i++) {
+            resultadoCarrera += listaCarreras.get(idCarrera).getListaCorredores().get(i).getDorsal() + "\t"
+                    + listaCarreras.get(idCarrera).getListaCorredores().get(i).getTiempoCarrera() + "\t"
+                    + listaCarreras.get(idCarrera).getListaCorredores().get(i).getNombre() + "\t"
+                    + listaCarreras.get(idCarrera).getListaCorredores().get(i).getDni() + "\n";
+        }
+        return resultadoCarrera;
     }
-
+    
 }
