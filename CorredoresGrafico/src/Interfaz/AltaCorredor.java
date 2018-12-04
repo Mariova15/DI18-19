@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import org.netbeans.validation.api.builtin.stringvalidation.DNIValidator;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 
@@ -40,7 +41,7 @@ public class AltaCorredor extends javax.swing.JDialog {
         ValidationGroup group = validationPanelAlta.getValidationGroup();
         
         group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING,new DNIValidator());
         group.add(jTextFieldDir, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
         
