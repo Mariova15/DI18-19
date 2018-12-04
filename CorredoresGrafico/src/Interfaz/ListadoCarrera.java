@@ -97,6 +97,11 @@ public class ListadoCarrera extends javax.swing.JDialog {
         });
 
         jButtonResultado.setText("Ver resultado carrera");
+        jButtonResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResultadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,16 +175,40 @@ public class ListadoCarrera extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        
+
         int selectedRow = jTableCarrera.getSelectedRow();
         if (selectedRow != -1) {
-            CorrerCarrera correrCarrera = new CorrerCarrera(this, true, gdCarreras, selectedRow);
-            correrCarrera.setVisible(true);
-            rellenarTablaCarreras();
+            if (!gdCarreras.getListaCarreras().get(selectedRow).isFinalizada()) {
+                if (gdCarreras.listaDorsales(selectedRow).size() != 0) {
+                    CorrerCarrera correrCarrera = new CorrerCarrera(this, true, gdCarreras, selectedRow);
+                    correrCarrera.setVisible(true);
+                    rellenarTablaCarreras();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Agregue corredores a la carrera");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Carrera finalizada");
+            }
+
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione una carrera");
         }
     }//GEN-LAST:event_jButtonIniciarActionPerformed
+
+    private void jButtonResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultadoActionPerformed
+        int selectedRow = jTableCarrera.getSelectedRow();
+        if (selectedRow != -1) {
+            if (gdCarreras.getListaCarreras().get(selectedRow).isFinalizada()) {
+                ResultadoCarrera resultadoCarrera = new ResultadoCarrera(this, true, gdCarreras, selectedRow);
+            resultadoCarrera.setVisible(true);
+            rellenarTablaCarreras();
+            }else{
+                JOptionPane.showMessageDialog(this, "Inicie la carrera para conocer los resultados");
+            }            
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una carrera");
+        }
+    }//GEN-LAST:event_jButtonResultadoActionPerformed
 
     private void rellenarTablaCarreras() {
         jTableCarrera.setModel(new TableModelCarreras(gdCarreras.getListaCarreras()));
