@@ -11,6 +11,10 @@ import Modelo.Carrera;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
 
 /**
  *
@@ -30,6 +34,26 @@ public class AltaCarrera extends javax.swing.JDialog {
         initComponents();
         this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
+        
+        jButtonAlta.setEnabled(false);
+        ValidationGroup group = validationPanelAlta.getValidationGroup();
+        
+         group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
+         group.add(jTextFieldLugar, StringValidators.REQUIRE_NON_EMPTY_STRING);
+         
+         validationPanelAlta.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                
+                if (validationPanelAlta.getProblem() == null) {
+                    jButtonAlta.setEnabled(true);
+                } else {
+                    jButtonAlta.setEnabled(false);
+                }
+                
+            }
+        });
+        
     }
 
     public AltaCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carreraModificar) {
@@ -68,6 +92,7 @@ public class AltaCarrera extends javax.swing.JDialog {
         jButtonAlta = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
         jSpinnerNumMax = new javax.swing.JSpinner();
+        validationPanelAlta = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,7 +123,7 @@ public class AltaCarrera extends javax.swing.JDialog {
 
         jButtonLimpiar.setText("Limpiar");
 
-        jSpinnerNumMax.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
+        jSpinnerNumMax.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,8 +147,10 @@ public class AltaCarrera extends javax.swing.JDialog {
                             .addComponent(jLabelFecha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(validationPanelAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -140,13 +167,16 @@ public class AltaCarrera extends javax.swing.JDialog {
                     .addComponent(jLabelLugar)
                     .addComponent(jTextFieldLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNumMax)
-                    .addComponent(jSpinnerNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFecha)
-                    .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelNumMax)
+                            .addComponent(jSpinnerNumMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFecha)
+                            .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(validationPanelAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -224,5 +254,6 @@ public class AltaCarrera extends javax.swing.JDialog {
     private javax.swing.JSpinner jSpinnerNumMax;
     private javax.swing.JTextField jTextFieldLugar;
     private javax.swing.JTextField jTextFieldNom;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanelAlta;
     // End of variables declaration//GEN-END:variables
 }
