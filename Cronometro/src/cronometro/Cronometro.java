@@ -23,8 +23,8 @@ import javax.swing.JOptionPane;
 public class Cronometro extends JLabel implements Serializable {
 
     private Timer timer;
-    private int horas, minutos, segundos, dorsal;
-    private boolean registro, finalizar;
+    private int horas, minutos, segundos;
+    private boolean finalizar;
     private String tiempo, tiempoCorredor = "";
     private List<Integer> listadorsales;
     private CronometroListener cronometroListener;
@@ -52,40 +52,12 @@ public class Cronometro extends JLabel implements Serializable {
         });
     }
 
-    public Timer getTimer() {
-        return timer;
-    }
-
-    public void setTimer(Timer timer) {
-        this.timer = timer;
-    }
-
     public CronometroListener getCronometroListener() {
         return cronometroListener;
     }
 
     public void setCronometroListener(CronometroListener cronometroListener) {
         this.cronometroListener = cronometroListener;
-    }
-
-    public int getDorsal() {
-        return dorsal;
-    }
-
-    public void setDorsal(int dorsal) {
-        this.dorsal = dorsal;
-    }
-
-    public boolean isRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(boolean registro) {
-        this.registro = registro;
-    }
-
-    public List<Integer> getListadorsales() {
-        return listadorsales;
     }
 
     public void setListadorsales(List<Integer> listadorsales) {
