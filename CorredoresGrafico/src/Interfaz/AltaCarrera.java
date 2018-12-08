@@ -8,6 +8,7 @@ package Interfaz;
 import Logica.GestionArchivosCSV;
 import Logica.GestionDeCarreras;
 import Modelo.Carrera;
+import Modelo.CorredorCarrera;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -34,26 +35,26 @@ public class AltaCarrera extends javax.swing.JDialog {
         initComponents();
         this.gdCarreras = gdCarreras;
         this.setLocationRelativeTo(null);
-        
+
         jButtonAlta.setEnabled(false);
         ValidationGroup group = validationPanelAlta.getValidationGroup();
-        
-         group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
-         group.add(jTextFieldLugar, StringValidators.REQUIRE_NON_EMPTY_STRING);
-         
-         validationPanelAlta.addChangeListener(new ChangeListener() {
+
+        group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldLugar, StringValidators.REQUIRE_NON_EMPTY_STRING);
+
+        validationPanelAlta.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                
+
                 if (validationPanelAlta.getProblem() == null) {
                     jButtonAlta.setEnabled(true);
                 } else {
                     jButtonAlta.setEnabled(false);
                 }
-                
+
             }
         });
-        
+
     }
 
     public AltaCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int carreraModificar) {
@@ -227,9 +228,19 @@ public class AltaCarrera extends javax.swing.JDialog {
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         if (modificar != false) {
-            gdCarreras.modificarCarrera(carreraModificar, jTextFieldNom.getText(), jTextFieldLugar.getText(),
-                    (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
-            JOptionPane.showMessageDialog(this, "Carrera modificada");
+            if ((Integer) jSpinnerNumMax.getValue() >= gdCarreras.getListaCarreras().get(carreraModificar).getListaCorredores().size()) {
+                List<CorredorCarrera> listaCorredores = gdCarreras.getListaCarreras().get(carreraModificar).getListaCorredores();
+                gdCarreras.modificarCarrera(carreraModificar, jTextFieldNom.getText(), jTextFieldLugar.getText(),
+                        (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
+                gdCarreras.getListaCarreras().get(carreraModificar).setListaCorredores(listaCorredores);
+                JOptionPane.showMessageDialog(this, "Carrera modificada");
+            } else {
+                int showConfirmDialog = JOptionPane.showConfirmDialog(this, "Si aceptas, se borraran los corredores de la carrera");
+                if (showConfirmDialog == 0) {
+                    gdCarreras.modificarCarrera(carreraModificar, jTextFieldNom.getText(), jTextFieldLugar.getText(),
+                            (Date) jSpinnerFecha.getValue(), (Integer) jSpinnerNumMax.getValue());
+                }
+            }
         } else {
             gdCarreras.altaCarrera(
                     jTextFieldNom.getText(), jTextFieldLugar.getText(),

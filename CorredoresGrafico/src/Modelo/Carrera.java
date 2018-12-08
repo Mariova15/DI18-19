@@ -52,6 +52,10 @@ public class Carrera implements Serializable {
         return numMaxParticipantes;
     }
 
+    public void setListaCorredores(List<CorredorCarrera> listaCorredores) {
+        this.listaCorredores = listaCorredores;
+    }
+    
     public List<CorredorCarrera> getListaCorredores() {
         return listaCorredores;
     }
