@@ -88,6 +88,24 @@ public class GestionDeCarreras implements Serializable {
         return dorsales;
     }
 
+    public List<Corredor> corredoresDisponibles(int idCarrera, List<Corredor> corredoresExsitentes) {
+        List<Corredor> corredoresDisponibles = new ArrayList<>(corredoresExsitentes);
+        List<CorredorCarrera> corredorExistentes = listaCarreras.get(idCarrera).getListaCorredores();
+            for (Iterator<Corredor> itcorredoresDisponible = corredoresDisponibles.iterator();
+                    itcorredoresDisponible.hasNext();) {
+                Corredor corredoresDisponible = itcorredoresDisponible.next();
+                for (Iterator<CorredorCarrera> itcorredorExistente
+                        = corredorExistentes.iterator(); itcorredorExistente.hasNext();) {
+                    CorredorCarrera corredorExistente = itcorredorExistente.next();
+                    if (corredoresDisponible.getDni().equals(corredorExistente.getDni())) {
+                        itcorredoresDisponible.remove();
+                    }
+                }
+            }
+
+        return corredoresDisponibles;
+    }
+
     public void ordenarPorDorsal(int idCarrera) {
         Collections.sort(listaCarreras.get(idCarrera).getListaCorredores(), new Comparator<CorredorCarrera>() {
             @Override

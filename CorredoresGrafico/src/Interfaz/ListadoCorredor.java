@@ -51,11 +51,15 @@ public class ListadoCorredor extends javax.swing.JDialog {
         this.numMax = gdCarreras.getListaCarreras().get(idCarrera).getNumMaxParticipantes();
         jButtonModificar.setText("Agregar corredorer");
         jButtonBorrar.setText("Agregar corredores seleccionados");
-        rellenarTablaCorredores();
+        rellenarTablaCorredoresDisponibles();
     }
 
     private void rellenarTablaCorredores() {
         jTableCorredores.setModel(new TableModelCorredores(gdCorredores.getCorredores()));
+    }
+
+    private void rellenarTablaCorredoresDisponibles() {
+        jTableCorredores.setModel(new TableModelCorredores(gdCarreras.corredoresDisponibles(idCarrera, gdCorredores.getCorredores())));
     }
 
     /**
@@ -147,8 +151,10 @@ public class ListadoCorredor extends javax.swing.JDialog {
                     boolean agregado = false;
                     for (int selectedRow : selectedRows) {
                         Corredor corredorSeleccionado = gdCorredores.getCorredores().get(selectedRow);
+
                         if (numMax > gdCarreras.getListaCarreras().get(idCarrera).getListaCorredores().size()) {
                             boolean agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                            //rellenarTablaCorredoresDisponibles();
                             agregado = agregarCorredor;
                             if (!agregarCorredor) {
                                 JOptionPane.showMessageDialog(this, " El corredor "
@@ -191,8 +197,12 @@ public class ListadoCorredor extends javax.swing.JDialog {
                 if (seleccionado == -1) {
                     JOptionPane.showMessageDialog(this, "Selecciona un corredor");
                 } else {
-                    Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);
+                    //Corredor corredorSeleccionado = gdCorredores.getCorredores().get(seleccionado);                    
+                    String dni = gdCarreras.corredoresDisponibles(
+                            idCarrera, gdCorredores.getCorredores()).get(seleccionado).getDni();
+                    Corredor corredorSeleccionado = gdCorredores.getCorredores().get(gdCorredores.buscarcorredor(dni));
                     boolean agregarCorredor = gdCarreras.agregarCorredor(idCarrera, corredorSeleccionado);
+                    rellenarTablaCorredoresDisponibles();
                     if (agregarCorredor) {
                         JOptionPane.showMessageDialog(this, "Corredor agregado");
                     } else {
