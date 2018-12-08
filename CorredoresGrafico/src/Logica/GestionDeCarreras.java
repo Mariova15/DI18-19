@@ -127,7 +127,7 @@ public class GestionDeCarreras implements Serializable {
         String resultadoCarrera = null;
         resultadoCarrera = "Nombre de la carrera" + "\t" + listaCarreras.get(idCarrera).getNombre() + "\n"
                 + "Fecha de la carrera" + "\t" + Fecha.fechaFormat(listaCarreras.get(idCarrera).getFecha()) + "\n"
-                + "Corredores" + "\n" + "Dorsal" + "\t" + "Tiempo" + "\t" + "\t" + "Nombre" + "\n";
+                + "Dorsal" + "\t" + "Tiempo" + "\t" + "\t" + "Nombre" + "\n";
         for (int i = 0; i < listaCarreras.get(idCarrera).getListaCorredores().size(); i++) {
             resultadoCarrera += listaCarreras.get(idCarrera).getListaCorredores().get(i).getDorsal() + "\t"
                     + listaCarreras.get(idCarrera).getListaCorredores().get(i).getTiempoCarrera() + "\t"

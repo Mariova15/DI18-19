@@ -59,9 +59,16 @@ public class GestionDeCorredores {
      * @param dni
      * @return Corredor de la lista que coincide con el DNI.
      */
-    public int buscarcorredor(String dni) {
-        Corredor c1 = new Corredor(dni);
-        return Collections.binarySearch(corredores, c1);
+    public boolean buscarcorredor(String dni) {
+        boolean encontrado = false;
+        for (Corredor corredore : corredores) {
+            if (dni.equals(corredore.getDni())) {
+                encontrado = true;
+            } else {
+                encontrado = false;
+            }
+        }
+        return encontrado;
     }
 
     /**

@@ -22,7 +22,7 @@ import org.netbeans.validation.api.ui.ValidationGroup;
  * @author alumnop
  */
 public class AltaCorredor extends javax.swing.JDialog {
-    
+
     private GestionDeCorredores gdc;
     private GestionArchivosCSV gacsv = new GestionArchivosCSV();
     private Corredor corredorModificar = null;
@@ -36,30 +36,30 @@ public class AltaCorredor extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.gdc = gdc;
         this.gacsv = gacsv;
-        
+
         jButtonAlta.setEnabled(false);
         ValidationGroup group = validationPanelAlta.getValidationGroup();
-        
+
         group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING,new DNIValidator());
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING, new DNIValidator());
         group.add(jTextFieldDir, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
-        
+
         validationPanelAlta.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                
+
                 if (validationPanelAlta.getProblem() == null) {
                     jButtonAlta.setEnabled(true);
                 } else {
                     jButtonAlta.setEnabled(false);
                 }
-                
+
             }
         });
-        
+
     }
-    
+
     public AltaCorredor(java.awt.Dialog parent, boolean modal, Corredor corredorModificar) {
         super(parent, modal);
         initComponents();
@@ -67,35 +67,35 @@ public class AltaCorredor extends javax.swing.JDialog {
         this.gdc = gdc;
         this.gacsv = gacsv;
         this.corredorModificar = corredorModificar;
-        
+
         ValidationGroup group = validationPanelAlta.getValidationGroup();
-        
+
         group.add(jTextFieldNom, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDir, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldTelf, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
-        
+
         validationPanelAlta.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                
+
                 if (validationPanelAlta.getProblem() == null) {
                     jButtonAlta.setEnabled(true);
                 } else {
                     jButtonAlta.setEnabled(false);
                 }
-                
+
             }
         });
-        
+
         jTextFieldNom.setText(corredorModificar.getNombre());
         jTextFieldDNI.setText(corredorModificar.getDni());
         jTextFieldDir.setText(corredorModificar.getDireccion());
         jTextFieldTelf.setText("" + corredorModificar.getTelf());
         jSpinnerFecha.setValue(corredorModificar.getFechaNacimiento());
         jButtonAlta.setText("Modificar corredor");
-        jButtonLimpiar.setText("Cancelar");        
-        
+        jButtonLimpiar.setText("Cancelar");
+
     }
 
     /**
@@ -244,7 +244,7 @@ public class AltaCorredor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         if (corredorModificar == null) {
             jTextFieldNom.setText("");
             jTextFieldDNI.setText("");
@@ -264,11 +264,19 @@ public class AltaCorredor extends javax.swing.JDialog {
         String dir = jTextFieldDir.getText();
         String telf = jTextFieldTelf.getText();
         Date fecha = (Date) jSpinnerFecha.getValue();
-        
+
         if (corredorModificar == null) {
-            gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);            
-            JOptionPane.showMessageDialog(this, "Corredor añadido");
-            this.dispose();
+            if (!gdc.buscarcorredor(dni)) {
+                System.out.println("PUEDES REGISTRAR");
+                gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
+                JOptionPane.showMessageDialog(this, "Corredor añadido");
+                this.dispose();
+            } else {
+                System.out.println("NO PUEDES REGISTRAR");
+                JOptionPane.showMessageDialog(this, "El corredor ya ha sido añadido");
+            }
+
+            //JOptionPane.showMessageDialog(this, "El corredor ya ha sido añadido");
         } else {
             corredorModificar.setNombre(nombre);
             corredorModificar.setDni(dni);
@@ -278,7 +286,7 @@ public class AltaCorredor extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Corredor modificado");
             this.dispose();
         }
-        
+
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     /**
