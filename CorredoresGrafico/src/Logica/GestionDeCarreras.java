@@ -102,7 +102,6 @@ public class GestionDeCarreras implements Serializable {
                     }
                 }
             }
-
         return corredoresDisponibles;
     }
 
