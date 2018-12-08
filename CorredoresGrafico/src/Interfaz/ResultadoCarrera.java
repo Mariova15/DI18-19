@@ -41,6 +41,7 @@ public class ResultadoCarrera extends javax.swing.JDialog {
         
         gacsv = new GestionArchivosCSV();
         jLabelNomCarrera.setText(gdCarreras.getListaCarreras().get(idCarrera).getNombre());
+        gdCarreras.ordenarPorPosicion(idCarrera);
         rellenarTablaCarreras();
     }
 
@@ -133,7 +134,7 @@ public class ResultadoCarrera extends javax.swing.JDialog {
 
     private void jButtonExportarResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarResultadoActionPerformed
         try {
-            System.out.println(gdCarreras.resultadoCarrera(idCarrera));
+            //System.out.println(gdCarreras.resultadoCarrera(idCarrera));
             gacsv.abrirFicheroEscritura(seleccionarDirectorio(this) + 
                     File.separator + "ResultadoCarrera" + 
                     gdCarreras.getListaCarreras().get(idCarrera).getNombre() + ".txt", false);

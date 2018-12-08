@@ -18,7 +18,7 @@ import java.util.List;
 public class CorrerCarrera extends javax.swing.JDialog {
 
     private GestionDeCarreras gdCarreras;
-    private int idCarrera;
+    private int idCarrera, posicion = 1;
 
     /**
      * Creates new form CorrerCarrera
@@ -29,7 +29,7 @@ public class CorrerCarrera extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
         this.idCarrera = idCarrera;
-
+        jLabelNomCarrera.setText(gdCarreras.getListaCarreras().get(idCarrera).getNombre());
         cronometro.setListadorsales(gdCarreras.listaDorsales(idCarrera));
         cronometro.setCronometroListener(new CronometroListener() {
             @Override
@@ -39,6 +39,9 @@ public class CorrerCarrera extends javax.swing.JDialog {
                 } else {
                     gdCarreras.getListaCarreras().get(idCarrera)
                             .getListaCorredores().get(dorsal - 1).setTiempoCarrera(tiempo);
+                    gdCarreras.getListaCarreras().get(idCarrera)
+                            .getListaCorredores().get(dorsal - 1).setPosicion(posicion);
+                    posicion++;
                     cargarDorsales();
                 }
             }
@@ -67,11 +70,24 @@ public class CorrerCarrera extends javax.swing.JDialog {
 
         jPanelCorrer = new javax.swing.JPanel();
         cronometro = new cronometro.Cronometro();
+        jButtonTerminar = new javax.swing.JButton();
+        jLabelNomCarrera = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         cronometro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cronometro.setText("cronometro1");
+
+        jButtonTerminar.setText("Terminar carrera");
+        jButtonTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTerminarActionPerformed(evt);
+            }
+        });
+
+        jLabelNomCarrera.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabelNomCarrera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNomCarrera.setText("jLabel1");
 
         javax.swing.GroupLayout jPanelCorrerLayout = new javax.swing.GroupLayout(jPanelCorrer);
         jPanelCorrer.setLayout(jPanelCorrerLayout);
@@ -79,15 +95,22 @@ public class CorrerCarrera extends javax.swing.JDialog {
             jPanelCorrerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCorrerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cronometro, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addGroup(jPanelCorrerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cronometro, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(jButtonTerminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNomCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelCorrerLayout.setVerticalGroup(
             jPanelCorrerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorrerLayout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabelNomCarrera)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117))
+                .addGap(83, 83, 83)
+                .addComponent(jButtonTerminar)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,9 +133,15 @@ public class CorrerCarrera extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminarActionPerformed
+        acabarCarrera();
+    }//GEN-LAST:event_jButtonTerminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private cronometro.Cronometro cronometro;
+    private javax.swing.JButton jButtonTerminar;
+    private javax.swing.JLabel jLabelNomCarrera;
     private javax.swing.JPanel jPanelCorrer;
     // End of variables declaration//GEN-END:variables
 }

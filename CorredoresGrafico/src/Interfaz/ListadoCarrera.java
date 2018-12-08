@@ -200,6 +200,7 @@ public class ListadoCarrera extends javax.swing.JDialog {
             if (gdCarreras.getListaCarreras().get(selectedRow).isFinalizada()) {
                 ResultadoCarrera resultadoCarrera = new ResultadoCarrera(this, true, gdCarreras, selectedRow);
             resultadoCarrera.setVisible(true);
+            gdCarreras.ordenarPorDorsal(selectedRow);
             rellenarTablaCarreras();
             }else{
                 JOptionPane.showMessageDialog(this, "Inicie la carrera para conocer los resultados");

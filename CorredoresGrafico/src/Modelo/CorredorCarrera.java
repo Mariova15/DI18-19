@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class CorredorCarrera extends Corredor {
 
-    private int dorsal;
+    private int dorsal, posicion;
     private String tiempo;
 
     public CorredorCarrera(String nombre, String dni, String direccion, int telf, Date fechaNacimiento) {
@@ -35,5 +35,15 @@ public class CorredorCarrera extends Corredor {
     public void setTiempoCarrera(String tiempo) {
         this.tiempo = tiempo;
     }
-        
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+
+    
+    
 }
