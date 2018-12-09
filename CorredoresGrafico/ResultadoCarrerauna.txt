@@ -1,0 +1,6 @@
+Nombre de la carrera	una
+Fecha de la carrera	08/12/18
+Dorsal	Tiempo		Nombre
+1	00:00:02	Adan
+3	00:00:04	Alguien
+2	00:00:08	Roberto

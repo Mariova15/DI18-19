@@ -15,10 +15,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import org.openide.util.Exceptions;
@@ -50,6 +53,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         gdCorredores = SingletonGestionCorredores.getInstance();
         gdCarreras = SingletonGestionCarreras.getInstance();
         gacsv = new GestionArchivosCSV();
+        ponLaAyuda();
         File tempCsv = new File("corredores.txt");
         if (tempCsv.exists()) {
             try {
@@ -113,6 +117,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButtonListadoCarrera = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButtonConf = new javax.swing.JButton();
+        jButtonHelp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,13 +212,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonHelp.setText("Ayuda");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonConf, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                    .addComponent(jButtonHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,6 +230,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonConf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonHelp)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -244,8 +255,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -290,6 +300,24 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         conf.setVisible(true);
     }//GEN-LAST:event_jButtonConfActionPerformed
 
+    private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpOnButton(jButtonHelp, "aplicacion", helpset);
+            //Al pulsar F1 salta la ayuda
+            hb.enableHelpKey(getRootPane(), "aplicacion", helpset);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -330,6 +358,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAlta;
     private javax.swing.JButton jButtonAltaCarrera;
     private javax.swing.JButton jButtonConf;
+    private javax.swing.JButton jButtonHelp;
     private javax.swing.JButton jButtonListadoCarrera;
     private javax.swing.JButton jButtonListadoCoredores;
     private javax.swing.JLabel jLabelCarreras;

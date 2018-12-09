@@ -266,17 +266,13 @@ public class AltaCorredor extends javax.swing.JDialog {
         Date fecha = (Date) jSpinnerFecha.getValue();
 
         if (corredorModificar == null) {
-            if (!gdc.buscarcorredor(dni)) {
-                System.out.println("PUEDES REGISTRAR");
+            if (!gdc.buscarcorredor(dni)) {             
                 gdc.alta(nombre, dni, dir, Integer.parseInt(telf), fecha);
                 JOptionPane.showMessageDialog(this, "Corredor añadido");
                 this.dispose();
             } else {
-                System.out.println("NO PUEDES REGISTRAR");
                 JOptionPane.showMessageDialog(this, "El corredor ya ha sido añadido");
             }
-
-            //JOptionPane.showMessageDialog(this, "El corredor ya ha sido añadido");
         } else {
             corredorModificar.setNombre(nombre);
             corredorModificar.setDni(dni);
