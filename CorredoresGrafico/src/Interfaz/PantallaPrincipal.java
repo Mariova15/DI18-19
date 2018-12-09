@@ -306,13 +306,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             File fichero = new File("help" + File.separator + "help_set.hs");
             URL hsURL = fichero.toURI().toURL();
 
-            // Crea el HelpSet y el HelpBroker
             HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
             HelpBroker hb = helpset.createHelpBroker();
 
             hb.enableHelpOnButton(jButtonHelp, "aplicacion", helpset);
-            //Al pulsar F1 salta la ayuda
+
             hb.enableHelpKey(getRootPane(), "aplicacion", helpset);
+            hb.enableHelpKey(jButtonAlta,"alta_corredor",helpset);
+            hb.enableHelpKey(jButtonListadoCoredores,"lista_corredor",helpset);
+            hb.enableHelpKey(jButtonAltaCarrera,"alta_carrera",helpset);
+            hb.enableHelpKey(jButtonListadoCarrera,"lista_carrera",helpset);
+            hb.enableHelpKey(jButtonConf,"configuracion",helpset);
         } catch (Exception e) {
             e.printStackTrace();
         }
