@@ -91,17 +91,17 @@ public class GestionDeCarreras implements Serializable {
     public List<Corredor> corredoresDisponibles(int idCarrera, List<Corredor> corredoresExsitentes) {
         List<Corredor> corredoresDisponibles = new ArrayList<>(corredoresExsitentes);
         List<CorredorCarrera> corredorExistentes = listaCarreras.get(idCarrera).getListaCorredores();
-            for (Iterator<Corredor> itcorredoresDisponible = corredoresDisponibles.iterator();
-                    itcorredoresDisponible.hasNext();) {
-                Corredor corredoresDisponible = itcorredoresDisponible.next();
-                for (Iterator<CorredorCarrera> itcorredorExistente
-                        = corredorExistentes.iterator(); itcorredorExistente.hasNext();) {
-                    CorredorCarrera corredorExistente = itcorredorExistente.next();
-                    if (corredoresDisponible.getDni().equals(corredorExistente.getDni())) {
-                        itcorredoresDisponible.remove();
-                    }
+        for (Iterator<Corredor> itcorredoresDisponible = corredoresDisponibles.iterator();
+                itcorredoresDisponible.hasNext();) {
+            Corredor corredoresDisponible = itcorredoresDisponible.next();
+            for (Iterator<CorredorCarrera> itcorredorExistente
+                    = corredorExistentes.iterator(); itcorredorExistente.hasNext();) {
+                CorredorCarrera corredorExistente = itcorredorExistente.next();
+                if (corredoresDisponible.getDni().equals(corredorExistente.getDni())) {
+                    itcorredoresDisponible.remove();
                 }
             }
+        }
         return corredoresDisponibles;
     }
 
@@ -121,6 +121,16 @@ public class GestionDeCarreras implements Serializable {
                 return o1.getPosicion() - o2.getPosicion();
             }
         });
+    }
+
+    public void buscarPorDorsal(int idCarrera, int dorsal, String tiempo, int posicion) {
+        List<CorredorCarrera> listaCorredores = listaCarreras.get(idCarrera).getListaCorredores();
+        for (CorredorCarrera corredor : listaCorredores) {
+            if (corredor.getDorsal() == dorsal) {
+                corredor.setTiempoCarrera(tiempo);
+                corredor.setPosicion(posicion);
+            }
+        }
     }
 
     public String resultadoCarrera(int idCarrera) {

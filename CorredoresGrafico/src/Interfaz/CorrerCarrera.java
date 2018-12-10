@@ -37,10 +37,11 @@ public class CorrerCarrera extends javax.swing.JDialog {
                 if (finalizar) {
                     acabarCarrera();
                 } else {
+                    gdCarreras.buscarPorDorsal(idCarrera, dorsal, tiempo, posicion);
+                    /*gdCarreras.getListaCarreras().get(idCarrera)
+                    .getListaCorredores().get(dorsal - 1).setTiempoCarrera(tiempo);
                     gdCarreras.getListaCarreras().get(idCarrera)
-                            .getListaCorredores().get(dorsal - 1).setTiempoCarrera(tiempo);
-                    gdCarreras.getListaCarreras().get(idCarrera)
-                            .getListaCorredores().get(dorsal - 1).setPosicion(posicion);
+                    .getListaCorredores().get(dorsal - 1).setPosicion(posicion);*/
                     posicion++;
                     cargarDorsales();
                 }
