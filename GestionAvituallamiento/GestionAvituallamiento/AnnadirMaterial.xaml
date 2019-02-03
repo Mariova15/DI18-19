@@ -1,0 +1,23 @@
+﻿<Window x:Class="GestionAvituallamiento.AnnadirMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionAvituallamiento"
+        mc:Ignorable="d"
+        Title="AnnadirMaterial" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="labelTitle" Content="Añadir material" HorizontalAlignment="Center" Margin="10,10,604,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
+        <Label x:Name="labelNombreProducto" Content="Nombre del producto" HorizontalAlignment="Center" Margin="10,41,619,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelPrecio" Content="Precio" HorizontalAlignment="Center" Margin="10,72,619,0" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="NombreNombreProducto" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPrecio" HorizontalAlignment="Left" Height="23" Margin="178,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBoxTipo" HorizontalAlignment="Left" Margin="178,100,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxTipo_SelectionChanged">
+            <ComboBoxItem Content="Bebida"/>
+            <ComboBoxItem Content="Comida"/>
+            <ComboBoxItem Content="Material sanitario"/>
+        </ComboBox>
+        <Label x:Name="labelTipo" Content="Tipo" HorizontalAlignment="Center" Margin="10,100,619,0" VerticalAlignment="Top" Width="163"/>
+
+    </Grid>
+</Window>

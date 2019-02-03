@@ -1,0 +1,23 @@
+﻿<Window x:Class="GestionAvituallamiento.CrearAvituallamientos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionAvituallamiento"
+        mc:Ignorable="d"
+        Title="CrearAvituallamientos" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="labelTitle" Content="Creación de avituallamientos" HorizontalAlignment="Center" Margin="10,10,604,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
+        <Label x:Name="labelNombreCarrera" Content="Nombre de la carrera" HorizontalAlignment="Center" Margin="10,41,619,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelPK" Content="Punto kilométrico" HorizontalAlignment="Center" Margin="10,72,619,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelPersonaContacto" Content="Persona de contacto" HorizontalAlignment="Center" Margin="10,102,604,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
+        <Label x:Name="labelNombrePersona" Content="Nombre" HorizontalAlignment="Center" Margin="10,133,619,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelTelefonoPersona" Content="Teléfono" HorizontalAlignment="Center" Margin="10,164,619,0" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="buttonAnnadirMaterial" Content="Añadir material" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="NombreCarrera" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPK" HorizontalAlignment="Left" Height="23" Margin="178,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxNombrePersona" HorizontalAlignment="Left" Height="23" Margin="178,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxTelefonoPersona" HorizontalAlignment="Left" Height="23" Margin="178,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

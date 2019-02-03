@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="labelTitle" Content="Gestión de avituallamientos" HorizontalAlignment="Center" Margin="315,10,314,0" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="buttonCrear" Content="Crear avituallamientos" HorizontalAlignment="Left" Margin="326,138,0,0" VerticalAlignment="Top" Width="137"/>
+
     </Grid>
 </Window>
