@@ -23,5 +23,11 @@ namespace GestionAvituallamiento
         {
             InitializeComponent();
         }
+
+        private void buttonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            AnnadirMaterial annadirMaterial = new AnnadirMaterial();
+            annadirMaterial.ShowDialog();
+        }
     }
 }

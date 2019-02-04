@@ -30,5 +30,11 @@ namespace GestionAvituallamiento
             Prueba p = new Prueba();
             p.ShowDialog();
         }
+
+        private void buttonCrear_Click(object sender, RoutedEventArgs e)
+        {
+            CrearAvituallamientos crearAvituallamiento = new CrearAvituallamientos();
+            crearAvituallamiento.ShowDialog();
+        }
     }
 }

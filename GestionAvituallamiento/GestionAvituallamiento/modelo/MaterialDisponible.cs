@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    class MaterialDisponible
+    public class MaterialDisponible
     {
-        private String nombreProducto { get; set; }
-        private String tipo { get; set; }
-        private double precio { get; set; }
+        public String nombreProducto { get; set; }
+        public String tipo { get; set; }
+        public double precio { get; set; }
 
         public MaterialDisponible(string nombreProducto, double precio, String tipo)
         {

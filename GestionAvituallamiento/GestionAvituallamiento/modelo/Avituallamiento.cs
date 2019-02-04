@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    class Avituallamiento
+    public class Avituallamiento
     {
-        private String carrera { get; set; }
-        private long puntoKilometrico { get; set; }
-        private PersonaContacto personaContacto { get; set; }
-        private List<MaterialDisponible> listaMateriales { get; set; }
+        public String carrera { get; set; }
+        public long puntoKilometrico { get; set; }
+        public PersonaContacto personaContacto { get; set; }
+        public List<MaterialDisponible> listaMateriales { get; set; }
 
         public Avituallamiento(string carrera, long puntoKilometrico, PersonaContacto personaContacto, List<MaterialDisponible> listaMateriales)
         {

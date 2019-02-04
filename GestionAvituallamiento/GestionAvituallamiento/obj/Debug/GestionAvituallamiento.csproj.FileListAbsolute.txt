@@ -17,3 +17,22 @@ C:\Users\alumno\Documents\Visual Studio 2012\Projects\GestionAvituallamiento\Ges
 C:\Users\alumno\Documents\Visual Studio 2012\Projects\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.pdb
 C:\Users\alumno\Documents\Visual Studio 2012\Projects\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.exe
 C:\Users\alumno\Documents\Visual Studio 2012\Projects\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.pdb
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.exe.config
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.exe
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.pdb
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.exe
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.pdb
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.csprojResolveAssemblyReference.cache
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\AnnadirMaterial.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\CrearAvituallamientos.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MainWindow.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\Prueba.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\AnnadirMaterial.g.cs
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\CrearAvituallamientos.g.cs
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MainWindow.g.cs
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\Prueba.g.cs
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\App.g.cs
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento_MarkupCompile.cache
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.g.resources
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.Properties.Resources.resources
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.csproj.GenerateResource.Cache

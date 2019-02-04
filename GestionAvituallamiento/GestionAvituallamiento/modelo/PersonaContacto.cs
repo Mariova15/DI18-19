@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    class PersonaContacto
+    public class PersonaContacto
     {
-        private String nombre { get; set; }
-        private int numTelf { get; set; }
+        public String nombre { get; set; }
+        public int numTelf { get; set; }
 
         public PersonaContacto(string nombre, int numTelf)
         {

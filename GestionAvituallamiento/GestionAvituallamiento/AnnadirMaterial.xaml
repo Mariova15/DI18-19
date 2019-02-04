@@ -1,16 +1,19 @@
 ﻿<Window x:Class="GestionAvituallamiento.AnnadirMaterial"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AnnadirMaterial" Height="300" Width="526.957">
+        Title="AnnadirMaterial" Height="300" Width="326.957">
     <Grid>
         <Label x:Name="labelTitle" Content="Añadir material" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
-        <Label x:Name="labelNombreProducto" Content="Nombre del producto" HorizontalAlignment="Center" Margin="10,41,346,0" VerticalAlignment="Top" Width="163"/>
-        <Label x:Name="labelPrecio" Content="Precio" HorizontalAlignment="Center" Margin="10,72,346,0" VerticalAlignment="Top" Width="163"/>
-        <TextBox x:Name="NombreNombreProducto" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxPrecio" HorizontalAlignment="Left" Height="23" Margin="178,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBoxTipo" HorizontalAlignment="Left" Margin="178,100,0,0" VerticalAlignment="Top" Width="120">
+        <Label x:Name="labelNombreProducto" Content="Nombre del producto" HorizontalAlignment="Center" Margin="10,44,146,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelPrecio" Content="Precio" HorizontalAlignment="Center" Margin="10,72,146,0" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="NombreNombreProducto" HorizontalAlignment="Left" Height="23" Margin="178,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPrecio" HorizontalAlignment="Left" Height="23" Margin="178,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBoxTipo" HorizontalAlignment="Left" Margin="178,103,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Bebida"/>
+            <ComboBoxItem Content="Comida"/>
+            <ComboBoxItem Content="Material sanitario"/>
         </ComboBox>
-        <Label x:Name="labelTipo" Content="Tipo" HorizontalAlignment="Center" Margin="10,100,346,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelTipo" Content="Tipo" HorizontalAlignment="Center" Margin="10,99,146,0" VerticalAlignment="Top" Width="163"/>
 
     </Grid>
 </Window>
