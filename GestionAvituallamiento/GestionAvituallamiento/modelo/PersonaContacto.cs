@@ -8,17 +8,13 @@ namespace GestionAvituallamiento.modelo
 {
     class PersonaContacto
     {
-
-        private String nombre;
-        private int numTelf;
+        private String nombre { get; set; }
+        private int numTelf { get; set; }
 
         public PersonaContacto(string nombre, int numTelf)
         {
             this.nombre = nombre;
             this.numTelf = numTelf;
         }
-
-        public string Nombre { get => nombre; set => nombre = value; }
-        public int NumTelf { get => numTelf; set => numTelf = value; }
     }
 }

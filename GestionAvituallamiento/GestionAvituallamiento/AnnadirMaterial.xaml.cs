@@ -23,10 +23,5 @@ namespace GestionAvituallamiento
         {
             InitializeComponent();
         }
-
-        private void ComboBoxTipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-    }
     }
 }

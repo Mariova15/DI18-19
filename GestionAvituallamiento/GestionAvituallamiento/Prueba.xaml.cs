@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GestionAvituallamiento
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para Prueba.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Prueba : Window
     {
-        public MainWindow()
+        public Prueba()
         {
             InitializeComponent();
-        }
-
-        private void ButtonPrueba_Click(object sender, RoutedEventArgs e)
-        {
-            Prueba p = new Prueba();
-            p.ShowDialog();
         }
     }
 }

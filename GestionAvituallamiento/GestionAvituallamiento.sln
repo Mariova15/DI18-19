@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.102
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionAvituallamiento", "GestionAvituallamiento\GestionAvituallamiento.csproj", "{8A93C1BC-EDFC-4246-BB1E-2CFCC8E665C8}"
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionAvituallamiento", "GestionAvituallamiento\GestionAvituallamiento.csproj", "{0858B281-7D43-49BF-BD0E-98537C8954D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A93C1BC-EDFC-4246-BB1E-2CFCC8E665C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A93C1BC-EDFC-4246-BB1E-2CFCC8E665C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A93C1BC-EDFC-4246-BB1E-2CFCC8E665C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A93C1BC-EDFC-4246-BB1E-2CFCC8E665C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0858B281-7D43-49BF-BD0E-98537C8954D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0858B281-7D43-49BF-BD0E-98537C8954D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0858B281-7D43-49BF-BD0E-98537C8954D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0858B281-7D43-49BF-BD0E-98537C8954D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A7B2CBB9-5CCF-4C35-A592-C92C9AD1E6A9}
 	EndGlobalSection
 EndGlobal

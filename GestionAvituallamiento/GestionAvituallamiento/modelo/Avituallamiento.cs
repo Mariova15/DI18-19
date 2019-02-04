@@ -8,19 +8,11 @@ namespace GestionAvituallamiento.modelo
 {
     class Avituallamiento
     {
+        private String carrera { get; set; }
+        private long puntoKilometrico { get; set; }
+        private PersonaContacto personaContacto { get; set; }
+        private List<MaterialDisponible> listaMateriales { get; set; }
 
-        private String carrera;
-        private long puntoKilometrico;
-        private PersonaContacto personaContacto;
-        private List<MaterialDisponible> listaMateriales;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="carrera"></param>
-        /// <param name="puntoKilometrico"></param>
-        /// <param name="personaContacto"></param>
-        /// <param name="listaMateriales"></param>
         public Avituallamiento(string carrera, long puntoKilometrico, PersonaContacto personaContacto, List<MaterialDisponible> listaMateriales)
         {
             this.carrera = carrera;
@@ -29,13 +21,5 @@ namespace GestionAvituallamiento.modelo
             this.listaMateriales = listaMateriales;
         }
 
-        public long PuntoKilometrico { get => puntoKilometrico; set => puntoKilometrico = value; }
-        public string Carrera { get => carrera; set => carrera = value; }
-        internal PersonaContacto PersonaContacto { get => personaContacto; set => personaContacto = value; }
-        internal List<MaterialDisponible> ListaMateriales { get => listaMateriales; set => listaMateriales = value; }
-
-        public void annadirMaterial(MaterialDisponible material) {
-            listaMateriales.Add(material);
-        }
     }
 }
