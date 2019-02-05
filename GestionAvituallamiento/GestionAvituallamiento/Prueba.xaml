@@ -4,7 +4,7 @@
         Title="Prueba" Height="300" Width="300">
     <Grid>
         <DataGrid x:Name="DataGridPrueba" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
-                  Height="249" Width="272" ItemsSource="{Binding Path=listaPersonas}" AutoGenerateColumns="True"/>
+                  Height="249" Width="272" ItemsSource="{Binding Path=listaAvituallamientos}" AutoGenerateColumns="True"/>
 
     </Grid>
 </Window>

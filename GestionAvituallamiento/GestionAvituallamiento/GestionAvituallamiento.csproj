@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logica\GestionApp.cs" />
     <Compile Include="Prueba.xaml.cs">
       <DependentUpon>Prueba.xaml</DependentUpon>
     </Compile>

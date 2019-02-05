@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionAvituallamiento.Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,20 +21,25 @@ namespace GestionAvituallamiento
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        GestionApp gestionApp;
+
         public MainWindow()
         {
             InitializeComponent();
+            gestionApp = new GestionApp();
+            
         }
 
         private void ButtonPrueba_Click(object sender, RoutedEventArgs e)
         {
-            Prueba p = new Prueba();
+            Prueba p = new Prueba(gestionApp);
             p.ShowDialog();
         }
 
         private void buttonCrear_Click(object sender, RoutedEventArgs e)
         {
-            CrearAvituallamientos crearAvituallamiento = new CrearAvituallamientos();
+            CrearAvituallamientos crearAvituallamiento = new CrearAvituallamientos(gestionApp);
             crearAvituallamiento.ShowDialog();
         }
     }

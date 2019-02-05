@@ -11,14 +11,16 @@ namespace GestionAvituallamiento.modelo
         public String carrera { get; set; }
         public long puntoKilometrico { get; set; }
         public PersonaContacto personaContacto { get; set; }
-        public List<MaterialDisponible> listaMateriales { get; set; }
+        //public List<MaterialDisponible> listaMateriales { get; set; }
+        public MaterialDisponible materialDisponible { get; set; }
 
-        public Avituallamiento(string carrera, long puntoKilometrico, PersonaContacto personaContacto, List<MaterialDisponible> listaMateriales)
+        public Avituallamiento(string carrera, long puntoKilometrico,
+            PersonaContacto personaContacto, MaterialDisponible materialDisponible)
         {
             this.carrera = carrera;
             this.puntoKilometrico = puntoKilometrico;
             this.personaContacto = personaContacto;
-            this.listaMateriales = listaMateriales;
+            this.materialDisponible = materialDisponible;
         }
 
     }

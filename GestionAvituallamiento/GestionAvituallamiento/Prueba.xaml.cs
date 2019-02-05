@@ -1,4 +1,5 @@
-﻿using GestionAvituallamiento.modelo;
+﻿using GestionAvituallamiento.Logica;
+using GestionAvituallamiento.modelo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,15 +23,22 @@ namespace GestionAvituallamiento
     public partial class Prueba : Window
     {
 
-        public ObservableCollection <PersonaContacto> listaPersonas { get; set; }
+        public ObservableCollection<PersonaContacto> listaPersonas { get; set; }
+        public ObservableCollection<Avituallamiento> listaAvituallamientos { get; set; }
+        GestionApp gestionApp;
 
-        public Prueba()
+        public Prueba(GestionApp gestionApp)
         {
             InitializeComponent();
-            listaPersonas = new ObservableCollection<PersonaContacto>();
+            this.gestionApp = gestionApp;
+            listaAvituallamientos = gestionApp.listaAvituallamientos;
+
+            this.DataContext = gestionApp;
+
+            /*listaPersonas = new ObservableCollection<PersonaContacto>();
             listaPersonas.Add(new PersonaContacto("Alguien", 999));
             listaPersonas.Add(new PersonaContacto("Nadie", 888));
-            listaPersonas.Add(new PersonaContacto("todos", 777));
+            listaPersonas.Add(new PersonaContacto("todos", 777));*/
             this.DataContext = this;
         }
 
