@@ -4,7 +4,12 @@
         Title="Prueba" Height="300" Width="300">
     <Grid>
         <DataGrid x:Name="DataGridPrueba" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
-                  Height="249" Width="272" ItemsSource="{Binding Path=listaAvituallamientos}" AutoGenerateColumns="True"/>
-
+                  Height="249" Width="272" ItemsSource="{Binding Path=listaAvituallamientos}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Carrera" Binding="{Binding Path=carrera}"/>
+                <DataGridTextColumn Header="Nombre persona" Binding="{Binding Path=personaContacto.nombre}"/>
+                <DataGridTextColumn Header="Tipo" Binding="{Binding Path=materialDisponible.tipo}"/>
+            </DataGrid.Columns>
+            </DataGrid>
     </Grid>
 </Window>

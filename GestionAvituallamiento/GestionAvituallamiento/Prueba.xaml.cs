@@ -23,8 +23,9 @@ namespace GestionAvituallamiento
     public partial class Prueba : Window
     {
 
-        public ObservableCollection<PersonaContacto> listaPersonas { get; set; }
+       // public ObservableCollection<PersonaContacto> listaPersonas { get; set; }
         //public ObservableCollection<Avituallamiento> listaAvituallamientos { get; set; }
+        
         GestionApp gestionApp;
 
         public Prueba(GestionApp gestionApp)
@@ -32,6 +33,8 @@ namespace GestionAvituallamiento
             InitializeComponent();
             this.gestionApp = gestionApp;
             //listaAvituallamientos = gestionApp.listaAvituallamientos;
+
+
 
             this.DataContext = gestionApp;
 
