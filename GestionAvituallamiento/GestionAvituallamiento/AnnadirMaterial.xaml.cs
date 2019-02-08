@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestionAvituallamiento.Logica;
+using GestionAvituallamiento.modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,29 @@ namespace GestionAvituallamiento
     /// </summary>
     public partial class AnnadirMaterial : Window
     {
-        public AnnadirMaterial()
+        GestionApp gestionApp;
+        public MaterialDisponible materialDisponible { get; set; }
+        public List<String> tiposDeMaterial { get; set; }
+
+        public AnnadirMaterial(GestionApp gestionApp)
         {
             InitializeComponent();
+
+            this.gestionApp = gestionApp;
+
+            tiposDeMaterial = new List<string>() { "Bebida", "Comida", "Material sanitario" };
+
+            materialDisponible = new MaterialDisponible();
+
+            this.DataContext = this;
+        }
+
+
+        private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
+        {
+
+            gestionApp.annadirMaterial(materialDisponible);
+
         }
     }
 }

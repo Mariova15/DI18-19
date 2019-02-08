@@ -22,26 +22,32 @@ namespace GestionAvituallamiento
     public partial class CrearAvituallamientos : Window
     {
         GestionApp gestionApp;
+        public Avituallamiento avituallamiento { get; set; }
+        public PersonaContacto personaContacto { get; set; }
 
         public CrearAvituallamientos(GestionApp gestionApp)
         {
             InitializeComponent();
             this.gestionApp = gestionApp;
+            avituallamiento = new Avituallamiento();
+            personaContacto = new PersonaContacto();
+            this.DataContext = this;
         }
 
         private void buttonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
-            AnnadirMaterial annadirMaterial = new AnnadirMaterial();
-            annadirMaterial.ShowDialog();
-            String nombreCarrera = textBoxNombreCarrera.Text;
-            long pk = long.Parse(textBoxPK.Text);
-            String nombrePersona = textBoxNombrePersona.Text;
-            String telf = textBoxTelefonoPersona.Text;
+            AnnadirMaterial annadirMaterial = new AnnadirMaterial(gestionApp);
+            annadirMaterial.ShowDialog();            
 
-            gestionApp.annadirAvituallamiento(textBoxNombreCarrera.Text, long.Parse(textBoxPK.Text),
-                textBoxNombrePersona.Text,int.Parse(textBoxTelefonoPersona.Text)
-                , new MaterialDisponible("algo", 200,"algo"));
+        }
 
+        private void ButtonRegistrarAvituallamiento_Click(object sender, RoutedEventArgs e)
+        {
+            gestionApp.annadirAvituallamiento(avituallamiento, personaContacto);
+            avituallamiento = new Avituallamiento();
+            personaContacto = new PersonaContacto();
+            //this.Close();
+            
         }
     }
 }

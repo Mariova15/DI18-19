@@ -11,17 +11,24 @@ namespace GestionAvituallamiento.Logica
     public class GestionApp
     {
         public ObservableCollection<Avituallamiento> listaAvituallamientos { get; set; }
+        public List<MaterialDisponible> listaMateriales { get; set; }
 
         public GestionApp() {
             listaAvituallamientos = new ObservableCollection<Avituallamiento>();
+            listaMateriales = new List<MaterialDisponible>();
         }
 
-        public void annadirAvituallamiento(String nombreCarrera, long puntoKilometrico,
-            String nombrePersona, int numTelf, MaterialDisponible material)
+        public void annadirAvituallamiento(Avituallamiento avituallamiento, PersonaContacto personacontacto)
         {
+            avituallamiento.personaContacto = personacontacto;
+            avituallamiento.listaMateriales = listaMateriales;
+            listaAvituallamientos.Add(avituallamiento);
+            avituallamiento.listaMateriales.Clear();
 
-            listaAvituallamientos.Add(new Avituallamiento(nombreCarrera, puntoKilometrico, new PersonaContacto(nombrePersona, numTelf), material));
+        }
 
+        public void annadirMaterial(MaterialDisponible material) {
+            listaMateriales.Add(material);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace GestionAvituallamiento.modelo
         public String tipo { get; set; }
         public double precio { get; set; }
 
+        public MaterialDisponible() { }
+
         public MaterialDisponible(string nombreProducto, double precio, String tipo)
         {
             this.nombreProducto = nombreProducto;

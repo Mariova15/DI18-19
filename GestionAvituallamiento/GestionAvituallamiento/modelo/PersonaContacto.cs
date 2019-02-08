@@ -11,6 +11,8 @@ namespace GestionAvituallamiento.modelo
         public String nombre { get; set; }
         public int numTelf { get; set; }
 
+        public PersonaContacto() { }
+
         public PersonaContacto(string nombre, int numTelf)
         {
             this.nombre = nombre;
