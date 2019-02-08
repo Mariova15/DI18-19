@@ -1,4 +1,4 @@
-﻿using GestionAvituallamiento.Logica;
+﻿using GestionAvituallamiento.logica;
 using GestionAvituallamiento.modelo;
 using System;
 using System.Collections.Generic;
@@ -43,6 +43,7 @@ namespace GestionAvituallamiento
         {
 
             gestionApp.annadirMaterial(materialDisponible);
+            MessageBox.Show("Material añadido");
 
         }
     }

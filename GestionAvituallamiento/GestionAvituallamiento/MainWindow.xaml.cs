@@ -1,4 +1,4 @@
-﻿using GestionAvituallamiento.Logica;
+﻿using GestionAvituallamiento.logica;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,0 +1,22 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Logica="clr-namespace:GestionAvituallamiento.logica" xmlns:modelo="clr-namespace:GestionAvituallamiento.modelo" x:Class="GestionAvituallamiento.Prueba"
+        Title="Prueba" Height="335.821" Width="319.404">
+    <Grid>
+        <DataGrid x:Name="DataGridPrueba" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
+    		Height="285" Width="266" ItemsSource="{Binding listaAvituallamientos}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Carrera" Binding="{Binding carrera}"/>
+                <DataGridTextColumn Header="PK" Binding="{Binding puntoKilometrico}"/>
+                <DataGridTextColumn Header="Nombre persona" Binding="{Binding personaContacto.nombre}"/>
+                <DataGridTextColumn Header="Telf" Binding="{Binding personaContacto.numTelf}"/>
+            </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+        </DataGrid>
+    </Grid>
+</Window>

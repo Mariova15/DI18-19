@@ -1,4 +1,4 @@
-﻿using GestionAvituallamiento.Logica;
+﻿using GestionAvituallamiento.logica;
 using GestionAvituallamiento.modelo;
 using System;
 using System.Collections.Generic;
@@ -33,6 +33,16 @@ namespace GestionAvituallamiento
             this.DataContext = gestionApp;
 
         }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {            
+            if (DataGridPrueba.SelectedItem == null) return;
+            //var selectedPerson = DataGridPrueba.SelectedItem as Avituallamiento;
+            //MessageBox.Show("algo" + selectedPerson.carrera);
+            MaterialesAvituallamiento ma = new MaterialesAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento);
+            ma.ShowDialog();
+        }
+
 
 
     }

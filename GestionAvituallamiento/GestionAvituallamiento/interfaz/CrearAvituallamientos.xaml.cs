@@ -1,4 +1,4 @@
-﻿using GestionAvituallamiento.Logica;
+﻿using GestionAvituallamiento.logica;
 using GestionAvituallamiento.modelo;
 using System;
 using System.Collections.Generic;
@@ -43,10 +43,10 @@ namespace GestionAvituallamiento
 
         private void ButtonRegistrarAvituallamiento_Click(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show(gestionApp.listaMateriales.Count() + "");
             gestionApp.annadirAvituallamiento(avituallamiento, personaContacto);
-            avituallamiento = new Avituallamiento();
-            personaContacto = new PersonaContacto();
-            //this.Close();
+
+            this.Close();
             
         }
     }
