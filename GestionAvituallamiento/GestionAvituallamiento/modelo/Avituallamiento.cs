@@ -15,7 +15,9 @@ namespace GestionAvituallamiento.modelo
         public PersonaContacto personaContacto { get; set; }
         public ObservableCollection<MaterialDisponible> listaMateriales { get; set; }
 
-        public Avituallamiento() { }
+        public Avituallamiento() {
+            listaMateriales = new ObservableCollection<MaterialDisponible>();
+        }
 
         public Avituallamiento(String carrera, double puntoKilometrico,
             PersonaContacto personaContacto)

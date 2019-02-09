@@ -21,15 +21,15 @@ namespace GestionAvituallamiento
     /// </summary>
     public partial class AnnadirMaterial : Window
     {
-        GestionApp gestionApp;
+        public Avituallamiento avituallamiento { get; set; }
         public MaterialDisponible materialDisponible { get; set; }
         public List<String> tiposDeMaterial { get; set; }
 
-        public AnnadirMaterial(GestionApp gestionApp)
+        public AnnadirMaterial(Avituallamiento avituallamiento)
         {
             InitializeComponent();
 
-            this.gestionApp = gestionApp;
+            this.avituallamiento = avituallamiento;
 
             tiposDeMaterial = new List<string>() { "Bebida", "Comida", "Material sanitario" };
 
@@ -42,7 +42,7 @@ namespace GestionAvituallamiento
         private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
 
-            gestionApp.annadirMaterial(materialDisponible);
+            avituallamiento.listaMateriales.Add(materialDisponible);
             MessageBox.Show("Material añadido");
 
         }
