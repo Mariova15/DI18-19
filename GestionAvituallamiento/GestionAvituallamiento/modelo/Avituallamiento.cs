@@ -45,8 +45,8 @@ namespace GestionAvituallamiento.modelo
             }
         }
 
-        private double personaContacto;
-        public double PersonaContacto
+        private PersonaContacto personaContacto;
+        public PersonaContacto PersonaContacto
         {
             get
             {

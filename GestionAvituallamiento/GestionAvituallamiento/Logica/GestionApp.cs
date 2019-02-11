@@ -16,11 +16,10 @@ namespace GestionAvituallamiento.logica
             listaAvituallamientos = new ObservableCollection<Avituallamiento>();
         }
 
-        public void annadirAvituallamiento(Avituallamiento avituallamiento, PersonaContacto personacontacto)
+        public void annadirAvituallamiento(Avituallamiento avituallamiento, PersonaContacto personaContacto)
         {
-            avituallamiento.personaContacto = personacontacto;
+            avituallamiento.PersonaContacto = personaContacto;
             listaAvituallamientos.Add(avituallamiento);
-
         }
 
     }

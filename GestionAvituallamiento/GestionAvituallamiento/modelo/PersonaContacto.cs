@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class PersonaContacto
+    public class PersonaContacto : INotifyPropertyChanged
     {
         /*public String nombre { get; set; }
         public int numTelf { get; set; }*/
-
-        public PersonaContacto() { }
-
+               
         private String nombre;
         public String Nombre
         {
@@ -42,9 +40,9 @@ namespace GestionAvituallamiento.modelo
             }
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public PersonaContacto() { }
 
     }
 }

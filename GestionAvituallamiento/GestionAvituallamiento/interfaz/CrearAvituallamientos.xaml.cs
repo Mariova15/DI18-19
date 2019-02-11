@@ -43,7 +43,7 @@ namespace GestionAvituallamiento
 
         private void ButtonRegistrarAvituallamiento_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(gestionApp.listaMateriales.Count() + "");
+            //MessageBox.Show(personaContacto.Nombre + " " + personaContacto.NumTelf);
             gestionApp.annadirAvituallamiento(avituallamiento, personaContacto);
 
             this.Close();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class MaterialDisponible
+    public class MaterialDisponible : INotifyPropertyChanged
     {
         /*public String nombreProducto { get; set; }
         public String tipo { get; set; }

@@ -9,8 +9,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Carrera" Binding="{Binding Carrera}"/>
                 <DataGridTextColumn Header="PK" Binding="{Binding PuntoKilometrico}"/>
-                <DataGridTextColumn Header="Nombre persona" Binding="{Binding personaContacto.Nombre}"/>
-                <DataGridTextColumn Header="Telf" Binding="{Binding personaContacto.NumTelf}"/>
+                <DataGridTextColumn Header="Nombre persona" Binding="{Binding PersonaContacto.Nombre}"/>
+                <DataGridTextColumn Header="Telf" Binding="{Binding PersonaContacto.NumTelf}"/>
             </DataGrid.Columns>
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
