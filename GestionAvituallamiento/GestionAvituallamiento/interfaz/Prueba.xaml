@@ -7,10 +7,10 @@
         <DataGrid x:Name="DataGridPrueba" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
     		Height="285" Width="266" ItemsSource="{Binding listaAvituallamientos}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Carrera" Binding="{Binding carrera}"/>
-                <DataGridTextColumn Header="PK" Binding="{Binding puntoKilometrico}"/>
-                <DataGridTextColumn Header="Nombre persona" Binding="{Binding personaContacto.nombre}"/>
-                <DataGridTextColumn Header="Telf" Binding="{Binding personaContacto.numTelf}"/>
+                <DataGridTextColumn Header="Carrera" Binding="{Binding Carrera}"/>
+                <DataGridTextColumn Header="PK" Binding="{Binding PuntoKilometrico}"/>
+                <DataGridTextColumn Header="Nombre persona" Binding="{Binding personaContacto.Nombre}"/>
+                <DataGridTextColumn Header="Telf" Binding="{Binding personaContacto.NumTelf}"/>
             </DataGrid.Columns>
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,42 @@ namespace GestionAvituallamiento.modelo
 {
     public class PersonaContacto
     {
-        public String nombre { get; set; }
-        public int numTelf { get; set; }
+        /*public String nombre { get; set; }
+        public int numTelf { get; set; }*/
 
         public PersonaContacto() { }
 
-        public PersonaContacto(string nombre, int numTelf)
+        private String nombre;
+        public String Nombre
         {
-            this.nombre = nombre;
-            this.numTelf = numTelf;
+            get
+            {
+                return nombre;
+            }
+            set
+            {
+                this.nombre = value;
+                this.PropertyChanged(this, new PropertyChangedEventArgs("Nombre"));
+            }
         }
+
+        private int numTelf;
+        public int NumTelf
+        {
+            get
+            {
+                return numTelf;
+            }
+            set
+            {
+                this.numTelf = value;
+                this.PropertyChanged(this, new PropertyChangedEventArgs("NumTelf"));
+            }
+        }
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }

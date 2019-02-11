@@ -22,8 +22,8 @@ namespace GestionAvituallamiento
     /// </summary>
     public partial class Prueba : Window
     {
-        
-        GestionApp gestionApp;
+
+        public GestionApp gestionApp { get; set; }
 
         public Prueba(GestionApp gestionApp)
         {
@@ -37,8 +37,7 @@ namespace GestionAvituallamiento
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {            
             if (DataGridPrueba.SelectedItem == null) return;
-            //var selectedPerson = DataGridPrueba.SelectedItem as Avituallamiento;
-            //MessageBox.Show("algo" + selectedPerson.carrera);
+            
             MaterialesAvituallamiento ma = new MaterialesAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento);
             ma.ShowDialog();
         }

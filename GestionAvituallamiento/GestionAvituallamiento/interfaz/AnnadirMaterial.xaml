@@ -7,9 +7,9 @@
         <Label x:Name="labelNombreProducto" Content="Nombre del producto" HorizontalAlignment="Center" Margin="10,44,146,0" VerticalAlignment="Top" Width="163"/>
         <Label x:Name="labelPrecio" Content="Precio" HorizontalAlignment="Center" Margin="10,72,146,0" VerticalAlignment="Top" Width="163"/>
 
-        <TextBox x:Name="NombreNombreProducto" Text="{Binding materialDisponible.nombreProducto}" HorizontalAlignment="Left" Height="23" Margin="178,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NombreNombreProducto" Text="{Binding materialDisponible.NombreProducto}" HorizontalAlignment="Left" Height="23" Margin="178,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox x:Name="textBoxPrecio" Text="{Binding materialDisponible.precio}" HorizontalAlignment="Left" Height="23" Margin="178,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPrecio" Text="{Binding materialDisponible.Precio}" HorizontalAlignment="Left" Height="23" Margin="178,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <ComboBox x:Name="comboBoxTipo" ItemsSource="{Binding tiposDeMaterial}" SelectedItem="{Binding materialDisponible.tipo}" HorizontalAlignment="Left" Margin="178,103,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="labelTipo" Content="Tipo" HorizontalAlignment="Center" Margin="10,99,146,0" VerticalAlignment="Top" Width="163"/>

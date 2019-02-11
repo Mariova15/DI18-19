@@ -11,13 +11,13 @@
         <Label x:Name="labelTelefonoPersona" Content="Teléfono" HorizontalAlignment="Center" Margin="10,160,169,0" VerticalAlignment="Top" Width="163"/>
         <Button x:Name="buttonAnnadirMaterial" Content="Añadir material" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="118" Click="buttonAnnadirMaterial_Click"/>
         
-        <TextBox x:Name="textBoxNombreCarrera" Text="{Binding avituallamiento.carrera}" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxNombreCarrera" Text="{Binding avituallamiento.Carrera}" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox x:Name="textBoxPK" Text="{Binding avituallamiento.puntoKilometrico}" HorizontalAlignment="Left" Height="23" Margin="178,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPK" Text="{Binding avituallamiento.PuntoKilometrico}" HorizontalAlignment="Left" Height="23" Margin="178,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox x:Name="textBoxNombrePersona" Text="{Binding personaContacto.nombre}" HorizontalAlignment="Left" Height="23" Margin="178,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxNombrePersona" Text="{Binding PersonaContacto.Nombre}" HorizontalAlignment="Left" Height="23" Margin="178,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox x:Name="textBoxTelefonoPersona" Text="{Binding personaContacto.numTelf}" HorizontalAlignment="Left" Height="23" Margin="178,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxTelefonoPersona" Text="{Binding PersonaContacto.NumTelf}" HorizontalAlignment="Left" Height="23" Margin="178,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ButtonRegistrarAvituallamiento" Content="Registrar avituallamiento" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="322" Click="ButtonRegistrarAvituallamiento_Click"/>
 
     </Grid>

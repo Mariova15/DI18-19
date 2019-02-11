@@ -36,14 +36,8 @@ C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallam
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.exe
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.pdb
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.csprojResolveAssemblyReference.cache
-C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\AnnadirMaterial.baml
-C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\CrearAvituallamientos.baml
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MainWindow.baml
-C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\Prueba.baml
-C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\AnnadirMaterial.g.cs
-C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\CrearAvituallamientos.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MainWindow.g.cs
-C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\Prueba.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\App.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento_MarkupCompile.cache
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.g.resources
@@ -58,3 +52,12 @@ D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\D
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\Prueba.baml
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.baml
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.g.cs
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\AnnadirMaterial.baml
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\CrearAvituallamientos.baml
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.baml
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\AnnadirMaterial.g.cs
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\CrearAvituallamientos.g.cs
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\Prueba.g.cs
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.g.cs
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento_MarkupCompile.lref
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\Prueba.baml
