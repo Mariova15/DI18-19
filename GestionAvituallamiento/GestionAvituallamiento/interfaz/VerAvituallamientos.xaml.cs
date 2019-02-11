@@ -44,9 +44,15 @@ namespace GestionAvituallamiento
 
         private void ButtonEditar_Click(object sender, RoutedEventArgs e)
         {
-            CrearAvituallamientos crearAvituallamientos = new CrearAvituallamientos
-                (gestionApp, DataGridPrueba.SelectedItem as Avituallamiento);
-            crearAvituallamientos.ShowDialog();
+            if (DataGridPrueba.SelectedIndex != -1)
+            {
+                CrearAvituallamientos crearAvituallamientos = new CrearAvituallamientos
+                    (gestionApp, DataGridPrueba.SelectedIndex);
+                crearAvituallamientos.ShowDialog();
+            }
+            else {
+                MessageBox.Show("Selecciona un avituallamiento");
+            }
         }
 
         private void ButtonBorrar_Click(object sender, RoutedEventArgs e)

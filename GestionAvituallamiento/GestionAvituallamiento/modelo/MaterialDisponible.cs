@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class MaterialDisponible : INotifyPropertyChanged
+    public class MaterialDisponible : INotifyPropertyChanged, ICloneable
     {
         /*public String nombreProducto { get; set; }
         public String tipo { get; set; }
@@ -61,5 +61,10 @@ namespace GestionAvituallamiento.modelo
 
 
 
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

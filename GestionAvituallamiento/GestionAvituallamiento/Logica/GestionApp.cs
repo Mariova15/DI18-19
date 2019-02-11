@@ -27,5 +27,11 @@ namespace GestionAvituallamiento.logica
             listaAvituallamientos.Remove(avituallamiento);
         }
 
+        public void modificarAvituallamiento(Avituallamiento avituallamiento, PersonaContacto personaContacto, int indexModificar)
+        {
+            avituallamiento.PersonaContacto = personaContacto;
+            listaAvituallamientos[indexModificar] = avituallamiento;
+        }
+
     }
 }

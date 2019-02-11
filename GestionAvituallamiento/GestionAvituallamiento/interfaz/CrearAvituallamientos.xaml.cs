@@ -24,6 +24,7 @@ namespace GestionAvituallamiento
         GestionApp gestionApp;
         public Avituallamiento avituallamiento { get; set; }
         public PersonaContacto personaContacto { get; set; }
+        private int indexModificar = -1;
 
         public CrearAvituallamientos(GestionApp gestionApp)
         {
@@ -34,16 +35,24 @@ namespace GestionAvituallamiento
             this.DataContext = this;
         }
 
-        public CrearAvituallamientos(GestionApp gestionApp, Avituallamiento avituallamiento)
+        public CrearAvituallamientos(GestionApp gestionApp, int indexModificar)
         {
             InitializeComponent();
+            ButtonRegistrarAvituallamiento.Content = "Modificar";
+            ButtonAnnadirMaterial.Visibility = Visibility.Hidden;
             this.gestionApp = gestionApp;
-            this.avituallamiento = avituallamiento;
-            personaContacto = avituallamiento.PersonaContacto;
+
+            //avituallamiento = new Avituallamiento();
+            avituallamiento = gestionApp.listaAvituallamientos[indexModificar].Clone() as Avituallamiento;
+
+            //personaContacto = new PersonaContacto();
+            personaContacto = gestionApp.listaAvituallamientos[indexModificar].PersonaContacto.Clone() as PersonaContacto;
+
+            this.indexModificar = indexModificar;
             this.DataContext = this;
         }
 
-        private void buttonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
+        private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
             AnnadirMaterial annadirMaterial = new AnnadirMaterial(avituallamiento);
             annadirMaterial.ShowDialog();            
@@ -52,8 +61,15 @@ namespace GestionAvituallamiento
 
         private void ButtonRegistrarAvituallamiento_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(personaContacto.Nombre + " " + personaContacto.NumTelf);
-            gestionApp.annadirAvituallamiento(avituallamiento, personaContacto);
+
+            if (indexModificar != -1)
+            {
+                gestionApp.modificarAvituallamiento(avituallamiento, personaContacto, indexModificar);
+            }
+            else {
+                //MessageBox.Show(personaContacto.Nombre + " " + personaContacto.NumTelf);
+                gestionApp.annadirAvituallamiento(avituallamiento, personaContacto);
+            }           
 
             this.Close();
             

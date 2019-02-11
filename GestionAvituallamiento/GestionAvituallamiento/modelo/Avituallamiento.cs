@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class Avituallamiento : INotifyPropertyChanged
+    public class Avituallamiento : INotifyPropertyChanged, ICloneable
     {
         /*public String carrera { get; set; }
         public double puntoKilometrico { get; set; }*/
@@ -65,5 +65,10 @@ namespace GestionAvituallamiento.modelo
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

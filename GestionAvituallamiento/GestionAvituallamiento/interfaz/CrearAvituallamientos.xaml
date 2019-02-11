@@ -9,7 +9,7 @@
         <Label x:Name="labelPersonaContacto" Content="Persona de contacto" HorizontalAlignment="Center" Margin="10,103,154,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
         <Label x:Name="labelNombrePersona" Content="Nombre" HorizontalAlignment="Center" Margin="10,134,169,0" VerticalAlignment="Top" Width="163"/>
         <Label x:Name="labelTelefonoPersona" Content="Teléfono" HorizontalAlignment="Center" Margin="10,160,169,0" VerticalAlignment="Top" Width="163"/>
-        <Button x:Name="buttonAnnadirMaterial" Content="Añadir material" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="118" Click="buttonAnnadirMaterial_Click"/>
+        <Button x:Name="ButtonAnnadirMaterial" Content="Añadir material" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="118" Click="ButtonAnnadirMaterial_Click"/>
         
         <TextBox x:Name="textBoxNombreCarrera" Text="{Binding avituallamiento.Carrera}" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 

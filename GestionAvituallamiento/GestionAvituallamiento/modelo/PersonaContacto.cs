@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class PersonaContacto : INotifyPropertyChanged
+    public class PersonaContacto : INotifyPropertyChanged, ICloneable
     {
         /*public String nombre { get; set; }
         public int numTelf { get; set; }*/
@@ -44,5 +44,10 @@ namespace GestionAvituallamiento.modelo
 
         public PersonaContacto() { }
 
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
