@@ -34,6 +34,15 @@ namespace GestionAvituallamiento
             this.DataContext = this;
         }
 
+        public CrearAvituallamientos(GestionApp gestionApp, Avituallamiento avituallamiento)
+        {
+            InitializeComponent();
+            this.gestionApp = gestionApp;
+            this.avituallamiento = avituallamiento;
+            personaContacto = avituallamiento.PersonaContacto;
+            this.DataContext = this;
+        }
+
         private void buttonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
             AnnadirMaterial annadirMaterial = new AnnadirMaterial(avituallamiento);

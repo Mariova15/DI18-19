@@ -20,12 +20,12 @@ namespace GestionAvituallamiento
     /// <summary>
     /// Lógica de interacción para Prueba.xaml
     /// </summary>
-    public partial class Prueba : Window
+    public partial class VerAvituallamientos : Window
     {
 
         public GestionApp gestionApp { get; set; }
 
-        public Prueba(GestionApp gestionApp)
+        public VerAvituallamientos(GestionApp gestionApp)
         {
             InitializeComponent();
             this.gestionApp = gestionApp;
@@ -40,6 +40,18 @@ namespace GestionAvituallamiento
             
             MaterialesAvituallamiento ma = new MaterialesAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento);
             ma.ShowDialog();
+        }
+
+        private void ButtonEditar_Click(object sender, RoutedEventArgs e)
+        {
+            CrearAvituallamientos crearAvituallamientos = new CrearAvituallamientos
+                (gestionApp, DataGridPrueba.SelectedItem as Avituallamiento);
+            crearAvituallamientos.ShowDialog();
+        }
+
+        private void ButtonBorrar_Click(object sender, RoutedEventArgs e)
+        {
+            gestionApp.borrarAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento);
         }
 
 

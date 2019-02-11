@@ -22,5 +22,10 @@ namespace GestionAvituallamiento.logica
             listaAvituallamientos.Add(avituallamiento);
         }
 
+        public void borrarAvituallamiento(Avituallamiento avituallamiento)
+        {
+            listaAvituallamientos.Remove(avituallamiento);
+        }
+
     }
 }

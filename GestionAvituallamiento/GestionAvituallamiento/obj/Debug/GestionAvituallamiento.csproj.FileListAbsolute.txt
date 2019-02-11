@@ -22,7 +22,6 @@ D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\D
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.pdb
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.exe
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\bin\Debug\GestionAvituallamiento.pdb
-D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.csprojResolveAssemblyReference.cache
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MainWindow.baml
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MainWindow.g.cs
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\App.g.cs
@@ -48,10 +47,6 @@ D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\D
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\CrearAvituallamientos.baml
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\AnnadirMaterial.g.cs
 D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\CrearAvituallamientos.g.cs
-D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\Prueba.g.cs
-D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\Prueba.baml
-D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.baml
-D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\AnnadirMaterial.baml
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\CrearAvituallamientos.baml
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.baml
@@ -61,3 +56,8 @@ C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallam
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\MaterialesAvituallamiento.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento_MarkupCompile.lref
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\Prueba.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\VerAvituallamientos.g.cs
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\VerAvituallamientos.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\GestionAvituallamiento.csprojResolveAssemblyReference.cache
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\MaterialesAvituallamiento.baml
+D:\Proyectos\Code\Git\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\MaterialesAvituallamiento.g.cs

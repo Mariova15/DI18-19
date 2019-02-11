@@ -31,16 +31,16 @@ namespace GestionAvituallamiento
             
         }
 
-        private void ButtonPrueba_Click(object sender, RoutedEventArgs e)
-        {
-            Prueba p = new Prueba(gestionApp);
-            p.ShowDialog();
-        }
-
         private void buttonCrear_Click(object sender, RoutedEventArgs e)
         {
             CrearAvituallamientos crearAvituallamiento = new CrearAvituallamientos(gestionApp);
             crearAvituallamiento.ShowDialog();
+        }
+
+        private void ButtonVer_Click(object sender, RoutedEventArgs e)
+        {
+            VerAvituallamientos verAvituallamientos = new VerAvituallamientos(gestionApp);
+            verAvituallamientos.ShowDialog();
         }
     }
 }
