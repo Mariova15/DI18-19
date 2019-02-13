@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class Avituallamiento : INotifyPropertyChanged, ICloneable
+    public class Avituallamiento : INotifyPropertyChanged, ICloneable, IDataErrorInfo
     {
         /*public String carrera { get; set; }
         public double puntoKilometrico { get; set; }*/
@@ -28,7 +28,7 @@ namespace GestionAvituallamiento.modelo
                 this.carrera = value;
                 this.PropertyChanged(this, new PropertyChangedEventArgs("Carrera"));
             }
-}
+        }
 
 
         private double puntoKilometrico;
@@ -59,7 +59,8 @@ namespace GestionAvituallamiento.modelo
             }
         }
 
-        public Avituallamiento() {
+        public Avituallamiento()
+        {
             listaMateriales = new ObservableCollection<MaterialDisponible>();
         }
 
@@ -69,6 +70,31 @@ namespace GestionAvituallamiento.modelo
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public string Error
+        {
+            get { return ""; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+
+                string resultado = "";
+
+                if (columnName == "carrera")
+                {
+                    if (string.IsNullOrEmpty(carrera))
+                    {
+                        resultado = "Nombre vacío";
+                    }
+                }
+
+                return resultado;
+
+            }
         }
     }
 }

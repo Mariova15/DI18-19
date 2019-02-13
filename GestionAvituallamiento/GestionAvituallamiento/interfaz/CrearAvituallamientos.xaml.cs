@@ -74,5 +74,6 @@ namespace GestionAvituallamiento
             this.Close();
             
         }
+
     }
 }

@@ -59,8 +59,7 @@ namespace GestionAvituallamiento
         {
             gestionApp.borrarAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento);
         }
-
-
+        
 
     }
 }

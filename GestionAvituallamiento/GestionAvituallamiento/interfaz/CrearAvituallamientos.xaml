@@ -10,8 +10,8 @@
         <Label x:Name="labelNombrePersona" Content="Nombre" HorizontalAlignment="Center" Margin="10,134,169,0" VerticalAlignment="Top" Width="163"/>
         <Label x:Name="labelTelefonoPersona" Content="Teléfono" HorizontalAlignment="Center" Margin="10,160,169,0" VerticalAlignment="Top" Width="163"/>
         <Button x:Name="ButtonAnnadirMaterial" Content="Añadir material" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="118" Click="ButtonAnnadirMaterial_Click"/>
-        
-        <TextBox x:Name="textBoxNombreCarrera" Text="{Binding avituallamiento.Carrera}" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox x:Name="textBoxNombreCarrera" Validation.Error="Validation_Error" Text="{Binding avituallamiento.Carrera,NotifyOnValidationError=True,ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <TextBox x:Name="textBoxPK" Text="{Binding avituallamiento.PuntoKilometrico}" HorizontalAlignment="Left" Height="23" Margin="178,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
