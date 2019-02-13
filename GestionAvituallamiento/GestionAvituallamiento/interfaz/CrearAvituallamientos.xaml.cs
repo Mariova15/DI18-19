@@ -25,6 +25,7 @@ namespace GestionAvituallamiento
         public Avituallamiento avituallamiento { get; set; }
         public PersonaContacto personaContacto { get; set; }
         private int indexModificar = -1;
+        private int numErrores = 0;
 
         public CrearAvituallamientos(GestionApp gestionApp)
         {
@@ -73,6 +74,26 @@ namespace GestionAvituallamiento
 
             this.Close();
             
+        }
+
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+            {
+                numErrores++;
+                ((Control)sender).ToolTip = e.Error.ErrorContent;
+            }
+            else if (e.Action == ValidationErrorEventAction.Removed)
+            {
+                numErrores--;
+                ((Control)sender).ToolTip = null;
+            }
+            if (numErrores == 0)
+                ButtonRegistrarAvituallamiento.IsEnabled = true;
+            else
+                ButtonRegistrarAvituallamiento.IsEnabled = false;
+
+
         }
 
     }

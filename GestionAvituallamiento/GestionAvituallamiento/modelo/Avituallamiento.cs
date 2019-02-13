@@ -84,11 +84,18 @@ namespace GestionAvituallamiento.modelo
 
                 string resultado = "";
 
-                if (columnName == "carrera")
+                if (columnName == "Carrera")
                 {
                     if (string.IsNullOrEmpty(carrera))
                     {
                         resultado = "Nombre vacío";
+                    }
+                }
+                if (columnName == "PuntoKilometrico")
+                {
+                    if (puntoKilometrico == 0)
+                    {
+                        resultado = "Punto kilométrico vacío";
                     }
                 }
 

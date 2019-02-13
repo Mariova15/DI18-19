@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class PersonaContacto : INotifyPropertyChanged, ICloneable
+    public class PersonaContacto : INotifyPropertyChanged, ICloneable, IDataErrorInfo
     {
-        /*public String nombre { get; set; }
-        public int numTelf { get; set; }*/
                
         private String nombre;
         public String Nombre
@@ -48,6 +46,36 @@ namespace GestionAvituallamiento.modelo
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public string Error
+        {
+            get { return ""; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string resultado = "";
+
+                if (columnName == "Nombre")
+                {
+                    if (string.IsNullOrEmpty(nombre))
+                    {
+                        resultado = "Nombre vacío";
+                    }
+                }
+                if (columnName == "NumTelf")
+                {
+                    if (numTelf == 0)
+                    {
+                        resultado = "Punto kilométrico vacío";
+                    }
+                }
+
+                return resultado;
+            }
         }
     }
 }
