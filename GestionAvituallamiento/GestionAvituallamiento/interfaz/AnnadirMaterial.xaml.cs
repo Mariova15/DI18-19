@@ -24,6 +24,7 @@ namespace GestionAvituallamiento
         public Avituallamiento avituallamiento { get; set; }
         public MaterialDisponible materialDisponible { get; set; }
         public List<String> tiposDeMaterial { get; set; }
+        private int indexModificar = -1;
 
         public AnnadirMaterial(Avituallamiento avituallamiento)
         {
@@ -38,13 +39,37 @@ namespace GestionAvituallamiento
             this.DataContext = this;
         }
 
+        public AnnadirMaterial(Avituallamiento avituallamiento, int indexModificar)
+        {
+            InitializeComponent();
+
+            this.avituallamiento = avituallamiento;
+
+            tiposDeMaterial = new List<string>() { "Bebida", "Comida", "Material sanitario" };
+
+            ButtonAnnadirMaterial.Content = "Modificar material";
+
+            this.indexModificar = indexModificar;
+
+            this.materialDisponible = avituallamiento.listaMateriales[indexModificar].Clone() as MaterialDisponible;
+
+            this.DataContext = this;
+        }
+
 
         private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
 
+            if (indexModificar != -1)
+            {
+                avituallamiento.listaMateriales[indexModificar] = materialDisponible;
+                MessageBox.Show("Material modificado ");
+            }
+            else{
             avituallamiento.listaMateriales.Add(materialDisponible);
-            MessageBox.Show("Material añadido");
-
+            MessageBox.Show("Material añadido ");
+            }            
+            this.Close();
         }
     }
 }

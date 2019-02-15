@@ -23,7 +23,7 @@ public class CorrerCarrera extends javax.swing.JDialog {
     /**
      * Creates new form CorrerCarrera
      */
-    public CorrerCarrera(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, int idCarrera) {
+    public CorrerCarrera(java.awt.Dialog parent, boolean modal, final GestionDeCarreras gdCarreras, final int idCarrera) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);

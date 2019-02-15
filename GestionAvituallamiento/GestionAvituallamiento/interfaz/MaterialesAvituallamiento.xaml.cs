@@ -21,6 +21,7 @@ namespace GestionAvituallamiento
     public partial class MaterialesAvituallamiento : Window
     {
         public Avituallamiento avituallamientoTabla { get; set; }
+
         public MaterialesAvituallamiento(Avituallamiento avituallamiento)
         {
             InitializeComponent();
@@ -28,6 +29,17 @@ namespace GestionAvituallamiento
             this.DataContext = avituallamientoTabla;
             //MessageBox.Show(avituallamientoTabla.listaMateriales.Count()+"");
 
+        }
+
+        private void ButtonBorrar_Click(object sender, RoutedEventArgs e)
+        {
+            avituallamientoTabla.listaMateriales.RemoveAt(DataGridMaterial.SelectedIndex);
+        }
+
+        private void ButtonEditar_Click(object sender, RoutedEventArgs e)
+        {
+            AnnadirMaterial annadirMaterial = new AnnadirMaterial(avituallamientoTabla, DataGridMaterial.SelectedIndex);
+            annadirMaterial.Show();
         }
     }
 }

@@ -123,7 +123,7 @@ public class GestionFicherosObjetos {
         }
     }
 
-    public void autoGuardado(boolean estado, int tiempo, GestionDeCarreras gdc) {
+    public void autoGuardado(final boolean estado, int tiempo, final GestionDeCarreras gdc) {
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
