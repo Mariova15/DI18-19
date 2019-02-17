@@ -51,6 +51,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelTitle" pref="360" max="32767" attributes="0"/>
                       <Component id="jButtonNoFinalizadas" max="32767" attributes="0"/>
+                      <Component id="jButtonCarrera" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonClasificacionCarrera" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonInformeCorredor" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -63,7 +66,13 @@
                   <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonNoFinalizadas" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="171" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonCarrera" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonClasificacionCarrera" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonInformeCorredor" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,6 +94,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNoFinalizadasActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonCarrera">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Informe sobre una carrera"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonClasificacionCarrera">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clasificaci&#xf3;n de una carrera"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClasificacionCarreraActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonInformeCorredor">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Informe de un corredor"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

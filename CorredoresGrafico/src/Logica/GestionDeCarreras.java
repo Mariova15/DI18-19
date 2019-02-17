@@ -146,10 +146,8 @@ public class GestionDeCarreras implements Serializable {
         return resultadoCarrera;
     }
 
-    public List<Carrera> carrerasSinFinalizar() {
-        
-        List<Carrera> listaCarrerasSinfinalizar = new ArrayList<Carrera>();
-        
+    public List<Carrera> carrerasSinFinalizar() {        
+        List<Carrera> listaCarrerasSinfinalizar = new ArrayList<Carrera>();        
         
         for (Iterator<Carrera> iterator = listaCarreras.iterator(); iterator.hasNext();) {
             Carrera next = iterator.next();
@@ -158,6 +156,22 @@ public class GestionDeCarreras implements Serializable {
             }
         }
         return listaCarrerasSinfinalizar;
+    }
+    
+    public List<Carrera> carrerasFinalizadas() {        
+        List<Carrera> listaCarrerasFinalizadas = new ArrayList<Carrera>();        
+        
+        for (Iterator<Carrera> iterator = listaCarreras.iterator(); iterator.hasNext();) {
+            Carrera next = iterator.next();
+            if (next.isFinalizada()) {
+                listaCarrerasFinalizadas.add(next);
+            }
+        }
+        return listaCarrerasFinalizadas;
+    }
+    
+    public List<CorredorCarrera> clasificacionCorredores(Carrera carrera){    
+        return carrera.getListaCorredores();        
     }
 
 }

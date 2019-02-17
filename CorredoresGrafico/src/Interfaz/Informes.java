@@ -53,6 +53,9 @@ public class Informes extends javax.swing.JDialog {
         jPanelFondo = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
         jButtonNoFinalizadas = new javax.swing.JButton();
+        jButtonCarrera = new javax.swing.JButton();
+        jButtonClasificacionCarrera = new javax.swing.JButton();
+        jButtonInformeCorredor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,6 +70,17 @@ public class Informes extends javax.swing.JDialog {
             }
         });
 
+        jButtonCarrera.setText("Informe sobre una carrera");
+
+        jButtonClasificacionCarrera.setText("Clasificación de una carrera");
+        jButtonClasificacionCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClasificacionCarreraActionPerformed(evt);
+            }
+        });
+
+        jButtonInformeCorredor.setText("Informe de un corredor");
+
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
         jPanelFondoLayout.setHorizontalGroup(
@@ -75,7 +89,10 @@ public class Informes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                    .addComponent(jButtonNoFinalizadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonNoFinalizadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonClasificacionCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonInformeCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelFondoLayout.setVerticalGroup(
@@ -85,7 +102,13 @@ public class Informes extends javax.swing.JDialog {
                 .addComponent(jLabelTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonNoFinalizadas)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCarrera)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonClasificacionCarrera)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonInformeCorredor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,9 +133,6 @@ public class Informes extends javax.swing.JDialog {
 
     private void jButtonNoFinalizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoFinalizadasActionPerformed
         try {
-            for (Carrera carrera : gdCarreras.carrerasSinFinalizar()) {
-                System.out.println(carrera.getNombre());
-            }
             dataSource = new JRBeanCollectionDataSource(gdCarreras.carrerasSinFinalizar());
             parametros = new HashMap();
             print = JasperFillManager.fillReport("reports/jasper/sinfinalizar.jasper", parametros, dataSource);
@@ -122,7 +142,15 @@ public class Informes extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonNoFinalizadasActionPerformed
 
+    private void jButtonClasificacionCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClasificacionCarreraActionPerformed
+        CarrerasFinalizadas carrerasFinalizadas = new CarrerasFinalizadas(this, true, gdCarreras);
+        carrerasFinalizadas.setVisible(true);
+    }//GEN-LAST:event_jButtonClasificacionCarreraActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCarrera;
+    private javax.swing.JButton jButtonClasificacionCarrera;
+    private javax.swing.JButton jButtonInformeCorredor;
     private javax.swing.JButton jButtonNoFinalizadas;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanelFondo;
