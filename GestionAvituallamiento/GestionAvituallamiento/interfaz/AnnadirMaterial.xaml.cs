@@ -26,6 +26,7 @@ namespace GestionAvituallamiento
         public MaterialDisponible materialDisponible { get; set; }
         public List<String> tiposDeMaterial { get; set; }
         private int indexModificar = -1;
+        private Boolean modificar = false;
 
         public AnnadirMaterial(Avituallamiento avituallamiento)
         {
@@ -72,26 +73,52 @@ namespace GestionAvituallamiento
             this.DataContext = this;
         }
 
+        public AnnadirMaterial(MaterialDisponible material, Boolean modificar, int indexModificar, GestionApp gestionApp)
+        {
+            InitializeComponent();
+
+            this.avituallamiento = avituallamiento;
+
+            tiposDeMaterial = new List<string>() { "Bebida", "Comida", "Material sanitario" };
+
+            ButtonAnnadirMaterial.Content = "Modificar material";
+
+            this.materialDisponible = material.Clone() as MaterialDisponible;
+
+            this.modificar = modificar;
+
+            this.gestionApp = gestionApp;
+
+            this.indexModificar = indexModificar;
+
+            this.DataContext = this;
+        }
+
 
         private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
-            if (gestionApp != null) {
-
-                gestionApp.annadirMaterial(materialDisponible);
-
+            if (modificar)
+            {
+                gestionApp.listaMateriales[indexModificar] = materialDisponible;
             }
             else
             {
-
-                if (indexModificar != -1)
+                if (gestionApp != null)
                 {
-                    avituallamiento.listaMateriales[indexModificar] = materialDisponible;
-                    MessageBox.Show("Material modificado ");
+                    gestionApp.annadirMaterial(materialDisponible);
                 }
                 else
                 {
-                    avituallamiento.listaMateriales.Add(materialDisponible);
-                    MessageBox.Show("Material añadido ");
+                    if (indexModificar != -1)
+                    {
+                        avituallamiento.listaMateriales[indexModificar] = materialDisponible;
+                        MessageBox.Show("Material modificado ");
+                    }
+                    else
+                    {
+                        avituallamiento.listaMateriales.Add(materialDisponible);
+                        MessageBox.Show("Material añadido ");
+                    }
                 }
             }
             this.Close();

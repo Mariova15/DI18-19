@@ -43,7 +43,9 @@ namespace GestionAvituallamiento
 
         private void ButtonModificarMaterial_Click(object sender, RoutedEventArgs e)
         {
-            gestionApp.borrarMaterial(DataGridMateriales.SelectedItem as MaterialDisponible);
+            AnnadirMaterial annadirMaterial = new AnnadirMaterial(
+                DataGridMateriales.SelectedItem as MaterialDisponible, true, DataGridMateriales.SelectedIndex, gestionApp);
+            annadirMaterial.Show();
         }
     }
 }
