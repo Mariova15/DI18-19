@@ -42,5 +42,11 @@ namespace GestionAvituallamiento
             VerAvituallamientos verAvituallamientos = new VerAvituallamientos(gestionApp);
             verAvituallamientos.ShowDialog();
         }
+
+        private void ButtonCrearMateriales_Click(object sender, RoutedEventArgs e)
+        {
+            VerMateriales verMateriales = new VerMateriales(gestionApp);
+            verMateriales.ShowDialog();
+        }
     }
 }

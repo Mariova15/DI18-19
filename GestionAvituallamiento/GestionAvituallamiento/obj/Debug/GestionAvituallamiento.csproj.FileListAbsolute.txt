@@ -61,3 +61,5 @@ C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallam
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\VerAvituallamientos.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\MaterialesAvituallamiento.g.cs
 C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\VerAvituallamientos.baml
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\VerMateriales.baml
+C:\Users\alumno\Documents\GitHub\DI1819\GestionAvituallamiento\GestionAvituallamiento\obj\Debug\interfaz\VerMateriales.g.cs

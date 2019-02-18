@@ -9,8 +9,8 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="labelTitle" Content="Gestión de avituallamientos" HorizontalAlignment="Center" HorizontalContentAlignment ="Center"
                Margin="10,10,10,0" VerticalAlignment="Top" Width="266" FontWeight="Bold" Grid.ColumnSpan="2" Height="26"/>
-        <Button x:Name="buttonCrear" Content="Crear" HorizontalAlignment="Center
-                " Margin="74,36,74,0" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="2" Click="buttonCrear_Click" Height="20"/>
-        <Button x:Name="ButtonVer" Content="Ver" HorizontalAlignment="Center" Margin="74,61,74,0" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="2" Height="20" Click="ButtonVer_Click"/>
+        <Button x:Name="buttonCrear" Content="Crear" Margin="67,36,67,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="buttonCrear_Click" Height="20"/>
+        <Button x:Name="ButtonVer" Content="Ver" Margin="67,61,67,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="20" Click="ButtonVer_Click"/>
+        <Button x:Name="ButtonCrearMateriales" Content="Crear materiales" Margin="67,86,67,0" VerticalAlignment="Top" RenderTransformOrigin="0.026,-0.375" Grid.ColumnSpan="2" Click="ButtonCrearMateriales_Click"/>
     </Grid>
 </Window>

@@ -21,6 +21,7 @@ namespace GestionAvituallamiento
     /// </summary>
     public partial class AnnadirMaterial : Window
     {
+        public GestionApp gestionApp { get; set; }
         public Avituallamiento avituallamiento { get; set; }
         public MaterialDisponible materialDisponible { get; set; }
         public List<String> tiposDeMaterial { get; set; }
@@ -33,6 +34,21 @@ namespace GestionAvituallamiento
             this.avituallamiento = avituallamiento;
 
             tiposDeMaterial = new List<string>() { "Bebida", "Comida", "Material sanitario" };
+
+            materialDisponible = new MaterialDisponible();
+
+            this.DataContext = this;
+        }
+
+        public AnnadirMaterial(GestionApp gestionApp)
+        {
+            InitializeComponent();
+
+            this.gestionApp = gestionApp;
+
+            tiposDeMaterial = new List<string>() { "Bebida", "Comida", "Material sanitario" };
+
+            ButtonAnnadirMaterial.Content = "Crear Material";
 
             materialDisponible = new MaterialDisponible();
 
@@ -59,16 +75,25 @@ namespace GestionAvituallamiento
 
         private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
+            if (gestionApp != null) {
 
-            if (indexModificar != -1)
-            {
-                avituallamiento.listaMateriales[indexModificar] = materialDisponible;
-                MessageBox.Show("Material modificado ");
+                gestionApp.annadirMaterial(materialDisponible);
+
             }
-            else{
-            avituallamiento.listaMateriales.Add(materialDisponible);
-            MessageBox.Show("Material añadido ");
-            }            
+            else
+            {
+
+                if (indexModificar != -1)
+                {
+                    avituallamiento.listaMateriales[indexModificar] = materialDisponible;
+                    MessageBox.Show("Material modificado ");
+                }
+                else
+                {
+                    avituallamiento.listaMateriales.Add(materialDisponible);
+                    MessageBox.Show("Material añadido ");
+                }
+            }
             this.Close();
         }
     }
