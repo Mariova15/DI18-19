@@ -27,6 +27,7 @@ namespace GestionAvituallamiento
         public List<String> tiposDeMaterial { get; set; }
         private int indexModificar = -1;
         private Boolean modificar = false;
+        private int numErrores = 0;
 
         public AnnadirMaterial(Avituallamiento avituallamiento)
         {
@@ -100,12 +101,14 @@ namespace GestionAvituallamiento
             if (modificar)
             {
                 gestionApp.listaMateriales[indexModificar] = materialDisponible;
+                MessageBox.Show("Material añadido ");
             }
             else
             {
                 if (gestionApp != null)
                 {
                     gestionApp.annadirMaterial(materialDisponible);
+                    MessageBox.Show("Material añadido ");
                 }
                 else
                 {
@@ -123,5 +126,26 @@ namespace GestionAvituallamiento
             }
             this.Close();
         }
+
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+            {
+                numErrores++;
+                ((Control)sender).ToolTip = e.Error.ErrorContent;
+            }
+            else if (e.Action == ValidationErrorEventAction.Removed)
+            {
+                numErrores--;
+                ((Control)sender).ToolTip = null;
+            }
+            if (numErrores == 0)
+                ButtonAnnadirMaterial.IsEnabled = true;
+            else
+                ButtonAnnadirMaterial.IsEnabled = false;
+
+
+        }
+
     }
 }

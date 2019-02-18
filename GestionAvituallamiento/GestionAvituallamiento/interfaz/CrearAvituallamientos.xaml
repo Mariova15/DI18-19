@@ -22,7 +22,7 @@
 
         <TextBox x:Name="textBoxTelefonoPersona" Validation.Error="Validation_Error" Text="{Binding personaContacto.NumTelf,
             NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" Margin="178,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ButtonRegistrarAvituallamiento" Content="Registrar avituallamiento" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="322" Click="ButtonRegistrarAvituallamiento_Click"/>
+        <Button x:Name="ButtonRegistrarAvituallamiento" Content="Registrar avituallamiento" Margin="10,225,10,0" VerticalAlignment="Top" Click="ButtonRegistrarAvituallamiento_Click"/>
 
     </Grid>
 </Window>

@@ -37,8 +37,8 @@ namespace GestionAvituallamiento
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {            
             if (DataGridPrueba.SelectedItem == null) return;
-            
-            MaterialesAvituallamiento ma = new MaterialesAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento);
+
+            MaterialesAvituallamiento ma = new MaterialesAvituallamiento(DataGridPrueba.SelectedItem as Avituallamiento, gestionApp);
             ma.ShowDialog();
         }
 

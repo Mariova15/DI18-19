@@ -63,6 +63,7 @@ namespace GestionAvituallamiento
         private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
             avituallamiento.listaMateriales.Add(DataGridMateriales.SelectedItem as MaterialDisponible);
+            MessageBox.Show("Material añadido");
         }
     }
 }

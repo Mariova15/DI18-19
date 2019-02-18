@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionAvituallamiento.modelo
 {
-    public class MaterialDisponible : INotifyPropertyChanged, ICloneable
+    public class MaterialDisponible : INotifyPropertyChanged, ICloneable, IDataErrorInfo
     {
         /*public String nombreProducto { get; set; }
         public String tipo { get; set; }
@@ -65,6 +65,43 @@ namespace GestionAvituallamiento.modelo
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string resultado = "";
+
+                if (columnName == "NombreProducto")
+                {
+                    if (string.IsNullOrEmpty(nombreProducto))
+                    {
+                        resultado = "Nombre vacío";
+                    }
+                }
+                if (columnName == "Precio")
+                {
+                    if ((precio == 0) && (precio > 0))
+                    {
+                        resultado = "el precio tiene que ser mayor que 0";
+                    }
+                }
+                if (columnName == "Tipo")
+                {
+                    if (string.IsNullOrEmpty(tipo))
+                    {
+                        resultado = "Tipo vacío";
+                    }
+                }
+                return resultado;
+            }
+        }
+
+
+        public string Error
+        {
+            get { return ""; }
         }
     }
 }
