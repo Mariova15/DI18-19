@@ -22,11 +22,23 @@ namespace GestionAvituallamiento
     public partial class VerMateriales : Window
     {
         GestionApp gestionApp;
+        private Avituallamiento avituallamiento;
 
         public VerMateriales(GestionApp gestionApp)
         {
             InitializeComponent();
             this.gestionApp = gestionApp;
+            ButtonAnnadirMaterial.Visibility = Visibility.Hidden;
+            this.DataContext = gestionApp;
+        }
+
+        public VerMateriales(GestionApp gestionApp, Avituallamiento avituallamiento)
+        {
+            InitializeComponent();
+            this.avituallamiento = avituallamiento;
+            ButtonBorrarMaterial.Visibility = Visibility.Hidden;
+            ButtonEditarMaterial.Visibility = Visibility.Hidden;
+            ButtonCrearMaterial.Visibility = Visibility.Hidden;
             this.DataContext = gestionApp;
         }
 
@@ -46,6 +58,11 @@ namespace GestionAvituallamiento
             AnnadirMaterial annadirMaterial = new AnnadirMaterial(
                 DataGridMateriales.SelectedItem as MaterialDisponible, true, DataGridMateriales.SelectedIndex, gestionApp);
             annadirMaterial.Show();
+        }
+
+        private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            avituallamiento.listaMateriales.Add(DataGridMateriales.SelectedItem as MaterialDisponible);
         }
     }
 }

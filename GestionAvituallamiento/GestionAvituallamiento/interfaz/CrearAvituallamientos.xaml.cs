@@ -55,8 +55,11 @@ namespace GestionAvituallamiento
 
         private void ButtonAnnadirMaterial_Click(object sender, RoutedEventArgs e)
         {
-            AnnadirMaterial annadirMaterial = new AnnadirMaterial(avituallamiento);
-            annadirMaterial.ShowDialog();            
+            /*AnnadirMaterial annadirMaterial = new AnnadirMaterial(avituallamiento);
+            annadirMaterial.ShowDialog();   */
+
+            VerMateriales verMateriales = new VerMateriales(gestionApp, avituallamiento);
+            verMateriales.ShowDialog();
 
         }
 

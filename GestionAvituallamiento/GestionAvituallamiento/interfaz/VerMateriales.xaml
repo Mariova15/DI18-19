@@ -1,12 +1,13 @@
 ﻿<Window x:Class="GestionAvituallamiento.VerMateriales"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="VerMateriales" Height="322.979" Width="300">
-    <Grid>
+        Title="VerMateriales" Height="367.481" Width="300">
+    <Grid Margin="0,0,0,-3">
         <DataGrid x:Name="DataGridMateriales" Margin="10,10,10,0" VerticalAlignment="Top" Height="198"
                   ItemsSource="{Binding listaMateriales}" AutoGenerateColumns="True" IsReadOnly="True"/>
         <Button x:Name="ButtonCrearMaterial" Content="Crear material" Margin="10,213,10,0" VerticalAlignment="Top"  Click="ButtonCrearMaterial_Click"/>
         <Button x:Name="ButtonEditarMaterial" Content="Editar material" Margin="10,238,10,0" VerticalAlignment="Top" Click="ButtonModificarMaterial_Click"/>
         <Button x:Name="ButtonBorrarMaterial" Content="Borrar material" Margin="10,263,10,0" VerticalAlignment="Top" Click="ButtonBorrarMaterial_Click"/>
+        <Button x:Name="ButtonAnnadirMaterial" Content="Añadir material al avituallamiento" Margin="10,288,10,0" VerticalAlignment="Top" Click="ButtonAnnadirMaterial_Click"/>
     </Grid>
 </Window>
