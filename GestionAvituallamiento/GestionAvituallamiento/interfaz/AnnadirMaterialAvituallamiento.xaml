@@ -1,0 +1,20 @@
+﻿<Window x:Class="GestionAvituallamiento.interfaz.AnnadirMaterialAvituallamiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AnnadirMaterialAvituallamiento" Height="335.146" Width="300">
+    <Grid>
+        <DataGrid x:Name="DataGridMaterial" Margin="10,10,10,0" VerticalAlignment="Top" Height="200"
+    		ItemsSource="{Binding listaMateriales}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding NombreProducto}"/>
+                <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="LabelCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="TextBoxCantidad" Validation.Error="Validation_Error" 
+                 Text="{Binding Cantidad, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" Margin="104,219,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonAnnadirMaterial" Content="Añadir material" Margin="10,259,10,0" VerticalAlignment="Top" Click="ButtonAnnadirMaterial_Click"/>
+
+    </Grid>
+</Window>

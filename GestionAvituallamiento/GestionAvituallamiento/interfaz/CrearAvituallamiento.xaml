@@ -1,0 +1,23 @@
+﻿<Window x:Class="GestionAvituallamiento.interfaz.CrearAvituallamiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CrearAvituallamiento" Height="300" Width="333.891">
+    <Grid>
+        <Label x:Name="labelTitle" Content="Creación de avituallamientos" Margin="10,10,138,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelPK" Content="Punto kilométrico" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelPersonaContacto" Content="Persona de contacto" HorizontalAlignment="Center" Margin="10,72,138,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
+        <Label x:Name="labelNombrePersona" Content="Nombre" HorizontalAlignment="Center" Margin="10,103,153,0" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="labelTelefonoPersona" Content="Teléfono" HorizontalAlignment="Center" Margin="10,134,153,0" VerticalAlignment="Top" Width="163"/>
+
+        <TextBox x:Name="textBoxPK" Validation.Error="Validation_Error" Text="{Binding avituallamiento.PuntoKilometrico, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" Margin="178,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox x:Name="textBoxNombrePersona" Validation.Error="Validation_Error" 
+                 Text="{Binding personaContacto.Nombre, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" Margin="178,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox x:Name="textBoxTelefonoPersona" Validation.Error="Validation_Error" 
+                 Text="{Binding personaContacto.NumTelf, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" Margin="178,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonCrearAvituallamiento" Content="Crear avituallamiento" Margin="10,225,10,0" VerticalAlignment="Top" Click="ButtonCrearAvituallamiento_Click"/>
+        <Button x:Name="ButtonAnnadirMaterial" Content="Añadir material" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="123" Click="ButtonAnnadirMaterial_Click"/>
+
+    </Grid>
+</Window>

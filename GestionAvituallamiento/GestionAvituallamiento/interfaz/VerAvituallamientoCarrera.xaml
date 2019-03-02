@@ -1,0 +1,21 @@
+﻿<Window x:Class="GestionAvituallamiento.interfaz.VerAvituallamientoCarrera"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VerAvituallamientoCarrera" Height="402.803" Width="300">
+    <Grid>
+        <DataGrid x:Name="DataGridAvituallamiento" Margin="10,10,10,0" VerticalAlignment="Top" 
+    		Height="207" ItemsSource="{Binding carrera.listaAvituallamientos}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PK" Binding="{Binding PuntoKilometrico}"/>
+                <DataGridTextColumn Header="Nombre persona" Binding="{Binding PersonaContacto.Nombre}"/>
+                <DataGridTextColumn Header="Telf" Binding="{Binding PersonaContacto.NumTelf}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ButtonEditar" Content="Editar" Margin="10,222,10,0" VerticalAlignment="Top" Click="ButtonEditar_Click" />
+        <Button x:Name="ButtonBorrar" Content="Borrar" Margin="10,272,10,0" VerticalAlignment="Top" Click="ButtonBorrar_Click" />
+        <Button x:Name="ButtonAnnadir" Content="Añadir" Margin="10,247,10,0" VerticalAlignment="Top" Click="ButtonAnnadir_Click" />
+        <Button x:Name="ButtonAnnadirMaterialAvituallamiento" Content="Añadir material a avituallamiento" Margin="10,297,10,0" VerticalAlignment="Top" Click="ButtonAnnadirMaterialAvituallamiento_Click"/>
+        <Button x:Name="ButtonVerMaterialesAvituallamiento" Content="Ver materiales del avituallamiento" Margin="10,322,10,0" VerticalAlignment="Top" Click="ButtonVerMaterialesAvituallamiento_Click"/>
+
+    </Grid>
+</Window>

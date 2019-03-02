@@ -1,0 +1,18 @@
+﻿<Window x:Class="GestionAvituallamiento.interfaz.CrearCarrera"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CrearCarrera" Height="300" Width="300">
+    <Grid>
+        <Label x:Name="labelTitle" Content="Crear carrera" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="178" FontWeight="Bold"/>
+        <Label x:Name="labelNombreProducto" Content="Nombre de la carrera" Margin="8,44,135,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="NombreCarrera"  Validation.Error="Validation_Error" 
+    		Text="{Binding carrera.NombreCarrera, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Height="23" Margin="162,47,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Button x:Name="ButtonCrearCarrera" Content="Crear carrera" Margin="62,137,62,0" VerticalAlignment="Top" Click="ButtonCrearCarrera_Click" />
+        <Label x:Name="labelLugarCarrera" Content="Lugar de la carrera" Margin="8,72,135,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="LugarCarrera"  Validation.Error="Validation_Error" 
+        	Text="{Binding carrera.LugarCarrera, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Height="23" Margin="162,75,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

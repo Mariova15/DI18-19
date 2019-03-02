@@ -1,0 +1,20 @@
+﻿<Window x:Class="GestionAvituallamiento.interfaz.VerCarreras"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VerCarreras" Height="386.141" Width="300">
+    <Grid Margin="0,0,0,-4">
+        <DataGrid x:Name="DataGridCarrera" Margin="10,10,10,0" VerticalAlignment="Top" Height="200"
+    		ItemsSource="{Binding listaCarreras}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding NombreCarrera}"/>
+                <DataGridTextColumn Header="Lugar" Binding="{Binding LugarCarrera}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ButtonEditar" Content="Editar" Margin="10,215,10,0" VerticalAlignment="Top" Click="ButtonEditar_Click"  />
+        <Button x:Name="ButtonBorrar" Content="Borrar" Margin="10,265,10,-16" VerticalAlignment="Top" Click="ButtonBorrar_Click"  />
+        <Button x:Name="ButtonAnnadir" Content="Añadir" Margin="10,240,10,0" VerticalAlignment="Top" Click="ButtonAnnadir_Click" />
+        <Button x:Name="ButtonAnnadirAvituallamiento" Content="Añadir avituallamiento" Margin="10,290,10,0" VerticalAlignment="Top" Click="ButtonAnnadirAvituallamiento_Click"/>
+        <Button x:Name="ButtonVerAvituallamientos" Content="Ver avituallamientos de la carrera" Margin="10,315,10,0" VerticalAlignment="Top" Click="ButtonVerAvituallamientos_Click"/>
+
+    </Grid>
+</Window>
