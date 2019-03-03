@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informecarrera" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ddcbe5e-c491-49a9-a8f2-2c56ea9ae66d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NumCorredores" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Proyectos\\Code\\Git\\DI1819\\CorredoresGrafico\\reports\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[nombre]]></fieldDescription>
+	</field>
+	<field name="lugarCarrera" class="java.lang.String">
+		<fieldDescription><![CDATA[lugarCarrera]]></fieldDescription>
+	</field>
+	<field name="listaCorredores" class="java.util.List">
+		<fieldDescription><![CDATA[listaCorredores]]></fieldDescription>
+	</field>
+	<field name="finalizada" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[finalizada]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="79" uuid="ebd7d8bb-0e3b-4519-8ec0-60a39bd61c1c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="298" height="79" uuid="ad5aa8b4-a63a-4608-88f8-f2c87bb21ebd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{finalizada} == true?"Finalizada":"Pendiente"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="bf1de4f8-872f-47f8-865d-8ea8edc2c46c"/>
+				<text><![CDATA[Lugar de la carrera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="41" width="128" height="20" uuid="0fd92a0e-52de-4231-ae4a-b987419e2257"/>
+				<text><![CDATA[Número de corredores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="41" width="299" height="20" uuid="c61b066c-a03f-4350-b671-bb717be9368c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Corredores]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="11" width="100" height="20" uuid="46c0b4d2-d35a-4d02-8cc2-f2915d0039b4"/>
+				<textFieldExpression><![CDATA[$F{lugarCarrera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="11" width="128" height="20" uuid="e3f6562e-c02d-4da4-af4c-4736f1b3b271"/>
+				<textFieldExpression><![CDATA[$P{NumCorredores}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="244" y="11" width="299" height="100" uuid="bf3b2321-b5df-42a9-a594-1fb45244f217"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listaCorredores})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "informecarrera_subreportCorredoresCarrera.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

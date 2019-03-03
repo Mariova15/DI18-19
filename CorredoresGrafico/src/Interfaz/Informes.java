@@ -71,6 +71,11 @@ public class Informes extends javax.swing.JDialog {
         });
 
         jButtonCarrera.setText("Informe sobre una carrera");
+        jButtonCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCarreraActionPerformed(evt);
+            }
+        });
 
         jButtonClasificacionCarrera.setText("Clasificación de una carrera");
         jButtonClasificacionCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +85,11 @@ public class Informes extends javax.swing.JDialog {
         });
 
         jButtonInformeCorredor.setText("Informe de un corredor");
+        jButtonInformeCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInformeCorredorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
@@ -134,7 +144,7 @@ public class Informes extends javax.swing.JDialog {
     private void jButtonNoFinalizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoFinalizadasActionPerformed
         try {
             dataSource = new JRBeanCollectionDataSource(gdCarreras.carrerasSinFinalizar());
-            parametros = new HashMap();
+            parametros = new HashMap();            
             print = JasperFillManager.fillReport("reports/jasper/sinfinalizar.jasper", parametros, dataSource);
             JasperExportManager.exportReportToPdfFile(print, "reports/pdf/sinfinalizar.pdf");
         } catch (JRException ex) {
@@ -143,9 +153,19 @@ public class Informes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonNoFinalizadasActionPerformed
 
     private void jButtonClasificacionCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClasificacionCarreraActionPerformed
-        CarrerasFinalizadas carrerasFinalizadas = new CarrerasFinalizadas(this, true, gdCarreras);
+        CarrerasFinalizadas carrerasFinalizadas = new CarrerasFinalizadas(this, true, gdCarreras, true);
         carrerasFinalizadas.setVisible(true);
     }//GEN-LAST:event_jButtonClasificacionCarreraActionPerformed
+
+    private void jButtonCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarreraActionPerformed
+        CarrerasFinalizadas carrerasFinalizadas = new CarrerasFinalizadas(this, true, gdCarreras);
+        carrerasFinalizadas.setVisible(true);
+    }//GEN-LAST:event_jButtonCarreraActionPerformed
+
+    private void jButtonInformeCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInformeCorredorActionPerformed
+        InformeCorredores informeCorredores = new InformeCorredores(this, true, gdCorredores, gdCarreras);
+        informeCorredores.setVisible(true);
+    }//GEN-LAST:event_jButtonInformeCorredorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCarrera;

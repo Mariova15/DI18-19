@@ -8,6 +8,7 @@ package Interfaz;
 import Interfaz.Tablemodels.TableModelCarreras;
 import Logica.GestionDeCarreras;
 import Modelo.Carrera;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,25 +27,36 @@ import org.openide.util.Exceptions;
 public class CarrerasFinalizadas extends javax.swing.JDialog {
 
     private GestionDeCarreras gdCarreras;
-    private List<Carrera> carrerasFinalizadas;
+    private List<Carrera> carreras;
     private JRDataSource dataSource;
     private Map parametros;
     private JasperPrint print;
+    private boolean finalizada;
 
     /**
      * Creates new form CarrerasFinalizadas
      */
+    public CarrerasFinalizadas(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras, boolean finalizada) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.gdCarreras = gdCarreras;
+        this.finalizada = finalizada;
+        carreras = gdCarreras.carrerasFinalizadas();
+        rellenarTablaCarreras();
+    }
+
     public CarrerasFinalizadas(java.awt.Dialog parent, boolean modal, GestionDeCarreras gdCarreras) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.gdCarreras = gdCarreras;
-        carrerasFinalizadas = gdCarreras.carrerasFinalizadas();
+        carreras = gdCarreras.getListaCarreras();
         rellenarTablaCarreras();
     }
 
     private void rellenarTablaCarreras() {
-        jTableCarrera.setModel(new TableModelCarreras(carrerasFinalizadas));
+        jTableCarrera.setModel(new TableModelCarreras(carreras));
     }
 
     /**
@@ -125,15 +137,34 @@ public class CarrerasFinalizadas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInformeActionPerformed
-        try {
+        if (finalizada) {
+            try {
+                if (jTableCarrera.getSelectedRow() != -1) {
+                    dataSource = new JRBeanCollectionDataSource(carreras.get(jTableCarrera.getSelectedRow()).getListaCorredores());
+                    parametros = new HashMap();
+                    parametros.put("NomCarrera", carreras.get(jTableCarrera.getSelectedRow()).getNombre());
+                    print = JasperFillManager.fillReport("reports/jasper/clasificacioncorredores.jasper", parametros, dataSource);
+                    JasperExportManager.exportReportToPdfFile(print, "reports/pdf/clasificacioncorredores.pdf");
+                }
+            } catch (JRException ex) {
+                Exceptions.printStackTrace(ex);
+            }
+        } else {
             if (jTableCarrera.getSelectedRow() != -1) {
-                dataSource = new JRBeanCollectionDataSource(carrerasFinalizadas.get(jTableCarrera.getSelectedRow()).getListaCorredores());
-            parametros = new HashMap();
-            print = JasperFillManager.fillReport("reports/jasper/clasificacioncorredores.jasper", parametros, dataSource);
-            JasperExportManager.exportReportToPdfFile(print, "reports/pdf/clasificacioncorredores.pdf");
-            }            
-        } catch (JRException ex) {
-            Exceptions.printStackTrace(ex);
+                try {
+                    List<Carrera> tempList = new ArrayList<>();
+                    tempList.add(carreras.get(jTableCarrera.getSelectedRow()));
+                    dataSource = new JRBeanCollectionDataSource(tempList); 
+                    parametros = new HashMap();
+                    parametros.put("NumCorredores", carreras.get(jTableCarrera.getSelectedRow()).getListaCorredores().size()+"");                    
+                    print = JasperFillManager.fillReport("reports/jasper/informecarrera.jasper", parametros, dataSource);
+                    //JasperExportManager.exportReportToPdfFile(print, "reports/pdf/informecarrera.pdf");
+                    JasperExportManager.exportReportToPdfFile(
+                            print, "reports/pdf/informe" + carreras.get(jTableCarrera.getSelectedRow()).getNombre() + ".pdf");
+                } catch (JRException ex) {
+                    Exceptions.printStackTrace(ex);
+                }
+            }
         }
     }//GEN-LAST:event_jButtonInformeActionPerformed
 

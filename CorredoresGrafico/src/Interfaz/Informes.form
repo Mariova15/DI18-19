@@ -99,6 +99,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Informe sobre una carrera"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCarreraActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonClasificacionCarrera">
           <Properties>
@@ -112,6 +115,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Informe de un corredor"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonInformeCorredorActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

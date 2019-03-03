@@ -146,21 +146,21 @@ public class GestionDeCarreras implements Serializable {
         return resultadoCarrera;
     }
 
-    public List<Carrera> carrerasSinFinalizar() {        
-        List<Carrera> listaCarrerasSinfinalizar = new ArrayList<Carrera>();        
-        
+    public List<Carrera> carrerasSinFinalizar() {
+        List<Carrera> listaCarrerasSinfinalizar = new ArrayList<Carrera>();
+
         for (Iterator<Carrera> iterator = listaCarreras.iterator(); iterator.hasNext();) {
             Carrera next = iterator.next();
-            if (! next.isFinalizada()) {
+            if (!next.isFinalizada()) {
                 listaCarrerasSinfinalizar.add(next);
             }
         }
         return listaCarrerasSinfinalizar;
     }
-    
-    public List<Carrera> carrerasFinalizadas() {        
-        List<Carrera> listaCarrerasFinalizadas = new ArrayList<Carrera>();        
-        
+
+    public List<Carrera> carrerasFinalizadas() {
+        List<Carrera> listaCarrerasFinalizadas = new ArrayList<Carrera>();
+
         for (Iterator<Carrera> iterator = listaCarreras.iterator(); iterator.hasNext();) {
             Carrera next = iterator.next();
             if (next.isFinalizada()) {
@@ -169,9 +169,26 @@ public class GestionDeCarreras implements Serializable {
         }
         return listaCarrerasFinalizadas;
     }
-    
-    public List<CorredorCarrera> clasificacionCorredores(Carrera carrera){    
-        return carrera.getListaCorredores();        
+
+    public List<CorredorCarrera> clasificacionCorredores(Carrera carrera) {
+        return carrera.getListaCorredores();
+    }
+
+    public List<Carrera> carrerasDeCorredor(Corredor corredor) {
+        List<Carrera> listatemp = new ArrayList<>();
+        boolean agregar;
+        for (Carrera carrera : listaCarreras) {
+            agregar = false;
+            for (CorredorCarrera corredorCarrera : carrera.getListaCorredores()) {
+                if (!corredorCarrera.getDni().equals(corredor.getDni())) {
+                    agregar = true;
+                }
+            }
+            if (agregar) {
+                listatemp.add(carrera);
+            }
+        }
+        return listatemp;
     }
 
 }
