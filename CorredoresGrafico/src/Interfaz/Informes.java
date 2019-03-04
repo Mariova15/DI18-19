@@ -8,8 +8,11 @@ package Interfaz;
 import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
 import Modelo.Carrera;
+import java.awt.Component;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JFileChooser;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -29,7 +32,7 @@ public class Informes extends javax.swing.JDialog {
     private JRDataSource dataSource;
     private Map parametros;
     private JasperPrint print;
-    
+
     /**
      * Creates new form Informes
      */
@@ -144,9 +147,11 @@ public class Informes extends javax.swing.JDialog {
     private void jButtonNoFinalizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoFinalizadasActionPerformed
         try {
             dataSource = new JRBeanCollectionDataSource(gdCarreras.carrerasSinFinalizar());
-            parametros = new HashMap();            
+            parametros = new HashMap();
             print = JasperFillManager.fillReport("reports/jasper/sinfinalizar.jasper", parametros, dataSource);
-            JasperExportManager.exportReportToPdfFile(print, "reports/pdf/sinfinalizar.pdf");
+            //JasperExportManager.exportReportToPdfFile(print, "reports/pdf/sinfinalizar.pdf");
+            JasperExportManager.exportReportToPdfFile(print,seleccionarDirectorio(this) + 
+                    File.separator + "CarrerasSinFinalizar" + ".pdf");
         } catch (JRException ex) {
             Exceptions.printStackTrace(ex);
         }
@@ -166,6 +171,18 @@ public class Informes extends javax.swing.JDialog {
         InformeCorredores informeCorredores = new InformeCorredores(this, true, gdCorredores, gdCarreras);
         informeCorredores.setVisible(true);
     }//GEN-LAST:event_jButtonInformeCorredorActionPerformed
+
+    public String seleccionarDirectorio(Component pantalla) {
+        File file = null;
+        JFileChooser jc = new JFileChooser();
+        this.setLocationRelativeTo(null);
+        jc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int seleccion = jc.showOpenDialog(pantalla);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            file = jc.getSelectedFile();
+        }
+        return file.getAbsolutePath();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCarrera;

@@ -8,10 +8,13 @@ package Interfaz;
 import Interfaz.Tablemodels.TableModelCarreras;
 import Logica.GestionDeCarreras;
 import Modelo.Carrera;
+import java.awt.Component;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JFileChooser;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -144,7 +147,9 @@ public class CarrerasFinalizadas extends javax.swing.JDialog {
                     parametros = new HashMap();
                     parametros.put("NomCarrera", carreras.get(jTableCarrera.getSelectedRow()).getNombre());
                     print = JasperFillManager.fillReport("reports/jasper/clasificacioncorredores.jasper", parametros, dataSource);
-                    JasperExportManager.exportReportToPdfFile(print, "reports/pdf/clasificacioncorredores.pdf");
+                    //JasperExportManager.exportReportToPdfFile(print, "reports/pdf/clasificacioncorredores.pdf");
+                    JasperExportManager.exportReportToPdfFile(print, seleccionarDirectorio(this)
+                            + File.separator + "clasificacion-" + carreras.get(jTableCarrera.getSelectedRow()).getNombre() + ".pdf");
                 }
             } catch (JRException ex) {
                 Exceptions.printStackTrace(ex);
@@ -154,19 +159,32 @@ public class CarrerasFinalizadas extends javax.swing.JDialog {
                 try {
                     List<Carrera> tempList = new ArrayList<>();
                     tempList.add(carreras.get(jTableCarrera.getSelectedRow()));
-                    dataSource = new JRBeanCollectionDataSource(tempList); 
+                    dataSource = new JRBeanCollectionDataSource(tempList);
                     parametros = new HashMap();
-                    parametros.put("NumCorredores", carreras.get(jTableCarrera.getSelectedRow()).getListaCorredores().size()+"");                    
+                    parametros.put("NumCorredores", carreras.get(jTableCarrera.getSelectedRow()).getListaCorredores().size() + "");
                     print = JasperFillManager.fillReport("reports/jasper/informecarrera.jasper", parametros, dataSource);
                     //JasperExportManager.exportReportToPdfFile(print, "reports/pdf/informecarrera.pdf");
                     JasperExportManager.exportReportToPdfFile(
-                            print, "reports/pdf/informe" + carreras.get(jTableCarrera.getSelectedRow()).getNombre() + ".pdf");
+                            print, seleccionarDirectorio(this)
+                            + File.separator + "informe-" + carreras.get(jTableCarrera.getSelectedRow()).getNombre() + ".pdf");
                 } catch (JRException ex) {
                     Exceptions.printStackTrace(ex);
                 }
             }
         }
     }//GEN-LAST:event_jButtonInformeActionPerformed
+
+    public String seleccionarDirectorio(Component pantalla) {
+        File file = null;
+        JFileChooser jc = new JFileChooser();
+        this.setLocationRelativeTo(null);
+        jc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int seleccion = jc.showOpenDialog(pantalla);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            file = jc.getSelectedFile();
+        }
+        return file.getAbsolutePath();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonInforme;

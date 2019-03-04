@@ -11,10 +11,13 @@ import Logica.GestionDeCarreras;
 import Logica.GestionDeCorredores;
 import Modelo.Carrera;
 import Modelo.Corredor;
+import java.awt.Component;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JFileChooser;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -145,13 +148,27 @@ public class InformeCorredores extends javax.swing.JDialog {
             parametros = new HashMap();
             parametros.put("listaCarreras", gdCarreras.carrerasDeCorredor(corredores.get(jTableCorredores.getSelectedRow())));
             print = JasperFillManager.fillReport("reports/jasper/informecorredor.jasper", parametros, dataSource);
-            JasperExportManager.exportReportToPdfFile(print, "reports/pdf/informecorredor.pdf");
+            //JasperExportManager.exportReportToPdfFile(print, "reports/pdf/informecorredor.pdf");
+            JasperExportManager.exportReportToPdfFile(print, seleccionarDirectorio(this) + 
+                    File.separator + "informe-" + corredores.get(jTableCorredores.getSelectedRow()).getNombre() + ".pdf");
             }
         } catch (JRException ex) {
             Exceptions.printStackTrace(ex);
         }
     }//GEN-LAST:event_jButtonImprimirInformeActionPerformed
 
+    public String seleccionarDirectorio(Component pantalla) {
+        File file = null;
+        JFileChooser jc = new JFileChooser();
+        this.setLocationRelativeTo(null);
+        jc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int seleccion = jc.showOpenDialog(pantalla);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            file = jc.getSelectedFile();
+        }
+        return file.getAbsolutePath();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonImprimirInforme;
     private javax.swing.JPanel jPanelFondo;
