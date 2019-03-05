@@ -1,0 +1,8 @@
+<map version="1.0">
+   <mapID target="aplicacion" url="html/main.html" />
+   <mapID target="alta_corredor" url="html/altaCorredor.html" />
+   <mapID target="lista_corredor" url="html/listaCorredor.html" />
+   <mapID target="alta_carrera" url="html/altaCarrera.html" />
+   <mapID target="lista_carrera" url="html/listaCarrera.html" />
+   <mapID target="configuracion" url="html/configuracion.html" />
+</map>

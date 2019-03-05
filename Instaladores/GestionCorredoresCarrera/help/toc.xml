@@ -1,0 +1,9 @@
+<toc version="1.0">
+   <tocitem text="Manual gestión CC" target="aplicacion">
+      <tocitem text="Alta corredor" target="alta_corredor"/>
+      <tocitem text="Listado corredores" target="lista_corredor"/>
+      <tocitem text="Alta carrera" target="alta_carrera"/>
+      <tocitem text="Listado carreras" target="lista_carrera"/>
+      <tocitem text="Configuración" target="configuracion"/>
+   </tocitem>
+</toc>

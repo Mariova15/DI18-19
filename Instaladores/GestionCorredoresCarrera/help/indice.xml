@@ -1,0 +1,8 @@
+<index version="1.0">
+   <indexitem text="Manual gestión CC" target="aplicacion"/>
+   <indexitem text="Alta corredor" target="alta_corredor"/>
+   <indexitem text="Listado corredores" target="lista_corredor"/>
+   <indexitem text="Alta carrera" target="alta_carrera"/>
+   <indexitem text="Listado carreras" target="lista_carrera"/>
+   <indexitem text="Configuración" target="configuracion"/>
+</index>
