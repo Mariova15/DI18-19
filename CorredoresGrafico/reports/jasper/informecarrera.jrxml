@@ -78,7 +78,7 @@
 			<subreport>
 				<reportElement x="244" y="11" width="299" height="100" uuid="bf3b2321-b5df-42a9-a594-1fb45244f217"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listaCorredores})]]></dataSourceExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "informecarrera_subreportCorredoresCarrera.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["informecarrera_subreportCorredoresCarrera.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

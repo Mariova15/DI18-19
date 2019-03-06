@@ -94,7 +94,7 @@
 			<subreport>
 				<reportElement x="0" y="77" width="555" height="100" uuid="a3e0be58-70b3-4a26-95da-d3468bfa813d"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listaCarreras})]]></dataSourceExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "informecorredor_subreportCarrerasCorredor.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["informecorredor_subreportCarrerasCorredor.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement x="0" y="44" width="555" height="20" uuid="0981c0c2-a5ee-4cef-a34e-773fe76eff87"/>
